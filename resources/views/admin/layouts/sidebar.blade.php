@@ -124,7 +124,7 @@
                             </a>
                         </li>
                         <li class="side-nav-item">
-                            <a href="apps-invoice-create.html" class="side-nav-link">
+                            <a href="{{ route('categories.index') }}" class="side-nav-link">
                                 <span class="menu-text">Category</span>
                             </a>
                         </li>
@@ -195,48 +195,16 @@
                 <div class="collapse" id="sidebarPagesAuth">
                     <ul class="sub-menu">
                         <li class="side-nav-item">
-                            <a href="auth-login.html" class="side-nav-link">
-                                <span class="menu-text">Login</span>
+                            <a href="{{ route('brands.create') }}" class="side-nav-link">
+                                <span class="menu-text">Add Brand</span>
                             </a>
                         </li>
                         <li class="side-nav-item">
-                            <a href="auth-register.html" class="side-nav-link">
-                                <span class="menu-text">Register</span>
+                            <a href="{{ route('brands.index') }}" class="side-nav-link">
+                                <span class="menu-text">Brand</span>
                             </a>
                         </li>
-                        <li class="side-nav-item">
-                            <form action="{{ route('admin.logout') }}" method="POST">
-                                @csrf
-                            <a href="{{ route('admin.logout') }}" class="side-nav-link">
-                                <span class="menu-text">Logout</span>
-                            </a>
-                        </form>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="auth-recoverpw.html" class="side-nav-link">
-                                <span class="menu-text">Recover Password</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="auth-createpw.html" class="side-nav-link">
-                                <span class="menu-text">Create Password</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="auth-lock-screen.html" class="side-nav-link">
-                                <span class="menu-text">Lock Screen</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="auth-confirm-mail.html" class="side-nav-link">
-                                <span class="menu-text">Confirm Mail</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="auth-login-pin.html" class="side-nav-link">
-                                <span class="menu-text">Login with PIN</span>
-                            </a>
-                        </li>
+                       
                     </ul>
                 </div>
             </li>
