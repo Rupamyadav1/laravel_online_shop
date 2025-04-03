@@ -2,23 +2,121 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return 'hello';
+        $categories=Category::latest();
+
+        if(!empty($request->get('keyword')))
+        {
+            $categories=$categories->where('name','like','%'.$request->get('keyword').'%');
+
+        }
+        
+        
+
+        $categories=$categories->paginate(5);
+        
+        $data['categories']=$categories;
+        return view('admin.category.index',$data);
 
 
     }
     public function create()
     {
-        return view('admin.category.create');
+        return view('admin.category.store');
+    }
+    public function store(Request $request)
+    {
+        $validator=Validator::make($request->all(),[
+            'name'=>'required',
+            'slug'=>'required|unique:categories',
+            
+        ]);
+        if($validator->passes())
+        {
+            $category=new Category();
+            $category->name=$request->name;
+            $category->slug=$request->slug;
+            $category->status=$request->status;
+            $category->save();
+
+            $request->session()->flash("success","Category added succesfully");
+
+
+            return response()->json([
+                'status'=>true,
+                'message'=>"Category Added Succesfully"
+
+            ]);
+            
+        }
+        else
+        {
+            return response()->json([
+                'status'=>false,
+                'errors'=>$validator->errors(),
+                
+            ]);
+        }
 
     }
-    public function store()
+    public function edit(Request $request,$categoryId)
     {
+
+       
+        $category=Category::find($categoryId);
+        $data['category']=$category;
+        return view('admin.category.edit',$data);
+
+    }
+    public function update(Request $request,$categoryId)
+    {
+        $category=Category::find($categoryId);
+
+        if(!$category)
+        {
+            return response()->json([
+                'status'=>false,
+                'message'=>'category id is empty',
+            ]);
+        }
+
+
+
+        $category->name=$request->name;
+        $category->slug=$request->slug;
+        $category->status=$request->status;
+
+        $category->save();
+
+
+        
+            session()->flash('success', 'Category updated successfully!');
+
+          return  response()->json([
+            'status'=>true,
+            'message'=>"record updated sucessfully",
+            'category_id'=>$categoryId,
+
+            ]);
+        
+       
+
+    }
+
+    public function destroy($categoryId)
+    {
+        $category=Category::find($categoryId);
+       
+            $category->delete();
+        
+        return redirect()->back();
 
     }
 }
