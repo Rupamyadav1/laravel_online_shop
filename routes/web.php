@@ -51,6 +51,13 @@ Route::get('/', function () {
         Route::get('/brands/create', [BrandController::class, 'create'])->name('brands.create');
         Route::post('/brands/store', [BrandController::class, 'store'])->name('brands.store');
         Route::get('/brands/index', [BrandController::class, 'index'])->name('brands.index');
+        Route::get('/brands/show', [BrandController::class, 'create'])->name('brands.show');
+
+        Route::get('/brands/{brandId}/edit', [BrandController::class, 'edit'])->name('brands.edit');
+        Route::put('/brands/{brandId}/update', [BrandController::class, 'update'])->name('brands.update');
+        Route::get('/brands/{brandId}/delete', [BrandController::class, 'destroy'])->name('brands.delete');
+
+
 
 
 

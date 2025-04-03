@@ -19,7 +19,7 @@ class CategoryController extends Controller
         
         
 
-        $categories=$categories->paginate(5);
+        $categories=$categories->paginate(10);
         
         $data['categories']=$categories;
         return view('admin.category.index',$data);

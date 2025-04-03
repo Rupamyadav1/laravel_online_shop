@@ -14,6 +14,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
+@if(session('error'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{ session('error') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
 
 
                     <div class="d-flex flex-wrap flex-lg-nowrap gap-2">
@@ -30,7 +37,7 @@
                             </div>
                         </div>
                         <a href="{{ route('categories.create') }}" class="btn btn-primary"><i
-                                class="ri-add-line me-1"></i>Add Category</a>
+                                class="ri-add-line me-1"></i>Add Brand</a>
                     </div><!-- end d-flex -->
                 </div>
 
@@ -73,13 +80,13 @@
                                                         </td>
                                                         <td class="pe-3">
                                                             <div class="hstack gap-1 justify-content-end">
-                                                                <a href="javascript:void(0);"
+                                                                <a href="{{ route('brands.show',$brand->id) }}"
                                                                     class="btn btn-soft-primary btn-icon btn-sm rounded-circle"> <i
-                                                                        class="ri-eye-line"></i></a>
-                                                                <a href="{{ route('categories.edit',$brand->id) }}"
+                                                                        class="ri-eye-line fs-16"></i></a>
+                                                                <a href="{{ route('brands.edit',$brand->id) }}"
                                                                     class="btn btn-soft-success btn-icon btn-sm rounded-circle"> <i
                                                                         class="ri-edit-box-line fs-16"></i></a>
-                                                                <a href="{{ route('categories.delete',$brand->id) }}"
+                                                                <a href="{{ route('brands.delete',$brand->id) }}"
                                                                     class="btn btn-soft-danger btn-icon btn-sm rounded-circle"> <i
                                                                         class="ri-delete-bin-line"></i></a>
                                                             </div>
@@ -88,8 +95,11 @@
                                                 </tbody><!-- end table-body -->
                                            
                                     @endforeach
+
+                                    
                             @endif
                     </table><!-- end table -->
+                    {{ $brands->links() }}
                   
                 </div>
 
