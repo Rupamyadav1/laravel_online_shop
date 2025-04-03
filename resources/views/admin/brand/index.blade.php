@@ -26,7 +26,7 @@
                             </form>
 
                             <div>
-                                <button class="btn btn-primary" onclick="window.location.href='{{ route('categories.index') }}' ">Reset</button>
+                                <button class="btn btn-primary" onclick="window.location.href='{{ route('brands.index') }}' ">Reset</button>
                             </div>
                         </div>
                         <a href="{{ route('categories.create') }}" class="btn btn-primary"><i
@@ -54,9 +54,10 @@
 
 
                         <tbody>
-                            @if (!empty($categories))
-                                    @foreach ($categories as $cat)
-                                            @if ($cat->status == 1)
+                            @if (!empty($brands))
+                           
+                                    @foreach ($brands as $brand)
+                                           
 
 
 
@@ -64,8 +65,8 @@
                                                     <tr>
 
                                                         <td><span class="text-muted fw-semibold">{{$i++}}</span></td>
-                                                        <td>{{ $cat->name }}</td>
-                                                        <td><span class="fs-15 text-muted">{{$cat->slug}}</span></td>
+                                                        <td>{{ $brand->name }}</td>
+                                                        <td><span class="fs-15 text-muted">{{$brand->slug}}</span></td>
 
                                                         <td>
                                                             <span class="badge bg-warning-subtle text-warning fs-12 p-1">Pending</span>
@@ -75,21 +76,21 @@
                                                                 <a href="javascript:void(0);"
                                                                     class="btn btn-soft-primary btn-icon btn-sm rounded-circle"> <i
                                                                         class="ri-eye-line"></i></a>
-                                                                <a href="{{ route('categories.edit',$cat->id) }}"
+                                                                <a href="{{ route('categories.edit',$brand->id) }}"
                                                                     class="btn btn-soft-success btn-icon btn-sm rounded-circle"> <i
                                                                         class="ri-edit-box-line fs-16"></i></a>
-                                                                <a href="{{ route('categories.delete',$cat->id) }}"
+                                                                <a href="{{ route('categories.delete',$brand->id) }}"
                                                                     class="btn btn-soft-danger btn-icon btn-sm rounded-circle"> <i
                                                                         class="ri-delete-bin-line"></i></a>
                                                             </div>
                                                         </td>
                                                     </tr><!-- end table-row -->
                                                 </tbody><!-- end table-body -->
-                                            @endif
+                                           
                                     @endforeach
                             @endif
                     </table><!-- end table -->
-                    {{ $categories->links() }}
+                  
                 </div>
 
 
