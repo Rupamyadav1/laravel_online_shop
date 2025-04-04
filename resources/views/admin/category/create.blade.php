@@ -22,7 +22,7 @@
                                 <div class="mb-2">
                                     <label class="form-label">Slug :</label>
                                     <input type="text" class="form-control" name="slug" id="slug"  placeholder="enter slug" readonly>
-                                    <p></p>
+                                    
                                 </div>
                             </div>
 

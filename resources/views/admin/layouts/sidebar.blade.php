@@ -219,7 +219,7 @@
                 <div class="collapse" id="sidebarPagesError">
                     <ul class="sub-menu">
                         <li class="side-nav-item">
-                            <a href="error-401.html" class="side-nav-link">
+                            <a href="{{ route('products.create') }}" class="side-nav-link">
                                 <span class="menu-text">Add Product</span>
                             </a>
                         </li>

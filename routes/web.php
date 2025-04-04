@@ -3,6 +3,7 @@
 use App\Http\Controllers\BrandController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Http\Request;
@@ -56,6 +57,10 @@ Route::get('/', function () {
         Route::get('/brands/{brandId}/edit', [BrandController::class, 'edit'])->name('brands.edit');
         Route::put('/brands/{brandId}/update', [BrandController::class, 'update'])->name('brands.update');
         Route::get('/brands/{brandId}/delete', [BrandController::class, 'destroy'])->name('brands.delete');
+
+
+        Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+
 
 
 
