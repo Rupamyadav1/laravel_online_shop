@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card position-relative">
-                <form id="category_form">
+                <form id="categoryForm">
                     <div class="card-body">
                         <!-- Invoice Logo-->
 
@@ -61,7 +61,7 @@
 @section('customJS')
 
     <script>
-        $("#category_form").submit(function (event) {
+        $("#categoryForm").submit(function (event) {
             event.preventDefault();
             var element = $(this);
             $("button[type=submit]").prop("disable",true);
@@ -72,6 +72,7 @@
                 data: element.serializeArray(),
                 dataType: 'json',
                 success: function (response) {
+                    window.location.href="{{ route('categories.index') }}"
                     $("button[type=submit]").prop("disable",false);
 
                     if (response['status'] == true) {

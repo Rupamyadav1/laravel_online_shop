@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card position-relative">
-                <form id="category_form">
+                <form id="categoryForm">
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
@@ -58,7 +58,7 @@
 @section('customJS')
 
     <script>
-        $("#category_form").submit(function (event) {
+        $("#categoryForm").submit(function (event) {
            event.preventDefault();
             var element = $(this);
             $.ajax({

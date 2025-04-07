@@ -65,6 +65,7 @@
                 data: element.serializeArray(),
                 dataType: 'json',
                 success: function (response) {
+                    window.location.href="{{ route('brands.index') }}"
                     $("button[type=submit]").prop("disable",false);
 
                     if (response['status'] == true) {

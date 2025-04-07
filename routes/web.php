@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TempImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -60,6 +61,11 @@ Route::get('/', function () {
 
 
         Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+        Route::post('/products/store', action: [ProductController::class, 'store'])->name('products.store');
+       
+        Route::post('/upload-temp-image', action: [TempImageController::class, 'create'])->name('temp-images.create');
+
+
 
 
 

@@ -23,9 +23,16 @@
 
     <!-- Icons css -->
     <link href="{{asset('admin_assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+<!-- Dropzone CSS -->
+    <link href="{{ asset('admin_assets/dropzone/dropzone.min.css') }}"  />
+
+<!-- Dropzone JS -->
+    <script src="{{ asset('admin_assets/dropzone/dropzone.min.js') }}" ></script>
 
     <!-- Theme Config Js -->
     <script src="{{asset('admin_assets/js/config.js')}}"></script>
+
+
 </head>
 
 
