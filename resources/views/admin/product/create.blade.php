@@ -187,6 +187,7 @@
                         <div class="mt-2">
                             <input type="text" name="qty" id="qty" class="form-control">
                         </div>
+                        <p></p>
 
 
                     </div>

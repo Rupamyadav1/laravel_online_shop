@@ -52,7 +52,7 @@ class ProductController extends Controller
         ];
 
         if(!empty($request->track_qty) && $request->track_qty=='Yes'){
-            $rules['qty']='required|numeric';
+            $rules['qty']='required';
         }
 
         $validator=Validator::make($request->all(),$rules);
