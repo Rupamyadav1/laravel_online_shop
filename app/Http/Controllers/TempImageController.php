@@ -14,7 +14,7 @@ class TempImageController extends Controller
         $image = $request->image;
         if (!empty($image)) {
             $ext = $image->getClientOriginalExtension();
-            $newName = time() . '' . $ext;
+            $newName = time() . '.' . $ext;
             $tempImage = new TempImage();
             $tempImage->image = $newName;
             $tempImage->save();
@@ -45,6 +45,8 @@ class TempImageController extends Controller
                 'message' => 'Image uploaded successfully',
             ]);
         }
-        $imageName = time() . '.' . $image->getClientOriginalExtension();
-    }
+        return response()->json([
+            'status' => false,
+            'message' => 'Image not uploaded',
+        ]);}
 }

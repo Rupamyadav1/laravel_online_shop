@@ -10,9 +10,25 @@ use App\Models\ProductImage;
 use App\Models\TempImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class ProductController extends Controller
 {
+
+    public function index()
+    {
+        $products = Product::latest('id')->with('product_images')->paginate(); 
+       // dd($products);
+        
+        if(!empty(request()->get('keyword')))
+        {
+            $products=$products->where('title','like','%'.request()->get('keyword').'%');
+        }
+     
+        $data['products']=$products;
+        return view('admin.product.index',$data);
+    }
     public function create()
     {
         $categories=Category::orderBy('name','ASC')->get();
@@ -27,11 +43,11 @@ class ProductController extends Controller
         // exit();
         $rules=[
             'title'=>'required',
-            'slug'=>'required|unique:products',
+            'slug'=>'required',
             'price'=>'required|numeric',
             'sku'=>'required|unique:products',
             'track_qty'=>'required|in:Yes,No',
-            'category_id'=>'required|numeric',
+            'category_id'=>'required',
             'is_featured'=>'required|in:Yes,No'
         ];
 
@@ -66,9 +82,13 @@ class ProductController extends Controller
                 foreach($request->image_Array as $temp_image_id)
                 {
                     $tempImgInfo=TempImage::find($temp_image_id);
-                    $extArray=explode('.',$tempImgInfo);
-                    $ext=last($extArray);
+                    
+                    $extArray=explode('.',$tempImgInfo->image);
 
+                    
+                    
+                    $ext=last($extArray);
+                   
 
                     $ProductImage=new ProductImage;
                     $ProductImage->product_id=$product->id;
@@ -78,6 +98,38 @@ class ProductController extends Controller
                     $imageName=$product->id.'-'.$ProductImage->id.'-'.time().'.'.$ext;
                     $ProductImage->image=$imageName;
                     $ProductImage->save();
+
+                   
+
+                    $sourcePath=public_path().'/temp/'.$tempImgInfo->image;
+                      $destPath=public_path().'/uploads/product/small/'.$imageName;
+                      $manager = new ImageManager(new Driver()); // use GD driver
+  
+                      // Read image from file system
+                       $image = $manager->read($sourcePath);
+  
+                      // Resize/crop like fit(300, 275)
+                      $image = $image->cover(300, 275);
+  
+                       // Save the thumbnail
+                      $image->save($destPath);
+
+                      $sourcePath=public_path().'/temp/'.$tempImgInfo->image;
+                      $destPath=public_path().'/uploads/product/large/'.$imageName;
+                      $manager = new ImageManager(new Driver()); // use GD driver
+  
+                      // Read image from file system
+                       $image = $manager->read($sourcePath);
+  
+                      // Resize/crop like fit(300, 275)
+                      $image = $image->cover(300, 275);
+  
+                       // Save the thumbnail
+                      $image->save($destPath);
+
+
+
+
 
                 }
 
@@ -97,4 +149,4 @@ class ProductController extends Controller
 
         }
     }
-}
+} 

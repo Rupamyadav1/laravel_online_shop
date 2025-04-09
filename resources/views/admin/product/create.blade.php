@@ -142,7 +142,7 @@
                 </div>
                 <div class="col">
                     <div class="mt-2">
-                        <label for="description">Comapre at Price :
+                        <label for="description">Compare at Price :
                         </label>
                         <input type="text" placeholder="Price" class="form-control" name="compare_price"
                             id="compare_price"></textarea>

@@ -224,7 +224,7 @@
                             </a>
                         </li>
                         <li class="side-nav-item">
-                            <a href="error-400.html" class="side-nav-link">
+                            <a href="{{ route('products.index') }}" class="side-nav-link">
                                 <span class="menu-text">Product</span>
                             </a>
                         </li>

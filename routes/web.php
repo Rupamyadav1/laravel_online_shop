@@ -59,7 +59,7 @@ Route::get('/', function () {
         Route::put('/brands/{brandId}/update', [BrandController::class, 'update'])->name('brands.update');
         Route::get('/brands/{brandId}/delete', [BrandController::class, 'destroy'])->name('brands.delete');
 
-
+        Route::get('/products/index', [ProductController::class, 'index'])->name('products.index');
         Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
         Route::post('/products/store', action: [ProductController::class, 'store'])->name('products.store');
        
