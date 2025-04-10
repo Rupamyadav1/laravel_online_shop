@@ -64,6 +64,9 @@ Route::get('/', function () {
         Route::post('/products/store', action: [ProductController::class, 'store'])->name('products.store');
        
         Route::post('/upload-temp-image', action: [TempImageController::class, 'create'])->name('temp-images.create');
+        Route::get('/products/{productId}/edit', [ProductController::class, 'edit'])->name('products.edit');
+        Route::get('/products/{productId}/delete', [ProductController::class, 'destroy'])->name('products.delete');
+        Route::put('/products/{productId}/update', [ProductController::class, 'update'])->name('products.update');
 
 
 

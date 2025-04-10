@@ -39,8 +39,7 @@ class ProductController extends Controller
     }
     public function store(Request $request)
     {
-        // dd($request->image_Array);
-        // exit();
+        
         $rules=[
             'title'=>'required',
             'slug'=>'required',
@@ -126,6 +125,7 @@ class ProductController extends Controller
   
                        // Save the thumbnail
                       $image->save($destPath);
+                      session()->flash('success', 'Product added successfully!');
 
 
 
@@ -149,4 +149,77 @@ class ProductController extends Controller
 
         }
     }
+
+    public function edit(Request $request,$productId){
+        $product=Product::find($productId);
+        $productImages= ProductImage::where('product_id',$product->id)->get();
+
+        $categories=Category::orderBy('name','ASC')->get();
+        $data['categories']=$categories;
+        $brands=Brand::orderBy('name','ASC')->get();
+        $data['brands']=$brands;
+        if(!$product)
+        {
+            return response()->json([
+                'status'=>false,
+                'message'=>'product id not found',
+            ]);
+        }
+        $data['productImages']=$productImages;
+        $data['product']=$product;
+        return view('admin.product.edit',$data);
+    }
+    public function update($productId,Request $request){
+        $product=Product::find($productId);
+
+        $rules=[
+            'title'=>'required',
+            'slug'=>'required|unique:products,slug,'.$productId.',id',
+            'price'=>'required|numeric',
+            'sku'=>'required|unique:products,slug,'.$productId.',id',
+            'track_qty'=>'required|in:Yes,No',
+            'category_id'=>'required',
+            'is_featured'=>'required|in:Yes,No'
+        ];
+
+        
+        $validator=Validator::make($request->all(),$rules);
+        if($validator->passes())
+        {
+            
+            $product->title=$request->title;
+            $product->slug=$request->slug;
+            $product->description=$request->description;
+            $product->price=$request->price;
+            $product->status=$request->product_status;
+            $product->category_id= $request->category_id;
+            $product->brand_id=$request->brand_id;
+            $product->is_featured=$request->is_featured;
+            $product->price=$request->price;
+            $product->compare_price=$request->compare_price;
+            $product->sku=$request->sku;
+            $product->barcode= $request->barcode;
+            $product->track_qty=$request->track_qty;
+            $product->qty=$request->qty;
+            $product->save();
+
+            return response()->json([
+               
+                'status'=>true,
+                'message'=>'product added sucessfully ',
+            ]);
+
+        }
+        else
+        {
+            return response()->json([
+                'status'=>false,
+                'errors'=>$validator->errors(),
+            ]);
+
+        }
+
+    }
+
+
 } 

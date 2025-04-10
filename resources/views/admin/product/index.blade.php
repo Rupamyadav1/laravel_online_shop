@@ -88,16 +88,16 @@
                                                         <td class="pe-3">
                                                             <div class="hstack gap-1 justify-content-end">
                                                                 
-                                                                <a href="{{ route('categories.edit',$product->id) }}"
+                                                                <a href="{{ route('products.edit',$product->id) }}"
                                                                     class="btn btn-soft-success btn-icon btn-sm rounded-circle"> <i
                                                                         class="ri-edit-box-line fs-16"></i></a>
-                                                                <a href="{{ route('categories.delete',$product->id) }}"
+                                                                <a href="{{ route('products.delete',$product->id) }}"
                                                                     class="btn btn-soft-danger btn-icon btn-sm rounded-circle"> <i
                                                                         class="ri-delete-bin-line"></i></a>
                                                             </div>
                                                         </td>
-                                                    </tr><!-- end table-row -->
-                                                </tbody><!-- end table-body -->
+                                                    </tr>
+                                                </tbody>
                                             @endif
                                     @endforeach
                             @endif

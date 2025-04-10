@@ -59,7 +59,7 @@
                         <div class="mt-2">
                             <label for="description">Description:
                             </label>
-                            <textarea class="form-control" name="description" id="description" placeholder="description"></textarea>
+                            <textarea class="form-control" name="description" id="description" placeholder="Description"></textarea>
                         </div>
                     </div>
                     <div class="col">
@@ -125,7 +125,11 @@
                 </div>
 
             </div>
-    </div>
+    
+    
+    
+    
+        </div>
     <div class="card position-relative">
         <div class="card-body">
             <div>
@@ -144,7 +148,7 @@
                     <div class="mt-2">
                         <label for="description">Compare at Price :
                         </label>
-                        <input type="text" placeholder="Price" class="form-control" name="compare_price"
+                        <input type="text" placeholder="Compare at Price" class="form-control" name="compare_price"
                             id="compare_price"></textarea>
                     </div>
                 </div>
@@ -162,7 +166,7 @@
                     <div class="mt-2">
                         <label for="description">Sku(stock keeping price):
                         </label>
-                        <input type="text" placeholder="Price" class="form-control" name="sku"
+                        <input type="text" placeholder="Sku" class="form-control" name="sku"
                             id="sku"></textarea>
                     </div>
                 </div>
@@ -170,7 +174,7 @@
                     <div class="mt-2">
                         <label for="description">Barcode :
                         </label>
-                        <input type="text" placeholder="Price" class="form-control" name="barcode"
+                        <input type="text" placeholder="Barcode" class="form-control" name="barcode"
                             id="barcode"></textarea>
                     </div>
                 </div>
@@ -185,7 +189,8 @@
                             <label class="form-check-label" for="track_quantity">Track Quantity</label>
                         </div>
                         <div class="mt-2">
-                            <input type="text" name="qty" id="qty" class="form-control">
+                            <input type="text" name="qty" id="qty" class="form-control" placeholder="Quantity"
+                               >
                         </div>
                         <p></p>
 
@@ -196,19 +201,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     <!-- end card -->
     <div class="card-body">
@@ -245,7 +237,7 @@
                 dataType: 'json',
                 success: function(response) {
                     if (response['status'] == true) {
-                        window.location.href = ""
+                        window.location.href = "{{route('products.index')}}"
 
                     } else {
                         var errors = response['errors'];
