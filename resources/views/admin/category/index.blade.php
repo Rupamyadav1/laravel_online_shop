@@ -78,7 +78,7 @@
                                                                 <a href="{{ route('categories.edit',$cat->id) }}"
                                                                     class="btn btn-soft-success btn-icon btn-sm rounded-circle"> <i
                                                                         class="ri-edit-box-line fs-16"></i></a>
-                                                                <a href="{{ route('categories.delete',$cat->id) }}"
+                                                                <a onclick="deleteCategory({{ $cat->id }})" 
                                                                     class="btn btn-soft-danger btn-icon btn-sm rounded-circle"> <i
                                                                         class="ri-delete-bin-line"></i></a>
                                                             </div>
@@ -98,3 +98,48 @@
     </div>
 
 @endsection
+
+@section('customJS')
+<script>
+    function deleteCategory(id) {
+        
+        var url = "{{ route('categories.delete', 'ID') }}"; // 'ID' is just a placeholder
+        var newUrl = url.replace("ID", id); // Replace placeholder with actual ID
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url:newUrl,
+                        type: 'get',
+                        data: {
+                            product_id :id,
+                            _token: '{{ csrf_token() }}',
+                        },
+                        success: function(response) {
+                            if (response.status === true) {
+                                
+                                Swal.fire("Deleted!", response.message, "success");
+                                window.location.href="{{ route('categories.index') }}"
+                            } else {
+                                Swal.fire("Error!", response.message, "error");
+                            }
+                        },
+                        error: function() {
+                            Swal.fire("Error!", "Something went wrong!", "error");
+                        }
+                    });
+                }
+            });
+        }
+    
+    
+    
+    </script>
+    @endsection

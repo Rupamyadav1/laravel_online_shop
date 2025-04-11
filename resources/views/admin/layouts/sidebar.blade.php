@@ -118,14 +118,15 @@
                 <div class="collapse" id="sidebarInvoice">
                     <ul class="sub-menu">
                        
-                        <li class="side-nav-item">
-                            <a href="{{ route('categories.create') }}" class="side-nav-link">
-                                <span class="menu-text">Add Category</span>
-                            </a>
-                        </li>
+                        
                         <li class="side-nav-item">
                             <a href="{{ route('categories.index') }}" class="side-nav-link">
                                 <span class="menu-text">Category</span>
+                            </a>
+                        </li>
+                        <li class="side-nav-item">
+                            <a href="{{ route('categories.create') }}" class="side-nav-link">
+                                <span class="menu-text">Add Category</span>
                             </a>
                         </li>
                     </ul>
@@ -194,14 +195,15 @@
                 </a>
                 <div class="collapse" id="sidebarPagesAuth">
                     <ul class="sub-menu">
-                        <li class="side-nav-item">
-                            <a href="{{ route('brands.create') }}" class="side-nav-link">
-                                <span class="menu-text">Add Brand</span>
-                            </a>
-                        </li>
+                       
                         <li class="side-nav-item">
                             <a href="{{ route('brands.index') }}" class="side-nav-link">
                                 <span class="menu-text">Brand</span>
+                            </a>
+                        </li>
+                        <li class="side-nav-item">
+                            <a href="{{ route('brands.create') }}" class="side-nav-link">
+                                <span class="menu-text">Add Brand</span>
                             </a>
                         </li>
                        
@@ -218,14 +220,15 @@
                 </a>
                 <div class="collapse" id="sidebarPagesError">
                     <ul class="sub-menu">
-                        <li class="side-nav-item">
-                            <a href="{{ route('products.create') }}" class="side-nav-link">
-                                <span class="menu-text">Add Product</span>
-                            </a>
-                        </li>
+                       
                         <li class="side-nav-item">
                             <a href="{{ route('products.index') }}" class="side-nav-link">
                                 <span class="menu-text">Product</span>
+                            </a>
+                        </li>
+                        <li class="side-nav-item">
+                            <a href="{{ route('products.create') }}" class="side-nav-link">
+                                <span class="menu-text">Add Product</span>
                             </a>
                         </li>
                        

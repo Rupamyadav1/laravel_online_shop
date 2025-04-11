@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header border-bottom card-tabs d-flex flex-wrap align-items-center gap-2">
                     <div class="flex-grow-1">
-                        <h4 class="header-title">Category</h4>
+                        <h4 class="header-title">Brand</h4>
                     </div>
                     @if(session('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -36,7 +36,7 @@
                                 <button class="btn btn-primary" onclick="window.location.href='{{ route('brands.index') }}' ">Reset</button>
                             </div>
                         </div>
-                        <a href="{{ route('categories.create') }}" class="btn btn-primary"><i
+                        <a href="{{ route('brands.create') }}" class="btn btn-primary"><i
                                 class="ri-add-line me-1"></i>Add Brand</a>
                     </div><!-- end d-flex -->
                 </div>
@@ -76,7 +76,7 @@
                                                         <td><span class="fs-15 text-muted">{{$brand->slug}}</span></td>
 
                                                         <td>
-                                                            <span class="badge bg-warning-subtle text-warning fs-12 p-1">Pending</span>
+                                                            <span class="badge bg-success-subtle text-success fs-12 p-1">Confirmed</span>
                                                         </td>
                                                         <td class="pe-3">
                                                             <div class="hstack gap-1 justify-content-end">
@@ -86,7 +86,7 @@
                                                                 <a href="{{ route('brands.edit',$brand->id) }}"
                                                                     class="btn btn-soft-success btn-icon btn-sm rounded-circle"> <i
                                                                         class="ri-edit-box-line fs-16"></i></a>
-                                                                <a href="{{ route('brands.delete',$brand->id) }}"
+                                                                <a onclick="deleteBrand({{ $brand->id }})"
                                                                     class="btn btn-soft-danger btn-icon btn-sm rounded-circle"> <i
                                                                         class="ri-delete-bin-line"></i></a>
                                                             </div>
@@ -107,5 +107,49 @@
             </div> <!-- end card-->
         </div> <!-- end col -->
     </div>
+
+@endsection
+
+@section('customJS')
+<script>
+    function deleteBrand(id) {
+        var url = "{{ route('brands.delete', 'ID') }}"; // 'ID' is just a placeholder
+        var newUrl = url.replace("ID", id); // Replace placeholder with actual ID
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url:newUrl,
+                        type: 'get',
+                        data: {
+                            product_id :id,
+                            _token: '{{ csrf_token() }}',
+                        },
+                        success: function(response) {
+                            if (response.status === true) {
+                                
+                                Swal.fire("Deleted!", response.message, "success");
+                                window.location.href="{{ route('brands.index') }}"
+                            } else {
+                                Swal.fire("Error!", response.message, "error");
+                            }
+                        },
+                        error: function() {
+                            Swal.fire("Error!", "Something went wrong!", "error");
+                        }
+                    });
+                }
+            });
+        }
+    
+    
+    </script>
 
 @endsection

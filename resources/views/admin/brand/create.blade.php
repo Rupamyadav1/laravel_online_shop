@@ -14,7 +14,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="mb-2">
-                                    <label class="form-label">Category Name :</label>
+                                    <label class="form-label">Brand Name :</label>
                                     <input type="text" class="form-control" name="name" id="name"
                                         placeholder="enter category name" style="width:101%">
                                     <p></p>
