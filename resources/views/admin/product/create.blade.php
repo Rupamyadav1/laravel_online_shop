@@ -293,23 +293,30 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function(file, response) {
-                var html = `<div class="card" style="width: 18rem;">
+                var html = `<div class="card" id="image-row-${response.image_id}" style="width: 18rem;">
                                     <input type="hidden" name="image_Array[]" value="${response.image_id}">
 
                 <img src="${response.imagePath}" class="card-img-top" alt="...">
                 <div class="card-body">
                 
-                <a href="#" class="btn btn-danger">Delete</a>
+                <a href="javascript:void(0)" onclick="deleteImage(${response.image_id})" class="btn btn-danger">Delete</a>
                 </div>
                 </div>`;
                 $('#product-gallery').append(html);
+               
 
-            }, error: function(jqXHR, exception) {
+            },
+            
+            
+            error: function(jqXHR, exception) {
                     console.log("something went wrong");
 
                 },
 
         });
+        function deleteImage(id){
+            $("#image-row-"+id).remove();
+        }
 
 
         $("#title").change(function() {
@@ -331,5 +338,6 @@
                 }
             });
         });
+        
     </script>
 @endsection

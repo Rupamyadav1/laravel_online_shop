@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -100,7 +101,7 @@ class ProductController extends Controller
 
                    
 
-                    $sourcePath=public_path().'/temp/'.$tempImgInfo->image;
+                     $sourcePath=public_path().'/temp/'.$tempImgInfo->image;
                       $destPath=public_path().'/uploads/product/small/'.$imageName;
                       $manager = new ImageManager(new Driver()); // use GD driver
   
@@ -219,6 +220,36 @@ class ProductController extends Controller
 
         }
 
+    }
+    public function destroy($productId)
+    {
+       
+
+        $product=Product::find($productId);
+
+        $productImages= ProductImage::where('product_id',$productId)->get();
+        if(!$product || !$productImages)
+        {
+            return response()->json([
+                'status'=>false,
+                'message'=>'product or product_images not found',
+            ]);
+        }
+        if($productImages){
+            foreach($productImages as $productImage)
+        {
+            File::delete(public_path('uploads/product/small/' . $productImage->image));
+            File::delete(public_path('uploads/product/large/' . $productImage->image));
+        }
+        ProductImage::where('product_id',$productId)->delete();
+
+        }
+        $product->delete();
+
+        return response()->json([
+            'status'=>true,
+            'message'=>'product deleted sucessfully ',
+        ]);
     }
 
 

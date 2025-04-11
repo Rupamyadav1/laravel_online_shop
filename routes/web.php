@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TempImageController;
+use App\Http\Controllers\ProductImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -67,6 +68,9 @@ Route::get('/', function () {
         Route::get('/products/{productId}/edit', [ProductController::class, 'edit'])->name('products.edit');
         Route::get('/products/{productId}/delete', [ProductController::class, 'destroy'])->name('products.delete');
         Route::put('/products/{productId}/update', [ProductController::class, 'update'])->name('products.update');
+        Route::post('/products/images/update', [ProductImageController::class, 'store'])->name('products.images.update');
+        Route::post('/products/images/delete', [ProductImageController::class, 'destroy'])->name('products.images.delete');
+
 
 
 
