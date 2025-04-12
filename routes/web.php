@@ -1,19 +1,19 @@
 <?php
 
-use App\Http\Controllers\BrandController;
+use App\Http\Controllers\Admin\BrandController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\TempImageController;
-use App\Http\Controllers\ProductImageController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\TempImageController;
+use App\Http\Controllers\Admin\ProductImageController;
+use App\Http\Controllers\Front\FrontController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [FrontController::class, 'index'])->name('home');
 
 
     Route::group(['prefix' => 'admin'], function () {

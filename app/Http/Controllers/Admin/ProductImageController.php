@@ -1,12 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
+
+
 use App\Models\ProductImage;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Support\Facades\File;
+use App\Http\Controllers\Controller;
+
 
 class ProductImageController extends Controller
 {
