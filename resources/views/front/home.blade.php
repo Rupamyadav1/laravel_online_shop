@@ -558,157 +558,157 @@
 															<a class="menu-link" href="#"><div>Dropdown Styles</div></a>
 															<ul class="sub-menu-container mega-menu-dropdown p-lg-0">
 																<li class="menu-item">
-																	<a class="menu-link" href="menu-dropdowns-blur.html"><div>Blur</div></a>
+																	<a class="menu-link" href="{{asset('front_assets/menu-dropdowns-blur.html')}}"><div>Blur</div></a>
 																</li>
 																<li class="menu-item">
-																	<a class="menu-link" href="menu-dropdowns-colors.html"><div>Colors</div></a>
+																	<a class="menu-link" href="{{asset('front_assets/menu-dropdowns-colors.html')}}"><div>Colors</div></a>
 																</li>
 																<li class="menu-item">
-																	<a class="menu-link" href="menu-dropdowns-dark.html"><div>Dark</div></a>
+																	<a class="menu-link" href="{{asset('front_assets/menu-dropdowns-dark.html')}}"><div>Dark</div></a>
 																</li>
 																<li class="menu-item">
-																	<a class="menu-link" href="menu-dropdowns-flat.html"><div>Flat</div></a>
+																	<a class="menu-link" href="{{asset('front_assets/menu-dropdowns-flat.html')}}"><div>Flat</div></a>
 																</li>
 																<li class="menu-item">
-																	<a class="menu-link" href="menu-dropdowns-fullwidth.html"><div>Full-Width</div></a>
+																	<a class="menu-link" href="{{asset('front_assets/menu-dropdowns-fullwidth.html')}}"><div>Full-Width</div></a>
 																</li>
 																<li class="menu-item">
-																	<a class="menu-link" href="menu-dropdowns-other-arrows.html"><div>Custom Arrows</div></a>
+																	<a class="menu-link" href="{{asset('front_assets/menu-dropdowns-other-arrows.html')}}"><div>Custom Arrows</div></a>
 																</li>
 																<li class="menu-item">
-																	<a class="menu-link" href="menu-dropdowns-rounded.html"><div>Rounded</div></a>
+																	<a class="menu-link" href="{{asset('front_assets/menu-dropdowns-rounded.html')}}"><div>Rounded</div></a>
 																</li>
 																<li class="menu-item">
-																	<a class="menu-link" href="menu-dropdowns-shadow.html"><div>Shadow</div></a>
+																	<a class="menu-link" href="{{asset('front_assets/menu-dropdowns-shadow.html')}}"><div>Shadow</div></a>
 																</li>
 															</ul>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="menu-6.html"><div>Scaling Border</div></a>
+															<a class="menu-link" href="{{asset('front_assets/menu-6.html')}}"><div>Scaling Border</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="menu-subtitle.html"><div>Sub-Title Menu</div></a>
+															<a class="menu-link" href="{{asset('front_assets/menu-subtitle.html')}}"><div>Sub-Title Menu</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="menu-7.html"><div>Extended Menu 1</div></a>
+															<a class="menu-link" href="{{asset('front_assets/menu-7.html')}}"><div>Extended Menu 1</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="menu-8.html"><div>Extended Menu 2</div></a>
+															<a class="menu-link" href="{{asset('front_assets/menu-8.html')}}"><div>Extended Menu 2</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="menu-9.html"><div>Extended Menu 3</div></a>
+															<a class="menu-link" href="{{asset('front_assets/menu-9.html')}}"><div>Extended Menu 3</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="menu-app-1.html"><div>App Menu 1</div></a>
+															<a class="menu-link" href="{{asset('front_assets/menu-app-1.html')}}"><div>App Menu 1</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="menu-app-2.html"><div>App Menu 2</div></a>
+															<a class="menu-link" href="{{asset('front_assets/menu-app-2.html')}}"><div>App Menu 2</div></a>
 														</li>
 													</ul>
 												</div>
 											</div>
 										</li>
 										<li class="menu-item">
-											<a class="menu-link" href="mega-menu.html"><div><i class="bi-layout-split"></i>Mega Menu</div></a>
+											<a class="menu-link" href="{{asset('front_assets/mega-menu.html')}}"><div><i class="bi-layout-split"></i>Mega Menu</div></a>
 											<ul class="sub-menu-container">
 												<li class="menu-item">
-													<a class="menu-link" href="mega-menu.html"><div>Widgetized</div></a>
+													<a class="menu-link" href="{{asset('front_assets/mega-menu.html')}}"><div>Widgetized</div></a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="mega-menu-full.html"><div>Full-Width</div></a>
+													<a class="menu-link" href="{{asset('front_assets/mega-menu-full.html')}}"><div>Full-Width</div></a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="mega-menu-tab.html"><div>Tabbed</div></a>
+													<a class="menu-link" href="{{asset('front_assets/mega-menu-tab.html')}}"><div>Tabbed</div></a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="mega-menu-side-tab.html"><div>Side-Tabs (onClick)</div></a>
+													<a class="menu-link" href="{{asset('front_assets/mega-menu-side-tab.html')}}"><div>Side-Tabs (onClick)</div></a>
 												</li>
 											</ul>
 										</li>
 										<li class="menu-item-divider"></li>
 										<li class="menu-item">
-											<a class="menu-link" href="forms.html"><div><i class="bi-postcard"></i>Forms</div></a>
+											<a class="menu-link" href="{{asset('front_assets/forms.html')}}"><div><i class="bi-postcard"></i>Forms</div></a>
 										</li>
 										<li class="menu-item">
-											<a class="menu-link" href="contact.html"><div><i class="bi-envelope-at"></i>Contact Pages</div></a>
+											<a class="menu-link" href="{{asset('front_assets/contact.html')}}"><div><i class="bi-envelope-at"></i>Contact Pages</div></a>
 											<ul class="sub-menu-container">
 												<li class="menu-item">
-													<a class="menu-link" href="contact.html">Main Layout</a>
+													<a class="menu-link" href="{{asset('front_assets/contact.html')}}">Main Layout</a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="contact-2.html">Grid Layout</a>
+													<a class="menu-link" href="{{asset('front_assets/contact-2.html')}}">Grid Layout</a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="contact-3.html">Right Sidebar</a>
+													<a class="menu-link" href="{{asset('front_assets/contact-3.html')}}">Right Sidebar</a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="contact-4.html">Both Sidebars</a>
+													<a class="menu-link" href="{{asset('front_assets/contact-4.html')}}">Both Sidebars</a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="contact-5.html">Modal Form</a>
+													<a class="menu-link" href="{{asset('front_assets/contact-5.html')}}">Modal Form</a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="contact-6.html">Form Overlay</a>
+													<a class="menu-link" href="{{asset('front_assets/contact-6.html')}}">Form Overlay</a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="contact-7.html">Form Overlay Mini</a>
+													<a class="menu-link" href="{{asset('front_assets/contact-7.html')}}">Form Overlay Mini</a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="contact-recaptcha-v3.html">reCaptcha</a>
+													<a class="menu-link" href="{{asset('front_assets/contact-recaptcha-v3.html')}}">reCaptcha</a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="contact-hcaptcha.html">hCaptcha</a>
+													<a class="menu-link" href="{{asset('front_assets/contact-hcaptcha.html')}}">hCaptcha</a>
 												</li>
 											</ul>
 										</li>
 										<li class="menu-item mega-menu mega-menu-small">
-											<a class="menu-link" href="widgets.html"><div><i class="bi-boxes"></i>Widgets</div></a>
+											<a class="menu-link" href="{{asset('front_assets/widgets.html')}}"><div><i class="bi-boxes"></i>Widgets</div></a>
 											<div class="mega-menu-content">
 												<div class="row mx-0">
 													<ul class="sub-menu-container mega-menu-column col">
 														<li class="menu-item">
-															<a class="menu-link" href="widgets.html"><div>Links</div></a>
+															<a class="menu-link" href="{{asset('front_assets/widgets.html')}}"><div>Links</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="widgets.html"><div>Flickr Photostream</div></a>
+															<a class="menu-link" href="{{asset('front_assets/widgets.html')}}"><div>Flickr Photostream</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="widgets.html"><div>Dribbble Shots</div></a>
+															<a class="menu-link" href="{{asset('front_assets/widgets.html')}}"><div>Dribbble Shots</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="widgets.html"><div>Subscribers</div></a>
+															<a class="menu-link" href="{{asset('front_assets/widgets.html')}}"><div>Subscribers</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="widgets.html"><div>Posts List</div></a>
+															<a class="menu-link" href="{{asset('front_assets/widgets.html')}}"><div>Posts List</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="widgets.html"><div>Twitter Feed</div></a>
+															<a class="menu-link" href="{{asset('front_assets/widgets.html')}}"><div>Twitter Feed</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="widgets.html"><div>Tabbed Widgets</div></a>
+															<a class="menu-link" href="{{asset('front_assets/widgets.html')}}"><div>Tabbed Widgets</div></a>
 														</li>
 													</ul>
 													<ul class="sub-menu-container mega-menu-column col">
 														<li class="menu-item">
-															<a class="menu-link" href="widgets.html"><div>Carousel</div></a>
+															<a class="menu-link" href="{{asset('front_assets/widgets.html')}}"><div>Carousel</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="widgets.html"><div>Social Icons</div></a>
+															<a class="menu-link" href="{{asset('front_assets/widgets.html')}}"><div>Social Icons</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="widgets.html"><div>Testimonials</div></a>
+															<a class="menu-link" href="{{asset('front_assets/widgets.html')}}"><div>Testimonials</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="widgets.html"><div>Quick Contact</div></a>
+															<a class="menu-link" href="{{asset('front_assets/widgets.html')}}"><div>Quick Contact</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="widgets.html"><div>Tags Cloud</div></a>
+															<a class="menu-link" href="{{asset('front_assets/widgets.html')}}"><div>Tags Cloud</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="widgets.html"><div>Video Embeds</div></a>
+															<a class="menu-link" href="{{asset('front_assets/widgets.html')}}"><div>Video Embeds</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="widgets.html"><div>Raw HTML</div></a>
+															<a class="menu-link" href="{{asset('front_assets/widgets.html')}}"><div>Raw HTML</div></a>
 														</li>
 													</ul>
 												</div>
@@ -721,28 +721,28 @@
 													<a class="menu-link" href="#"><div>Styles</div></a>
 													<ul class="sub-menu-container">
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-block.html"><div>Block</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-block.html')}}"><div>Block</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-bold.html"><div>Bold</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-bold.html')}}"><div>Bold</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-fancy.html"><div>Fancy</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-fancy.html')}}"><div>Fancy</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-fancy-alt.html"><div>Fancy Alternate</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-fancy-alt.html')}}"><div>Fancy Alternate</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-boxes.html"><div>Boxes</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-boxes.html')}}"><div>Boxes</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-blog.html"><div>Layout for Blogs</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-blog.html')}}"><div>Layout for Blogs</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-shop.html"><div>Layout for Shops</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-shop.html')}}"><div>Layout for Shops</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-mini.html"><div>Mini Version</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-mini.html')}}"><div>Mini Version</div></a>
 														</li>
 													</ul>
 												</li>
@@ -750,28 +750,28 @@
 													<a class="menu-link" href="#"><div>Backgrounds</div></a>
 													<ul class="sub-menu-container">
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-dark.html"><div>Dark Style</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-dark.html')}}"><div>Dark Style</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-pattern.html"><div>BG Pattern</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-pattern.html')}}"><div>BG Pattern</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-parallax.html"><div>Parallax - Default</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-parallax.html')}}"><div>Parallax - Default</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-parallax-header.html"><div>Parallax - Transparent</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-parallax-header.html')}}"><div>Parallax - Transparent</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-video.html"><div>HTML5 Video</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-video.html')}}"><div>HTML5 Video</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-gmap.html"><div>Google Maps</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-gmap.html')}}"><div>Google Maps</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-gmap-mini.html"><div>Google Maps Mini</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-gmap-mini.html')}}"><div>Google Maps Mini</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-nobg.html"><div>No Background</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-nobg.html')}}"><div>No Background</div></a>
 														</li>
 													</ul>
 												</li>
@@ -779,58 +779,58 @@
 													<a class="menu-link" href="#"><div>Layouts</div></a>
 													<ul class="sub-menu-container">
 														<li class="menu-item">
-															<a class="menu-link" href="page-title.html"><div>Left Align</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title.html')}}"><div>Left Align</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-right.html"><div>Right Align</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-right.html')}}"><div>Right Align</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-center.html"><div>Center Align</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-center.html')}}"><div>Center Align</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="page-title-sticky.html"><div>Sticky</div></a>
+															<a class="menu-link" href="{{asset('front_assets/page-title-sticky.html')}}"><div>Sticky</div></a>
 														</li>
 													</ul>
 												</li>
 											</ul>
 										</li>
 										<li class="menu-item">
-											<a class="menu-link" href="side-panel.html"><div><i class="bi-layout-sidebar-inset-reverse"></i>Side Panel</div></a>
+											<a class="menu-link" href="{{asset('front_assets/side-panel.html')}}"><div><i class="bi-layout-sidebar-inset-reverse"></i>Side Panel</div></a>
 											<ul class="sub-menu-container">
 												<li class="menu-item">
-													<a class="menu-link" href="side-panel-left-overlay.html"><div>Left Overlay</div></a>
+													<a class="menu-link" href="{{asset('front_assets/side-panel-left-overlay.html')}}"><div>Left Overlay</div></a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="side-panel-left-push.html"><div>Left Push</div></a>
+													<a class="menu-link" href="{{asset('front_assets/side-panel-left-push.html')}}"><div>Left Push</div></a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="side-panel-right-overlay.html"><div>Right Overlay</div></a>
+													<a class="menu-link" href="{{asset('front_assets/side-panel-right-overlay.html')}}"><div>Right Overlay</div></a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="side-panel.html"><div>Right Push</div></a>
+													<a class="menu-link" href="{{asset('front_assets/side-panel.html')}}"><div>Right Push</div></a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="side-panel-light.html"><div>Light Background</div></a>
+													<a class="menu-link" href="{{asset('front_assets/side-panel-light.html')}}"><div>Light Background</div></a>
 												</li>
 											</ul>
 										</li>
 										<li class="menu-item">
-											<a class="menu-link" href="modal-onload.html"><div><i class="bi-front"></i>Modal OnLoad</div></a>
+											<a class="menu-link" href="{{asset('front_assets/modal-onload.html')}}"><div><i class="bi-front"></i>Modal OnLoad</div></a>
 											<ul class="sub-menu-container">
 												<li class="menu-item">
-													<a class="menu-link" href="modal-onload.html"><div>Default Layout</div></a>
+													<a class="menu-link" href="{{asset('front_assets/modal-onload.html')}}"><div>Default Layout</div></a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="modal-onload-iframe.html"><div>Video iFrame</div></a>
+													<a class="menu-link" href="{{asset('front_assets/modal-onload-iframe.html')}}"><div>Video iFrame</div></a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="modal-onload-subscribe.html"><div>Subscription Form</div></a>
+													<a class="menu-link" href="{{asset('front_assets/modal-onload-subscribe.html')}}"><div>Subscription Form</div></a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="modal-onload-common-height.html"><div>Common Height</div></a>
+													<a class="menu-link" href="{{asset('front_assets/modal-onload-common-height.html')}}"><div>Common Height</div></a>
 												</li>
 												<li class="menu-item">
-													<a class="menu-link" href="modal-onload-cookie.html"><div>Cookies Enabled</div></a>
+													<a class="menu-link" href="{{asset('front_assets/modal-onload-cookie.html')}}"><div>Cookies Enabled</div></a>
 												</li>
 											</ul>
 										</li>
@@ -840,32 +840,32 @@
 												<div class="row mx-0">
 													<ul class="sub-menu-container mega-menu-column col">
 														<li class="menu-item">
-															<a class="menu-link" href="sticky-footer.html"><div>Sticky</div></a>
+															<a class="menu-link" href="{{asset('front_assets/sticky-footer.html')}}"><div>Sticky</div></a>
 														</li>
 														<li class="menu-item">
 															<a class="menu-link" href="#footer" data-scrollto="#footer"><div>Layout 1</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="footer-2.html#footer"><div>Layout 2</div></a>
+															<a class="menu-link" href="{{asset('front_assets/footer-2.html#footer')}}"><div>Layout 2</div></a>
 														</li>
 													</ul>
 													<ul class="sub-menu-container mega-menu-column col">
 														<li class="menu-item">
-															<a class="menu-link" href="footer-3.html#footer"><div>Layout 3</div></a>
+															<a class="menu-link" href="{{asset('front_assets/footer-3.html#footer')}}"><div>Layout 3</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="footer-4.html#footer"><div>Layout 4</div></a>
+															<a class="menu-link" href="{{asset('front_assets/footer-4.html#footer')}}"><div>Layout 4</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="footer-5.html#footer"><div>Layout 5</div></a>
+															<a class="menu-link" href="{{asset('front_assets/footer-5.html#footer')}}"><div>Layout 5</div></a>
 														</li>
 													</ul>
 													<ul class="sub-menu-container mega-menu-column col">
 														<li class="menu-item">
-															<a class="menu-link" href="footer-6.html#footer"><div>Layout 6</div></a>
+															<a class="menu-link" href="{{asset('front_assets/footer-6.html#footer')}}"><div>Layout 6</div></a>
 														</li>
 														<li class="menu-item">
-															<a class="menu-link" href="footer-7.html#footer"><div>Layout 7</div></a>
+															<a class="menu-link" href="{{asset('front_assets/footer-7.html#footer')}}"><div>Layout 7</div></a>
 														</li>
 													</ul>
 												</div>
@@ -1964,11 +1964,11 @@
 						<div class="grid-inner">
 							<div class="portfolio-image">
 								<a href="portfolio-single.html">
-									<img src="images/portfolio/4/1.jpg" alt="Open Imagination">
+									<img src="{{asset('front_assets/images/portfolio/4/1.jpg')}}" alt="Open Imagination">
 								</a>
 								<div class="bg-overlay">
 									<div class="bg-overlay-content dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item">
-										<a href="images/portfolio/full/1.jpg" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item" data-lightbox="image" title="Image"><i class="uil uil-plus"></i></a>
+										<a href="{{asset('front_assets/images/portfolio/full/1.jpg')}}" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item" data-lightbox="image" title="Image"><i class="uil uil-plus"></i></a>
 										<a href="portfolio-single.html" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item"><i class="uil uil-ellipsis-h"></i></a>
 									</div>
 									<div class="bg-overlay-bg dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item"></div>
@@ -1985,11 +1985,11 @@
 						<div class="grid-inner">
 							<div class="portfolio-image">
 								<a href="portfolio-single.html">
-									<img src="images/portfolio/4/2.jpg" alt="Locked Steel Gate">
+									<img src="{{asset('front_assets/images/portfolio/4/2.jpg')}}" alt="Locked Steel Gate">
 								</a>
 								<div class="bg-overlay">
 									<div class="bg-overlay-content dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item">
-										<a href="images/portfolio/full/2.jpg" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item" data-lightbox="image" title="Image"><i class="uil uil-plus"></i></a>
+										<a href="{{asset('front_assets/images/portfolio/full/2.jpg')}}" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item" data-lightbox="image" title="Image"><i class="uil uil-plus"></i></a>
 										<a href="portfolio-single.html" class="overlay-trigger-icon bg-light text-dark" data-hover-animate="fadeInDownSmall" data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350" data-hover-parent=".portfolio-item"><i class="uil uil-ellipsis-h"></i></a>
 									</div>
 									<div class="bg-overlay-bg dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item"></div>
@@ -2006,7 +2006,7 @@
 						<div class="grid-inner">
 							<div class="portfolio-image">
 								<a href="#">
-									<img src="images/portfolio/4/3.jpg" alt="Mac Sunglasses">
+									<img src="{{asset('front_assets/images/portfolio/4/3.jpg')}}" alt="Mac Sunglasses">
 								</a>
 								<div class="bg-overlay">
 									<div class="bg-overlay-content dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item">
@@ -2027,7 +2027,7 @@
 						<div class="grid-inner">
 							<div class="portfolio-image">
 								<a href="portfolio-single.html">
-									<img src="images/portfolio/4/4.jpg" alt="Open Imagination">
+									<img src="{{asset('front_assets/images/portfolio/4/4.jpg')}}" alt="Open Imagination">
 								</a>
 								<div class="bg-overlay" data-lightbox="gallery">
 									<div class="bg-overlay-content dark" data-hover-animate="fadeIn" data-hover-parent=".portfolio-item">
