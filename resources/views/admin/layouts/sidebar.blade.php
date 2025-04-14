@@ -144,44 +144,15 @@
                     <ul class="sub-menu">
                         <li class="side-nav-item">
                             <a href="pages-starter.html" class="side-nav-link">
-                                <span class="menu-text">Starter Page</span>
+                                <span class="menu-text">Category</span>
                             </a>
                         </li>
                         <li class="side-nav-item">
-                            <a href="pages-pricing.html" class="side-nav-link">
-                                <span class="menu-text">Pricing</span>
+                            <a href="{{ route('sub-category.create') }}" class="side-nav-link">
+                                <span class="menu-text">Add Category</span>
                             </a>
                         </li>
-                        <li class="side-nav-item">
-                            <a href="pages-faq.html" class="side-nav-link">
-                                <span class="menu-text">FAQ</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="pages-maintenance.html" class="side-nav-link">
-                                <span class="menu-text">Maintenance</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="pages-timeline.html" class="side-nav-link">
-                                <span class="menu-text">Timeline</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="pages-coming-soon.html" class="side-nav-link">
-                                <span class="menu-text">Coming Soon</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="pages-terms-conditions.html" class="side-nav-link">
-                                <span class="menu-text">Terms & Conditions</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="pages-search-results.html" class="side-nav-link">
-                                <span class="menu-text">Search Results</span>
-                            </a>
-                        </li>
+                      
                     </ul>
                 </div>
             </li>

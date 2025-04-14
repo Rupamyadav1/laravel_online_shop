@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\admin\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ProductController;
@@ -70,6 +71,12 @@ Route::get('/', [FrontController::class, 'index'])->name('home');
         Route::put('/products/{productId}/update', [ProductController::class, 'update'])->name('products.update');
         Route::post('/products/images/update', [ProductImageController::class, 'store'])->name('products.images.update');
         Route::post('/products/images/delete', [ProductImageController::class, 'destroy'])->name('products.images.delete');
+
+
+
+        Route::get('/sub-category/create', [SubCategoryController::class, 'create'])->name('sub-category.create');
+        Route::post('/sub-category/store', [SubCategoryController::class, 'store'])->name('sub-category.store');
+
 
 
 
