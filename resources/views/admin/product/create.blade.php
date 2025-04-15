@@ -87,26 +87,38 @@
                     </div>
                     <div class="col">
                         <div class="mt-2">
-                            <label for="InvoicePaymentMethod" class="form-label">Product Brand:</label>
-                            <select class="form-select" id="brand_id" name="brand_id" style="width:100%">
-                                <option value="">Select Brand</option>
-                                @if ($brands)
-                                    @foreach ($brands as $brand)
-                                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                                    @endforeach
-                                @endif
+                            <label for="InvoicePaymentMethod" class="form-label">Sub Category:</label>
+                            <select class="form-select" id="sub_category" name="sub_category">
+                                <option value="">Select a sub Category</option>
+                                
 
                             </select>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mt-2">
+                                <label for="InvoicePaymentMethod" class="form-label">Product Brand:</label>
+                                <select class="form-select" id="brand_id" name="brand_id" style="width:100%">
+                                    <option value="">Select Brand</option>
+                                    @if ($brands)
+                                        @foreach ($brands as $brand)
+                                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                        @endforeach
+                                    @endif
 
-                    <div class="col">
-                        <div class="mt-2">
-                            <label for="featured_product" class="form-label">Featured Product:</label>
-                            <select name="is_featured" id="is_featured" value="Yes" class="form-select">
-                                <option value="No">Yes</option>
-                                <option value="Yes">No</option>
-                            </select>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="mt-2">
+                                <label for="featured_product" class="form-label">Featured Product:</label>
+                                <select name="is_featured" id="is_featured" value="Yes" class="form-select">
+                                    <option value="No">Yes</option>
+                                    <option value="Yes">No</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -121,15 +133,15 @@
                     </div>
                 </div>
                 <div class="row mt-2" id="product-gallery" class="product-gallery">
-                    
+
                 </div>
 
             </div>
-    
-    
-    
-    
-        </div>
+
+
+
+
+    </div>
     <div class="card position-relative">
         <div class="card-body">
             <div>
@@ -189,8 +201,8 @@
                             <label class="form-check-label" for="track_quantity">Track Quantity</label>
                         </div>
                         <div class="mt-2">
-                            <input type="text" name="qty" id="qty" class="form-control" placeholder="Quantity"
-                               >
+                            <input type="text" name="qty" id="qty" class="form-control"
+                                placeholder="Quantity">
                         </div>
                         <p></p>
 
@@ -237,7 +249,7 @@
                 dataType: 'json',
                 success: function(response) {
                     if (response['status'] == true) {
-                        window.location.href = "{{route('products.index')}}"
+                        window.location.href = "{{ route('products.index') }}"
 
                     } else {
                         var errors = response['errors'];
@@ -281,6 +293,40 @@
         });
 
 
+        $("#category_id").change(function(event) {
+            var category_id = $(this).val();
+
+            event.preventDefault();
+
+            var formArray = $(this).serializeArray();
+            $.ajax({
+                url: "{{ route('product-subcategory.index') }}",
+                type: 'get',
+                data: {category_id: category_id},
+                dataType: 'json',
+                success: function(response) {
+                 
+                    $("#sub_category").find("option").not(":first").remove();
+                    $.each(response["subCategories"], function(key, item) {
+                        $("#sub_category").append(`<option ='${item.id}'>'${item.name}''
+                            </option>`);
+                    })
+
+                    
+                        
+                   
+                    
+
+                },
+                error: function(jqXHR, exception) {
+                    console.log("something went wrong");
+
+                },
+            })
+
+        });
+
+
         Dropzone.autoDiscover = false;
 
         const dropzone = new Dropzone("#image", {
@@ -303,19 +349,20 @@
                 </div>
                 </div>`;
                 $('#product-gallery').append(html);
-               
+
 
             },
-            
-            
-            error: function(jqXHR, exception) {
-                    console.log("something went wrong");
 
-                },
+
+            error: function(jqXHR, exception) {
+                console.log("something went wrong");
+
+            },
 
         });
-        function deleteImage(id){
-            $("#image-row-"+id).remove();
+
+        function deleteImage(id) {
+            $("#image-row-" + id).remove();
         }
 
 
@@ -338,6 +385,5 @@
                 }
             });
         });
-        
     </script>
 @endsection

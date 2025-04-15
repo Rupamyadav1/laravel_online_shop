@@ -21,7 +21,7 @@ class BrandController extends Controller
         
         
 
-        $brands=$brands->paginate(5);
+        $brands=$brands->paginate(10);
         $data['brands']=$brands;
         return view('admin.brand.index',$data);
     }

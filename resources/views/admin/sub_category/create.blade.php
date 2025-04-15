@@ -94,6 +94,7 @@
                 data: element.serializeArray(),
                 dataType: 'json',
                 success: function(response) {
+                    window.location.href="{{ route('sub-category.index') }}";
                     if (response['status'] == true) {
                         $("#name").removeClass("is-invalid")
                             .siblings('p').removeClass("invalid-feedback").html("");

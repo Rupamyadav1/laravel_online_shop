@@ -74,10 +74,6 @@
 
 
                 }
-
-
-                    
-
                 },
                 error: function (jqXHR, exception) {
                     console.log("something went wrong");

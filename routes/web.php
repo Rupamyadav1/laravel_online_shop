@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\TempImageController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Front\FrontController;
+use App\Http\Controllers\Admin\ProductSubCategoryController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -71,11 +72,16 @@ Route::get('/', [FrontController::class, 'index'])->name('home');
         Route::put('/products/{productId}/update', [ProductController::class, 'update'])->name('products.update');
         Route::post('/products/images/update', [ProductImageController::class, 'store'])->name('products.images.update');
         Route::post('/products/images/delete', [ProductImageController::class, 'destroy'])->name('products.images.delete');
+        Route::get('/product-subcategory', [ProductSubCategoryController::class, 'index'])->name('product-subcategory.index');
 
 
+        Route::get('/sub-category/index', [SubCategoryController::class, 'index'])->name('sub-category.index');
 
         Route::get('/sub-category/create', [SubCategoryController::class, 'create'])->name('sub-category.create');
         Route::post('/sub-category/store', [SubCategoryController::class, 'store'])->name('sub-category.store');
+        Route::get('/sub-category/{subcategoryId}/edit', [SubCategoryController::class, 'edit'])->name('sub-category.edit');
+        Route::put('/sub-category/{subcategoryId}/update', [SubCategoryController::class, 'update'])->name('sub-category.update');
+        Route::get('/sub-category/{subcategoryId}/delete', [SubCategoryController::class, 'destroy'])->name('sub-category.delete');
 
 
 
