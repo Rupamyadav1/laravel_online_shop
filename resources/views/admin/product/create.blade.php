@@ -89,7 +89,7 @@
                         <div class="mt-2">
                             <label for="InvoicePaymentMethod" class="form-label">Sub Category:</label>
                             <select class="form-select" id="sub_category" name="sub_category">
-                                <option value="">Select a sub Category</option>
+                                <option>Select a sub Category</option>
                                 
 
                             </select>
@@ -308,7 +308,7 @@
                  
                     $("#sub_category").find("option").not(":first").remove();
                     $.each(response["subCategories"], function(key, item) {
-                        $("#sub_category").append(`<option ='${item.id}'>'${item.name}''
+                        $("#sub_category").append(`<option ='${item.id}'>${item.name}
                             </option>`);
                     })
 
