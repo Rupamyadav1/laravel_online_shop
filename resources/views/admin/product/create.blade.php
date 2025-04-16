@@ -308,7 +308,7 @@
                  
                     $("#sub_category").find("option").not(":first").remove();
                     $.each(response["subCategories"], function(key, item) {
-                        $("#sub_category").append(`<option ='${item.id}'>'${item.name}''
+                        $("#sub_category").append(`<option ='${item.id}'>${item.name}
                             </option>`);
                     })
 

@@ -56,6 +56,17 @@
                             </div>
                             <div class="col">
                                 <div class="mt-2">
+                                    <label class="form-label">Product sub Category:</label>
+                                    <select class="form-select" >
+                                        @foreach ($subcategories as $subcategory)
+                                            <option {{ $product->sub_category_id == $subcategory->id ? 'selected' : '' }}
+                                                value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mt-2">
                                     <label class="form-label">Product Brand:</label>
                                     <select class="form-select" id="brand_id" name="brand_id">
                                         @foreach ($brands as $brand)

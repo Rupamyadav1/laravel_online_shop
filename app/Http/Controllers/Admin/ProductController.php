@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\SubCategory;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\TempImage;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Support\Facades\File;
+
 
 class ProductController extends Controller
 {
@@ -153,6 +155,7 @@ class ProductController extends Controller
 
     public function edit(Request $request,$productId){
         $product=Product::find($productId);
+        $subcategories = SubCategory::where('category_id',$product->category_id)->get();
         $productImages= ProductImage::where('product_id',$product->id)->get();
 
         $categories=Category::orderBy('name','ASC')->get();
@@ -166,6 +169,7 @@ class ProductController extends Controller
                 'message'=>'product id not found',
             ]);
         }
+        $data['subcategories']=$subcategories;
         $data['productImages']=$productImages;
         $data['product']=$product;
         return view('admin.product.edit',$data);
