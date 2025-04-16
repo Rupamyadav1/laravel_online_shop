@@ -14,7 +14,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 	<link href="{{asset('front_assets/css/bootstrap-light.css')}}" rel="stylesheet">
 	<link id="pagestyle" href="{{asset('front_assets/css/theme-light.css')}}" rel="stylesheet">
-	<link href="{{asset('front_assets/style.css')}} rel="stylesheet">
+	<link href="{{asset('front_assets/style.css')}}" rel="stylesheet">
 	<link href="{{asset('front_assets/css/font-awesome.min.css')}}" rel="stylesheet">
 	<link href="{{asset('front_assets/css/responsive.css')}}" rel="stylesheet">
 </head>
@@ -35,16 +35,18 @@
 					<span class="icon-bar"></span>
 				</button>
 				
-				<a class="navbar-brand" href="#"> <img src="img/logo1.jpeg" alt="" /> </a>
+				<a class="navbar-brand" href="#"> <img src="{{asset('front_assets/img/logo1.jpeg')}}" alt="" /> </a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li><a href="#home">home</a></li>
-					<li><a href="#products">products</a></li>
-					<li><a href="#about">about us</a></li>
-					<li><a href="#special">special</a></li>
-					<li><a href="#testimonials">testimonials</a></li>
-					<li><a href="#contact">contact</a></li>
+					
+					<li><a href="#contact">My Account</a></li>
+					<li>
+						<form method="post" id="search-form" action="https://www.themeasuremart.com/submit-search" class="header__search-box" novalidate="novalidate">
+							<input type="text" name="text_search" class="form-control" id="text_search" placeholder="Search for products">
+							<button class="btn-search" type="submit"><i class="far fa-search"></i></button>
+						</form>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -55,14 +57,14 @@
 	<section class="home section image-slider" id="home">
 		<div class="home-slider text-center">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide" style="background: url(img/slider/slide2.jpg);">
+				<div class="swiper-slide" style="background: url('{{ asset('front_assets/img/slider/slide2.jpg') }}');">
 					<h3><span class="hglight">Modern & Trendy</span></h3>
 					<h2 class="home-slider-title-main">with working cart & pay pal</h2>
 					<div class="home-buttons text-center"> <a href="#products" class="btn btn-lg  btn-primary">Shop Now</a> </div>
 					<a class="arrow bounce text-center" href="#about"> <span class="ti-mouse"></span> <span class="ti-angle-double-down"></span> </a>
 				</div>
 
-				<div class="swiper-slide" style="background: url(img/slider/slide1.jpg);">
+				<div class="swiper-slide" style="background: url('{{ asset('front_assets/img/slider/slide1.jpg')}}');">
 					<h1>Sell <span class="hglight">shop</span></h1>
 					<h2 class="home-slider-title-main">52% Discount for this season </h2>
 					<div class="home-buttons text-center"> <a href="#products" class="btn btn-lg  btn-primary">Shop Now</a> </div>
@@ -144,7 +146,7 @@
 					<div class="add-area">
 						<a href="#">
 							<div class="effect-add">
-								<img class="img-responsive" alt=" " src="img/add3.png">
+								<img class="img-responsive" alt=" " src="{{asset('front_assets/img/add3.png')}}">
 								<h2>Footerwear</h2>
 							</div>
 						</a>
@@ -154,7 +156,7 @@
 					<div class="add-area">
 						<a href="#">
 							<div class="effect-add">
-								<img class="img-responsive" alt=" " src="img/add1.png">
+								<img class="img-responsive" alt=" " src="{{asset('front_assets/img/add1.png')}}">
 								<h2>Women</h2>
 							</div>
 						</a>
@@ -164,7 +166,7 @@
 					<div class="add-area">
 						<a href="#">
 							<div class="effect-add">
-								<img class="img-responsive" alt=" " src="img/add2.png">
+								<img class="img-responsive" alt=" " src="{{asset('front_assets/img/add2.png')}}">
 								<h2>Bags</h2>
 							</div>
 						</a>
@@ -188,8 +190,8 @@
 							<li class="swiper-slidess text-center"> 
 								<span class="product-list-left pull-left">
 							    	<span class="sale-p">sale</span>
-									<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="img/p1.jpg"> 
-									<img alt="product image" class="product-list-secondary-img" src="img/p2.jpg">
+									<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="{{asset('front_assets/img/p1.jpg')}}"> 
+									<img alt="product image" class="product-list-secondary-img" src="{{asset('front_assets/img/p2.jpg')}}">
 									</a>
 								</span> 
 
@@ -201,15 +203,15 @@
 									</span>
 								</a> 
 
-								<button class="btn btn-default add-item" type="button" data-image="img/p1.jpg" data-name="Winter Long Sleeve Black White " data-cost="400.00" data-id="1" >
+								<button class="btn btn-default add-item" type="button" data-image="{{asset('front_assets/img/p1.jpg')}}" data-name="Winter Long Sleeve Black White " data-cost="400.00" data-id="1" >
 									add to cart
 								</button> 		
 							</li>
 							
 							<li class="swiper-slidess text-center"> 
 								<span class="product-list-left pull-left">
-									<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="img/p3.jpg"> 
-									<img alt="product image" class="product-list-secondary-img" src="img/p4.jpg">
+									<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="{{asset('front_assets/img/p3.jpg')}}"> 
+									<img alt="product image" class="product-list-secondary-img" src="{{asset('front_assets/img/p4.jpg')}}">
 									</a>
 								</span> 
 
@@ -220,7 +222,7 @@
 									</span>
 								</a>
 
-								<button class="btn btn-default add-item" type="button" data-image="img/p3.jpg" data-name="women totes lady handbag" data-cost="300.00" data-id="2" >
+								<button class="btn btn-default add-item" type="button" data-image="{{asset('front_assets/img/p3.jpg')}}" data-name="women totes lady handbag" data-cost="300.00" data-id="2" >
 									add to cart
 								</button> 	
 							</li>
@@ -228,8 +230,8 @@
 							<li class="swiper-slidess text-center"> 
 								<span class="product-list-left pull-left">
 							    	<span class="sale-p new-p">new</span>
-									<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="img/p5.jpg"> 
-									<img alt="product image" class="product-list-secondary-img" src="img/p6.jpg">
+									<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="{{asset('front_assets/img/p5.jpg')}}"> 
+									<img alt="product image" class="product-list-secondary-img" src="{{asset('front_assets/img/p6.jpg')}}">
 									</a>
 								</span> 
 
@@ -240,15 +242,15 @@
 									</span>
 								</a> 
 
-								<button class="btn btn-default add-item" type="button" data-image="img/p5.jpg" data-name="Lace water soluble sexy dress" data-cost="600.00" data-id="3" >
+								<button class="btn btn-default add-item" type="button" data-image="{{asset('front_assets/img/p5.jpg')}}" data-name="Lace water soluble sexy dress" data-cost="600.00" data-id="3" >
 									add to cart
 								</button> 		
 							</li>
 							
 							<li class="swiper-slidess  text-center" > 
 								<span class="product-list-left pull-left">
-									<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="img/p7.jpg"> 
-									<img alt="product image" class="product-list-secondary-img" src="img/p8.jpg">
+									<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="{{asset('front_assets/img/p7.jpg')}}"> 
+									<img alt="product image" class="product-list-secondary-img" src="{{asset('front_assets/img/p8.jpg')}}">
 									</a>
 								</span> 
 
@@ -259,7 +261,7 @@
 									</span>
 								</a>
 
-								<button class="btn btn-default add-item" type="button" data-image="img/p7.jpg" data-name="Elegant Formal Party Dress" data-cost="500.00" data-id="4" >
+								<button class="btn btn-default add-item" type="button" data-image="{{asset('front_assets/img/p7.jpg')}}" data-name="Elegant Formal Party Dress" data-cost="500.00" data-id="4" >
 									add to cart
 								</button> 	
 							</li>
@@ -267,8 +269,8 @@
 							<li class="swiper-slidess text-center"> 
 								<span class="product-list-left pull-left">
 								    <span class="sale-p">sale</span>
-									<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="img/p9.jpg"> 
-									<img alt="product image" class="product-list-secondary-img" src="img/p10.jpg">
+									<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="{{asset('front_assets/img/p9.jpg')}}"> 
+									<img alt="product image" class="product-list-secondary-img" src="{{asset('front_assets/img/p10.jpg')}}">
 									</a>
 								</span> 
 
@@ -280,15 +282,15 @@
 									</span>
 								</a> 
 
-								<button class="btn btn-default add-item" type="button" data-image="img/p9.jpg" data-name="Mini Dress Ladies Sleeve" data-cost="600.00" data-id="5" >
+								<button class="btn btn-default add-item" type="button" data-image="{{asset('front_assets/img/p9.jpg')}}" data-name="Mini Dress Ladies Sleeve" data-cost="600.00" data-id="5" >
 									add to cart
 								</button> 		
 							</li>
 							
 							<li class="swiper-slidess text-center"> 
 								<span class="product-list-left pull-left">
-									<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="img/p1.jpg"> 
-									<img alt="product image" class="product-list-secondary-img" src="img/p2.jpg">
+									<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="{{asset('front_assets/img/p1.jpg')}}"> 
+									<img alt="product image" class="product-list-secondary-img" src="{{asset('front_assets/img/p2.jpg')}}">
 									</a>
 								</span> 
 
@@ -299,7 +301,7 @@
 									</span>
 								</a>
 
-								<button class="btn btn-default add-item" type="button" data-image="img/p1.jpg" data-name="Winter Long Sleeve Black White " data-cost="500.00" data-id="6" >
+								<button class="btn btn-default add-item" type="button" data-image="{{asset('front_assets/img/p1.jpg')}}" data-name="Winter Long Sleeve Black White " data-cost="500.00" data-id="6" >
 									add to cart
 								</button> 	
 							</li>
@@ -317,8 +319,8 @@
 								<li class="swiper-slide text-center"> 
 									<span class="product-list-left pull-left">
 										<span class="sale-p">sale</span>
-										<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="img/p1.jpg"> 
-										<img alt="product image" class="product-list-secondary-img" src="img/p2.jpg">
+										<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="{{asset('front_assets/img/p1.jpg')}}"> 
+										<img alt="product image" class="product-list-secondary-img" src="{{asset('front_assets/img/p2.jpg')}}">
 										</a>
 									</span> 
 
@@ -330,15 +332,15 @@
 										</span>
 									</a> 
 
-									<button class="btn btn-default add-item" type="button" data-image="img/p1.jpg" data-name="women white backless mini" data-cost="400.00" data-id="1" >
+									<button class="btn btn-default add-item" type="button" data-image="{{asset('front_assets/img/p1.jpg')}}" data-name="women white backless mini" data-cost="400.00" data-id="1" >
 										add to cart
 									</button> 		
 								</li>
 								
 								<li class="swiper-slide text-center"> 
 									<span class="product-list-left pull-left">
-										<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="img/p3.jpg"> 
-										<img alt="product image" class="product-list-secondary-img" src="img/p4.jpg">
+										<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="{{asset('front_assets/img/p3.jpg')}}"> 
+										<img alt="product image" class="product-list-secondary-img" src="{{asset('front_assets/img/p4.jpg')}}">
 										</a>
 									</span> 
 
@@ -349,7 +351,7 @@
 										</span>
 									</a>
 
-									<button class="btn btn-default add-item" type="button" data-image="img/p3.jpg" data-name=" women totes lady handbag" data-cost="300.00" data-id="2" >
+									<button class="btn btn-default add-item" type="button" data-image="{{asset('front_assets/img/p3.jpg')}}" data-name=" women totes lady handbag" data-cost="300.00" data-id="2" >
 										add to cart
 									</button> 	
 								</li>
@@ -357,8 +359,8 @@
 								<li class="swiper-slide text-center"> 
 									<span class="product-list-left pull-left">
 										<span class="sale-p new-p">new</span>
-										<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="img/p5.jpg"> 
-										<img alt="product image" class="product-list-secondary-img" src="img/p6.jpg">
+										<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="{{asset('front_assets/img/p5.jpg')}}"> 
+										<img alt="product image" class="product-list-secondary-img" src="{{asset('front_assets/img/p6.jpg')}}">
 										</a>
 									</span> 
 
@@ -369,15 +371,15 @@
 										</span>
 									</a> 
 
-									<button class="btn btn-default add-item" type="button" data-image="img/p5.jpg" data-name="Sexy Women Floral Embroidery" data-cost="600.00" data-id="3" >
+									<button class="btn btn-default add-item" type="button" data-image="{{asset('front_assets/img/p5.jpg')}}" data-name="Sexy Women Floral Embroidery" data-cost="600.00" data-id="3" >
 										add to cart
 									</button> 		
 								</li>
 								
 								<li class="swiper-slide  text-center" > 
 									<span class="product-list-left pull-left">
-										<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="img/p7.jpg"> 
-										<img alt="product image" class="product-list-secondary-img" src="img/p8.jpg">
+										<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="{{asset('front_assets/img/p7.jpg')}}"> 
+										<img alt="product image" class="product-list-secondary-img" src="{{asset('front_assets/img/p8.jpg')}}">
 										</a>
 									</span> 
 
@@ -388,7 +390,7 @@
 										</span>
 									</a>
 
-									<button class="btn btn-default add-item" type="button" data-image="img/p7.jpg" data-name="Elegant Formal Party Dress" data-cost="500.00" data-id="4" >
+									<button class="btn btn-default add-item" type="button" data-image="{{asset('front_assets/img/p7.jpg')}}" data-name="Elegant Formal Party Dress" data-cost="500.00" data-id="4" >
 										add to cart
 									</button> 	
 								</li>
@@ -396,8 +398,8 @@
 								<li class="swiper-slide text-center"> 
 									<span class="product-list-left pull-left">
 										<span class="sale-p">sale</span>
-										<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="img/p9.jpg"> 
-										<img alt="product image" class="product-list-secondary-img" src="img/p10.jpg">
+										<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="{{asset('front_assets/img/p9.jpg')}}"> 
+										<img alt="product image" class="product-list-secondary-img" src="{{asset('front_assets/img/p10.jpg')}}">
 										</a>
 									</span> 
 
@@ -409,15 +411,15 @@
 										</span>
 									</a> 
 
-									<button class="btn btn-default add-item" type="button" data-image="img/p9.jpg" data-name="Mini Dress Ladies Sleeve" data-cost="600.00" data-id="5" >
+									<button class="btn btn-default add-item" type="button" data-image="{{asset('front_assets/img/p9.jpg')}}" data-name="Mini Dress Ladies Sleeve" data-cost="600.00" data-id="5" >
 										add to cart
 									</button> 		
 								</li>
 								
 								<li class="swiper-slide text-center"> 
 									<span class="product-list-left pull-left">
-										<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="img/p1.jpg"> 
-										<img alt="product image" class="product-list-secondary-img" src="img/p2.jpg">
+										<a href="#" data-target="#product-01" data-toggle="modal"><img alt="product image" class="product-list-primary-img" src="{{asset('front_assets/img/p1.jpg')}}"> 
+										<img alt="product image" class="product-list-secondary-img" src="{{asset('front_assets/img/p2.jpg')}}">
 										</a>
 									</span> 
 
@@ -428,7 +430,7 @@
 										</span>
 									</a>
 
-									<button class="btn btn-default add-item" type="button" data-image="img/p1.jpg" data-name="Winter Long Sleeve Black White" data-cost="500.00" data-id="6" >
+									<button class="btn btn-default add-item" type="button" data-image="{{asset('front_assets/img/p1.jpg')}}" data-name="Winter Long Sleeve Black White" data-cost="500.00" data-id="6" >
 										add to cart
 									</button> 	
 								</li>
@@ -453,17 +455,17 @@
 						<!-- Wrapper for slides -->
 						<div class="carousel slide product-slide" id="product-carousel">
 							<div class="carousel-inner cont-slider">
-								<div class="item active"> <img alt="" src="img/p7.jpg" title=""> </div>
-								<div class="item"> <img alt="" src="img/p4.jpg" title=""> </div>
-								<div class="item"> <img alt="" src="img/p5.jpg" title=""> </div>
-								<div class="item"> <img alt="" src="img/p2.jpg" title=""> </div>
+								<div class="item active"> <img alt="" src="{{asset('front_assets/img/p7.jpg')}}" title=""> </div>
+								<div class="item"> <img alt="" src="{{asset('front_assets/img/p4.jpg')}}" title=""> </div>
+								<div class="item"> <img alt="" src="{{asset('front_assets/img/p5.jpg')}}" title=""> </div>
+								<div class="item"> <img alt="" src="{{asset('front_assets/img/p2.jpg')}}" title=""> </div>
 							</div>
 							<!-- Indicators -->
 							<ol class="carousel-indicators">
-								<li class="active" data-slide-to="0" data-target="#product-carousel"> <img alt="" src="img/p7.jpg"> </li>
-								<li class="" data-slide-to="1" data-target="#product-carousel"> <img alt="" src="img/p4.jpg"> </li>
-								<li class="" data-slide-to="2" data-target="#product-carousel"> <img alt="" src="img/p5.jpg"> </li>
-								<li class="" data-slide-to="3" data-target="#product-carousel"> <img alt="" src="img/p2.jpg"> </li>
+								<li class="active" data-slide-to="0" data-target="#product-carousel"> <img alt="" src="{{asset('front_assets/img/p7.jpg')}}"> </li>
+								<li class="" data-slide-to="1" data-target="#product-carousel"> <img alt="" src="{{asset('front_assets/img/p4.jpg')}}"> </li>
+								<li class="" data-slide-to="2" data-target="#product-carousel"> <img alt="" src="{{asset('front_assets/img/p5.jpg')}}"> </li>
+								<li class="" data-slide-to="3" data-target="#product-carousel"> <img alt="" src="{{asset('front_assets/img/p2.jpg')}}"> </li>
 							</ol>
 						</div>
 						<!-- Wrapper for slides -->
@@ -477,7 +479,7 @@
 										<div class="col-md-5">
 											<span class="product-right-section">
 												<span>$299.00</span>
-												<button class="btn btn-default add-item" type="button" data-image="img/p2.jpg" data-name="Elegant Formal Party Dress" data-cost="299.00" data-id="8">
+												<button class="btn btn-default add-item" type="button" data-image="{{asset('front_assets/img/p2.jpg')}}" data-name="Elegant Formal Party Dress" data-cost="299.00" data-id="8">
 												add to cart </button>
 											</span>
 										</div>
@@ -488,7 +490,7 @@
 									<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p>
 									<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </p>
 									<div class="row">
-										<div class="col-md-6"> <img src="img/p7.jpg" class="img-responsive" alt="product image"> </div>
+										<div class="col-md-6"> <img src="{{asset('front_assets/img/p7.jpg')}}" class="img-responsive" alt="product image"> </div>
 										<div class="col-md-6">
 											<h4 class="section-heading">Ut enim ad minim veniam</h4>
 											<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -557,7 +559,7 @@
 						<!-- data in countdown ul from js -->
 						<ul id="countdown" class="countdown-counter"></ul>
 						<!-- data in countdown ul from js --><span class="countdown-price h3">$420.00 <del>$670.00</del></span>
-						<button class="btn btn-default add-item" type="button" data-image="img/p7.jpg" data-name="Sexy Women Floral Embroidery" data-cost="420.00" data-id="9">
+						<button class="btn btn-default add-item" type="button" data-image="{{asset('front_assets/img/p7.jpg')}}" data-name="Sexy Women Floral Embroidery" data-cost="420.00" data-id="9">
 							add to cart
 						</button>
 					</div>
@@ -568,8 +570,8 @@
 							<span class="product-list-left pull-left">
 							       <span class="sale-p">sale</span>
 									<a href="#" data-target="#product-01" data-toggle="modal">
-										<img alt="product image" class="product-list-primary-img" src="img/p7.jpg"> 
-										<img alt="product image" class="product-list-secondary-img" src="img/p9.jpg">
+										<img alt="product image" class="product-list-primary-img" src="{{asset('front_assets/img/p7.jpg')}}"> 
+										<img alt="product image" class="product-list-secondary-img" src="{{asset('front_assets/img/p9.jpg')}}">
 									</a>
 							</span>
 						</li>
@@ -590,21 +592,21 @@
 				<div class="testimonials-slider text-center col-md-12">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
-							<div class="testimonials-container shadow"> <img alt="user avatar" src="img/user.png">
+							<div class="testimonials-container shadow"> <img alt="user avatar" src="{{asset('front_assets/img/user.png')}}">
 								<h3> Martin Johe, Co-Founder / CEO <span>Fastcompany ltd.</span> </h3>
 								<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
 							</div>
 						</div>
 
 						<div class="swiper-slide">
-							<div class="testimonials-container shadow"> <img alt="user avatar" src="img/user2.png">
+							<div class="testimonials-container shadow"> <img alt="user avatar" src="{{asset('front_assets/img/user2.png')}}">
 								<h3> Martin Johe, Co-Founder / CEO <span>Fastcompany ltd.</span> </h3>
 								<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
 							</div>
 						</div>
 
 						<div class="swiper-slide">
-							<div class="testimonials-container shadow"> <img alt="user avatar" src="img/user.png">
+							<div class="testimonials-container shadow"> <img alt="user avatar" src="{{asset('front_assets/img/user.png')}}">
 								<h3> Martin Johe, Co-Founder / CEO <span>Fastcompany ltd.</span> </h3>
 								<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
 							</div>
@@ -627,7 +629,7 @@
 					<div class="add-area">
 						<a href="#">
 							<div class="effect-add">
-								<img class="img-responsive" alt=" " src="img/add4.png">
+								<img class="img-responsive" alt=" " src="{{asset('front_assets/img/add4.png')}}">
 							</div>
 						</a>
 					</div>
@@ -736,7 +738,7 @@
 
 				   <div class="col-md-4 col-sm-12">
 					   <div class="f_logo">
-						<a href="#"><img src="img/logo.png" alt="" /></a>
+						<a href="#"><img src="{{asset('front_assets/img/logo.png')}}" alt="" /></a>
 						<p>Sed ut perspiciatis unde omnis iste natus error sit best shop for you voluptatem.Sed ut perspiciatis unde omnis iste natus errorsit.</p>
 					   </div>
 				   </div>
