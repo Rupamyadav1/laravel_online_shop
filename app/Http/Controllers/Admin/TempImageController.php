@@ -14,6 +14,7 @@ class TempImageController extends Controller
     {
         $image = $request->image;
         if (!empty($image)) {
+
             $ext = $image->getClientOriginalExtension();
             $newName = time() . '.' . $ext;
             $tempImage = new TempImage();
@@ -23,12 +24,12 @@ class TempImageController extends Controller
 
             //generate thumbnail
 
-            $sourcePath = public_path() . '/temp/' . $newName;
-            $destPath = public_path() . '/temp/thumb/' . $newName;
+            $sourcePath = public_path() . '/temp/' . $newName; //original image path
+            $destPath = public_path() . '/temp/thumb/' . $newName; //thumbnail path
 
 
 
-            $manager = new ImageManager(new Driver()); // use GD driver
+            $manager = new ImageManager(new Driver()); 
 
             // Read image from file system
             $image = $manager->read($sourcePath);
@@ -51,3 +52,4 @@ class TempImageController extends Controller
             'message' => 'Image not uploaded',
         ]);}
 }
+

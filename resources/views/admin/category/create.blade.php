@@ -25,16 +25,39 @@
                                     
                                 </div>
                             </div>
-
-
-
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <input type="hidden" name="image_id" id="image_id" value="">
+                                <h2 class="h4 mt-2">Media</h2>
+                                <div id="image" class="dropzone dz-clickable" style="border: 2px solid #6c757d; width: 50%;">
+                                    <div class="dz-message needsclick">
+                                        <br>Drop files here or click upload</br></br>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="mb-2">
                                     <label class="form-label">Status :</label>
-                                    <input type="text" class="form-control" name="status"
-                                        placeholder="1:active 0:inactive" style="width: 50%;">
+                                    <select class="form-select" name="status">
+                                        <option>Select Status</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Block</option>
+                                        </select>
+                                        
+                                       
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-2">
+                                    <label class="form-label">Show On Home :</label>
+                                    <select class="form-select" name="showHome">
+                                        <option>Select Status</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                        </select>
                                         
                                        
                                 </div>
@@ -61,6 +84,47 @@
 @section('customJS')
 
     <script>
+
+Dropzone.autoDiscover = false;
+
+const dropzone = new Dropzone("#image", {
+    url: "{{ route('temp-images.create') }}",
+    maxFiles: 10,
+    paramName: 'image',
+    addRemoveLinks: true,
+    acceptedFiles: "image/jpeg,image/png,image/gif",
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    success: function(file, response) {
+
+       $("#image_id").val(response.image_id);
+        // var html = `<div class="card" id="image-row-${response.image_id}" style="width: 18rem;">
+        //                     <input type="hidden" name="image_Array[]" value="${response.image_id}">
+
+        // <img src="${response.imagePath}" class="card-img-top" alt="...">
+        // <div class="card-body">
+        
+        // <a href="javascript:void(0)" onclick="deleteImage(${response.image_id})" class="btn btn-danger">Delete</a>
+        // </div>
+        // </div>`;
+        // $('#product-gallery').append(html);
+
+
+    },
+
+
+    error: function(jqXHR, exception) {
+        console.log("something went wrong");
+
+    },
+
+});
+
+function deleteImage(id) {
+    $("#image-row-" + id).remove();
+}
+
         $("#categoryForm").submit(function (event) {
             event.preventDefault();
             var element = $(this);

@@ -34,7 +34,7 @@
                                 <div class="mb-2">
                                     <label class="form-label">Slug :</label>
                                     <input type="text" class="form-control" name="slug" id="slug"
-                                        placeholder="enter slug" readonly value="{{ $subcategory->slug }}">
+                                        placeholder="enter slug"  value="{{ $subcategory->slug }}">
                                     <p></p>
                                 </div>
                             </div>
@@ -46,11 +46,25 @@
                             <div class="col">
                                 <div class="mb-2">
                                     <label class="form-label">Status :</label>
-                                    <input type="text" class="form-control" name="status"
-                                        placeholder="1:active 0:inactive" style="width: 50%;"
-                                        value="{{ $subcategory->status }}">
+                                    <select class="form-select" name="status">
+                                        
+                                        <option {{ $subcategory->status == 1 ? 'selected' : '' }} value="1">Active</option>
+                                        <option {{ $subcategory->status == 0 ? 'selected' : '' }} value="0">Block</option>
 
-
+                                    </select>
+                                    
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-2">
+                                    <label class="form-label">Show On Home :</label>
+                                    <select class="form-select" name="showHome">
+                                        <option>Select Status</option>
+                                        <option {{ $subcategory->showHome == 'Yes' ? 'selected' : '' }} value="Yes">Yes</option>
+                                        <option {{ $subcategory->showHome == 'No' ? 'selected' : '' }} value="No">No</option>
+                                        </select>
+                                        
+                                       
                                 </div>
                             </div>
                         </div>

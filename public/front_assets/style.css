@@ -26,6 +26,51 @@ Version: 1.0.1
   padding: 0;
   
 }
+.search-form {
+  
+}
+
+.search-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: white;
+  border-radius: 50px;
+  width: 300px;
+ 
+}
+
+.category-list {
+  list-style-type: none; /* Optional: removes bullet points */
+  padding: 0;
+  margin: 0;
+}
+
+.category-list li {
+  margin: 10px 0; /* spacing between items */
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.btn-search {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-search i {
+  font-size: 16px;
+}
+
+.btn-search:hover {
+  background-color: #0056b3;
+}
+
 #myNavbar .nav.navbar-nav {
   text-align: right;
 }

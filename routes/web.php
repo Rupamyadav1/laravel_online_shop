@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\TempImageController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Admin\ProductSubCategoryController;
+use App\Http\Controllers\Admin\CategoryImageController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -38,6 +39,8 @@ Route::get('/', [FrontController::class, 'index'])->name('home');
         Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
         Route::put('/categories/{category}/update', [CategoryController::class, 'update'])->name('categories.update');
         Route::get('/categories/{category}/delete', [CategoryController::class, 'destroy'])->name('categories.delete');
+        Route::post('/products/images/update', [CategoryImageController::class, 'store'])->name('categories.images.update');
+
 
 
         Route::get('/getSlug', function (Request $request) {

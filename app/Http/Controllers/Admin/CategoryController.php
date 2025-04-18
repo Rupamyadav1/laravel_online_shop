@@ -5,6 +5,12 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
+use App\Models\TempImage;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\Image;
+use Illuminate\Support\Facades\File;
+
 
 
 
@@ -40,13 +46,40 @@ class CategoryController extends Controller
             'slug'=>'required',
             
         ]);
+
         if($validator->passes())
         {
             $category=new Category();
             $category->name=$request->name;
             $category->slug=$request->slug;
             $category->status=$request->status;
+            $category->showHome=$request->showHome;
+
             $category->save();
+
+            if(!empty($request->image_id))
+            {
+               $tempImage= TempImage::find($request->image_id);
+               $extArray=explode('.',$tempImage->image);
+                $ext=last($extArray);
+                $newName=$category->id.'.'.$ext;
+
+                $sourcePath=public_path().'/temp/thumb/'.$tempImage->image;
+                $destPath=public_path().'/uploads/category/thumb/'.$newName;
+                File::move($sourcePath,$destPath);
+
+                $manager = new ImageManager(new Driver());
+                $image = $manager->read($destPath);
+                $image = $image->cover(300, 275);
+                $image->save($destPath);
+
+                $category->image=$newName;
+
+                $category->save();
+
+
+
+            }
 
             $request->session()->flash("success","Category added succesfully");
 
@@ -79,6 +112,7 @@ class CategoryController extends Controller
     }
     public function update(Request $request,$categoryId)
     {
+        // dd($request->all());
         $category=Category::find($categoryId);
 
         if(!$category)
@@ -89,13 +123,38 @@ class CategoryController extends Controller
             ]);
         }
 
+       
+
 
 
         $category->name=$request->name;
         $category->slug=$request->slug;
         $category->status=$request->status;
+        $category->showHome=$request->showHome;
+
 
         $category->save();
+
+        if(!empty($request->image_id)){
+            $tempImage= TempImage::find($request->image_id);
+            $extArray=explode('.',$tempImage->image);
+            $ext=last($extArray);
+
+
+            $newName=$category->id.'.'.$ext;
+
+
+            $sourcePath=public_path().'/temp/'.$tempImage->image;
+            $destPath=public_path().'/uploads/category/thumb/'.$newName;
+            File::move($sourcePath,$destPath);
+
+
+            $manager = new ImageManager(new Driver());
+            $image = $manager->read($destPath);
+            $image = $image->cover(300, 275);
+            $image->save($destPath);
+            
+        }
 
 
         

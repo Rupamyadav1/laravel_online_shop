@@ -53,13 +53,27 @@
                             <div class="col">
                                 <div class="mb-2">
                                     <label class="form-label">Status :</label>
-                                    <input type="text" class="form-control" name="status"
-                                        placeholder="1:active 0:inactive" style="width: 50%;">
-
-
+                                    <select class="form-select" name="status">
+                                        
+                                        <option>Select Status</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Block</option>
+                                    </select>
 
                                 </div>
                                 <p></p>
+                            </div>
+                            <div class="col">
+                                <div class="mb-2">
+                                    <label class="form-label">Show On Home :</label>
+                                    <select class="form-select" name="showHome">
+                                        <option>Select Status</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                        </select>
+                                        
+                                       
+                                </div>
                             </div>
                         </div>
                         <div class="p-2">
