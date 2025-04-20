@@ -12,11 +12,12 @@ use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Admin\ProductSubCategoryController;
 use App\Http\Controllers\Admin\CategoryImageController;
-
+use App\Http\Controllers\ShopController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 Route::get('/', [FrontController::class, 'index'])->name('home');
+Route::get('/shop/{category?}/{subCategory?}/',[ShopController::class,'index'])->name('shop');
 
 
     Route::group(['prefix' => 'admin'], function () {

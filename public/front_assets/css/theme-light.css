@@ -4099,7 +4099,7 @@ button.close, .close {
     background: #02c0ce; }
   .navbar-nav {
     float: none;
-    margin-top: 37px; }
+    margin-top: 0px; }
     @media (min-width: 480px) and (max-width: 1199px) {
       .navbar-nav {
         margin-bottom: 0; } }
