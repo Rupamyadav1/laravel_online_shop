@@ -35,9 +35,10 @@
                                                         {{ $category->name }}
                                                     </button>
                                                 </h2>
+                                                
 
                                                 @else
-                                                <a href="#" class="nav-item nav-link d-block">{{$category->name}}</a>          
+                                                <a href="{{ route('front.shop',$category->slug) }}" class="nav-item nav-link d-block">{{$category->name}}</a>          
                                             
                                                 @endif
 
@@ -50,7 +51,7 @@
                                                     <div class="accordion-body">
                                                         <div class="navbar-nav">
                                                             @foreach ($category->sub_category as $sub_category)
-                                                                <a href="#"
+                                                                <a href="{{ route('front.shop',[$category->slug,$sub_category->slug]) }}"
                                                                     class="nav-item nav-link d-block">{{ $sub_category->name }}</a>
                                                             @endforeach
                                                         </div>

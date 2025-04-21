@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 Route::get('/', [FrontController::class, 'index'])->name('home');
-Route::get('/shop/{category?}/{subCategory?}/',[ShopController::class,'index'])->name('shop');
+Route::get('/shop/{category?}/{subCategory?}/',[ShopController::class,'index'])->name('front.shop');
 
 
     Route::group(['prefix' => 'admin'], function () {
