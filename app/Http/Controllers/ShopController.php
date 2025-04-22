@@ -11,32 +11,42 @@ use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
-    public function index(Request $request,$categorySlug=null,$subCategorySlug=null){
-        
+    public function index(Request $request, $categorySlug = null, $subCategorySlug = null)
+{
+    $categories = Category::orderBy('name','asc')->with('sub_category')->where('status',1)->get();
+    $brands = Brand::where('status', 1)->get();
 
-        $categories=Category::with('sub_category')->get();
-        $brands=Brand::where('status',1)->get();
-        $products=Product::where('status',1);
+    // Start a single query builder instance
+    $products = Product::where('status', 1);
 
 
-        if(!empty($categorySlug)){
-            $category=Category::where('slug',$categorySlug)->first();
-            $products =  Product::where('category_id',$category->id);
-        }
-        
-        if(!empty($subCategorySlug)){
-            $subCategory=SubCategory::where('slug',$subCategorySlug)->first();
-            $products =  Product::where('sub_category_id',$subCategory->id);
-        }
+    if (!empty($categorySlug)) {
+        $categorySlug = urldecode($categorySlug);
+        $category = Category::where('slug', $categorySlug)->first();
 
-        $products=Product::orderBy('id','DESC');
-        $products=$products->get();
+          $products=$products->where('category_id', $category->id); 
+          dd($products);
 
-        
-        $data['products']=$products;
-        $data['brands']=$brands;
-        $data['categories']=$categories;
-       
-        return view('front.shop',$data);
     }
+    
+    if (!empty($subCategorySlug)) {
+
+       // $subCategorySlug = urldecode($subCategorySlug);
+        $subCategory = SubCategory::where('slug', $subCategorySlug)->first();
+        $products= $products->where('sub_category_id', $subCategory->id);
+        
+    }
+
+    // Finally apply ordering and get the products
+    $products = $products->orderBy('id', 'DESC')->get();
+
+    
+
+    $data['products'] = $products;
+    $data['brands'] = $brands;
+    $data['categories'] = $categories;
+
+    return view('front.shop', $data);
+}
+
 }
