@@ -197,7 +197,7 @@
     <script src="{{ asset('front_assets/js/main.js') }}"></script>
 </body>
 
-
+@yield('customJS')
 <!-- Mirrored from team90degree.com/html/tf/bestshop-new-demo/bestshop-demo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 13 Apr 2025 03:08:07 GMT -->
 
 </html>

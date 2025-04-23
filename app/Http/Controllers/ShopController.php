@@ -21,17 +21,17 @@ class ShopController extends Controller
 
 
     if (!empty($categorySlug)) {
-        $categorySlug = urldecode($categorySlug);
+
+       // $categorySlug = urldecode($categorySlug);
         $category = Category::where('slug', $categorySlug)->first();
 
           $products=$products->where('category_id', $category->id); 
-          dd($products);
-
+        
     }
     
     if (!empty($subCategorySlug)) {
 
-       // $subCategorySlug = urldecode($subCategorySlug);
+      // $subCategorySlug = urldecode($subCategorySlug);
         $subCategory = SubCategory::where('slug', $subCategorySlug)->first();
         $products= $products->where('sub_category_id', $subCategory->id);
         

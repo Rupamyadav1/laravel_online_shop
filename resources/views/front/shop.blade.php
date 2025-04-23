@@ -38,7 +38,7 @@
                                                 
 
                                                 @else
-                                                <a href="{{ route('front.shop',$category->slug) }}" class="nav-item nav-link d-block">{{$category->name}}</a>          
+                                                <a style="text-decoration: none; color: #212529; padding-left:13px;font-size:1.5rem;" href="{{ route('front.shop',$category->slug) }}" class="nav-item nav-link d-block">{{$category->name}}</a>          
                                             
                                                 @endif
 
@@ -79,7 +79,7 @@
                             @if (!empty($brands))
                                 @foreach ($brands as $brand)
                                     <div class="form-check mb-2">
-                                        <input class="form-check-input" type="checkbox" value="{{ $brand->id }}"
+                                        <input class="form-check-input brand-label" type="checkbox" value="{{ $brand->id }}"
                                             id="flexCheckDefault" name="brand[]" id="brand-{{ $brand->id }}">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             {{ $brand->name }}
@@ -189,14 +189,25 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
     </main>
+@endsection
+
+
+@section('customJS')
+<script>
+    $(".brand-label").change(function(){
+        apply_filters();
+
+    })
+    
+    function apply_filters(){
+        var brands=[];
+        $(".brand-label").each(function(){
+            if($(this).is(":checked") == true){
+                brands.push($(this).val());
+            }
+        })
+        console.log(brands);
+    }
+    </script>
 @endsection
