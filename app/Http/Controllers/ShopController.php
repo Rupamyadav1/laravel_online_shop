@@ -15,9 +15,21 @@ class ShopController extends Controller
 {
     $categories = Category::orderBy('name','asc')->with('sub_category')->where('status',1)->get();
     $brands = Brand::where('status', 1)->get();
+    $brandArray=[];
 
     // Start a single query builder instance
     $products = Product::where('status', 1);
+   // dd($request->get('brand'));
+
+    if($request->get('brand')){
+      $brandArray= explode(',',$request->get('brand'));
+    }
+
+    
+
+    
+
+     
 
 
     if (!empty($categorySlug)) {
@@ -36,6 +48,9 @@ class ShopController extends Controller
         $products= $products->where('sub_category_id', $subCategory->id);
         
     }
+    if(!empty($request->get('brand'))){ //get the brand id from the url http://localhost:8000/shop?&brand=2
+      $products = $products->whereIn('brand_id', $brandArray);
+      }
 
     // Finally apply ordering and get the products
     $products = $products->orderBy('id', 'DESC')->get();
@@ -45,6 +60,7 @@ class ShopController extends Controller
     $data['products'] = $products;
     $data['brands'] = $brands;
     $data['categories'] = $categories;
+    $data['brandArray'] = $brandArray;
 
     return view('front.shop', $data);
 }

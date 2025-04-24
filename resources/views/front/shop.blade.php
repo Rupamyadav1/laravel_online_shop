@@ -12,8 +12,6 @@
                 </ol>
             </div>
         </div>
-
-
         <div class="container">
             <div class="row">
                 <div class="col-md-3 sidebar mt-5">
@@ -35,15 +33,14 @@
                                                         {{ $category->name }}
                                                     </button>
                                                 </h2>
-                                                
+                                            @else
+                                                <a style="text-decoration: none; color: #212529; padding-left:13px;font-size:1.5rem;"
+                                                    href="{{ route('front.shop', $category->slug) }}"
+                                                    class="nav-item nav-link d-block">{{ $category->name }}</a>
+                                            @endif
 
-                                                @else
-                                                <a style="text-decoration: none; color: #212529; padding-left:13px;font-size:1.5rem;" href="{{ route('front.shop',$category->slug) }}" class="nav-item nav-link d-block">{{$category->name}}</a>          
-                                            
-                                                @endif
 
-
-                                                @if(!empty($category->sub_category))
+                                            @if (!empty($category->sub_category))
                                                 <div id="collapseOne-{{ $key }}"
                                                     class="accordion-collapse collapse"
                                                     aria-labelledby="headingOne-{{ $key }}"
@@ -51,15 +48,12 @@
                                                     <div class="accordion-body">
                                                         <div class="navbar-nav">
                                                             @foreach ($category->sub_category as $sub_category)
-                                                                <a href="{{ route('front.shop',[$category->slug,$sub_category->slug]) }}"
+                                                                <a href="{{ route('front.shop', [$category->slug, $sub_category->slug]) }}"
                                                                     class="nav-item nav-link d-block">{{ $sub_category->name }}</a>
                                                             @endforeach
                                                         </div>
                                                     </div>
                                                 </div>
-                                               
-                                                
-                                           
                                             @endif
                                         </div>
                                     @endforeach
@@ -67,20 +61,19 @@
                             </div>
                         </div>
                     </div>
-
-
-
                     <div class="sub-title mt-5">
                         <h2>Brand</h3>
                     </div>
 
                     <div class="card">
                         <div class="card-body">
-                            @if (!empty($brands))
+                            @if ($brands->isNotEmpty())
                                 @foreach ($brands as $brand)
                                     <div class="form-check mb-2">
-                                        <input class="form-check-input brand-label" type="checkbox" value="{{ $brand->id }}"
-                                            id="flexCheckDefault" name="brand[]" id="brand-{{ $brand->id }}">
+                                        <input class="form-check-input brand-label"
+                                            {{ in_array($brand->id, $brandArray) ? 'checked' : '' }} type="checkbox"
+                                            value="{{ $brand->id }}" id="flexCheckDefault" name="brand[]"
+                                            id="brand-{{ $brand->id }}">
                                         <label class="form-check-label" for="flexCheckDefault">
                                             {{ $brand->name }}
                                         </label>
@@ -97,30 +90,8 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    $0-$100
-                                </label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
-                                    $100-$200
-                                </label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
-                                    $200-$500
-                                </label>
-                            </div>
-                            <div class="form-check mb-2">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                                <label class="form-check-label" for="flexCheckChecked">
-                                    $500+
-                                </label>
-                            </div>
+                            <input type="text" class="js-range-slider" name="my_range" value="">
+
                         </div>
                     </div>
                 </div>
@@ -157,8 +128,7 @@
                                                         alt=""></a>
                                             @else
                                                 <a href="" class="product-img"><img class="card-img-top"
-                                                        src="{{ asset('admin_assets/images/default-150x150.png/') }}"
-                                                        alt=""></a>
+                                                        src="" alt=""></a>
                                             @endif
 
 
@@ -178,6 +148,7 @@
                                                     class="h6 text-underline"><del>{{ $product->compare_price }}</del></span>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             @endforeach
@@ -194,20 +165,42 @@
 
 
 @section('customJS')
-<script>
-    $(".brand-label").change(function(){
-        apply_filters();
-
-    })
-    
-    function apply_filters(){
-        var brands=[];
-        $(".brand-label").each(function(){
-            if($(this).is(":checked") == true){
-                brands.push($(this).val());
-            }
+    <script>
+        $(".js-range-slider").change(function(){
+            console.log($(this).val());
         })
-        console.log(brands);
-    }
+        rangeSlider = $(".js-range-slider").ionRangeSlider({
+            type: "double",
+            min: 0,
+            max: 1000,
+            from: 0,
+            step: 10,
+            to: 500,
+            skin: "round",
+            max_postfix: "+",
+            prefix: "$",
+            onFinish: function() {
+                apply_filters();
+            }
+        });
+
+
+        $(".brand-label").change(function() {
+            apply_filters();
+
+        })
+
+        function apply_filters() {
+            var brands = [];
+            $(".brand-label").each(function() {
+                if ($(this).is(":checked") == true) {
+                    brands.push($(this).val());
+                }
+            })
+            console.log(brands.toString());
+            var url = "{{ url()->current() }}?";
+
+            window.location.href = url + '&brand=' + brands.toString(); // send brand id to the url 
+        }
     </script>
 @endsection
