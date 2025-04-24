@@ -115,14 +115,15 @@
                                                     <span
                                                         class="product-list-price sell-p"><del>{{ $product->compare_price }}</del></span>
                                                 </span>
-                                            </a>
-
-                                            <button class="btn btn-default add-item" type="button"
+                                                <button class="btn btn-default add-item" type="button"
                                                 data-image="{{ asset('front_assets/img/p1.jpg') }}"
                                                 data-name="Winter Long Sleeve Black White " data-cost="400.00"
                                                 data-id="1">
                                                 add to cart
                                             </button>
+                                            </a>
+
+                                           
                                         </li>
                                     @endforeach
 

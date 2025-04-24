@@ -165,24 +165,22 @@
 
 
 @section('customJS')
-    <script>
-        $(".js-range-slider").change(function(){
-            console.log($(this).val());
-        })
-        rangeSlider = $(".js-range-slider").ionRangeSlider({
-            type: "double",
-            min: 0,
-            max: 1000,
-            from: 0,
-            step: 10,
-            to: 500,
-            skin: "round",
-            max_postfix: "+",
-            prefix: "$",
-            onFinish: function() {
-                apply_filters();
-            }
-        });
+
+
+        <script>
+
+
+$(document).ready(function () {
+    $(".js-range-slider").ionRangeSlider({
+        type: "double",
+        min: 0,
+        max: 1000,
+        from: 200,
+        to: 500,
+        grid: true
+    });
+});
+
 
 
         $(".brand-label").change(function() {

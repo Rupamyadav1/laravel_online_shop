@@ -16,14 +16,13 @@
     <link href="{{ asset('front_assets/style.css') }}" rel="stylesheet">
     <link href="{{ asset('front_assets/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('front_assets/css/responsive.css') }}" rel="stylesheet">
+    <script src="{{ asset('front_assets/js/vendor/jquery-2.2.4.min.js') }}"></script>
 
     <link href="{{ asset('front_assets/css/ion.rangeSlider.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJxvNiWqzLtL6Lzv9DAt5+2rF06exl6dW7A/5ROk7vLhW1l1mpgFdlNcb6lz" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0v8Fq4BYn9fXc7/q7fq7mLB/c5pJt5r7tnl5jdaJd8gbFsks" crossorigin="anonymous"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
+    
+   <style>
         .navbar-nav .dropdown:hover .dropdown-menu {
             display: block;
             margin-top: 0;
@@ -186,21 +185,18 @@
         </footer>
 
     </div>
-    <!-- jQuery (must come first) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
-
-    <script src="{{ asset('front_assets/js/ion.rangeSlider.min.js')}}"></script>
     <script src="{{ asset('front_assets/js/vendor/jquery-2.2.4.min.js') }}"></script>
-    {{-- <script src="{{ asset('front_assets/js/vendor/swiper.min.js') }}"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0v8Fq4BYn9fXc7/q7fq7mLB/c5pJt5r7tnl5jdaJd8gbFsks" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset(path: 'front_assets/js/vendor/jquery-2.2.4.min.js') }}"></script>
+     <script src="{{ asset('front_assets/js/vendor/swiper.min.js') }}"></script> 
     <script src="{{ asset('front_assets/js/vendor/bootstrap.min.js') }}"></script>
     <script src="{{ asset('front_assets/js/vendor/jquery.inview.js') }}"></script>
     <script src="{{ asset('front_assets/js/vendor/jquery.countdown.js') }}"></script>
     <script src="{{ asset('front_assets/js/ajax-mail.js') }}"></script>
     <script src="{{ asset('front_assets/js/plugins.js') }}"></script>
     <script src="{{ asset('front_assets/js/main.js') }}"></script>
-
 <script>
     $(document).ready(function() {
         $.ajaxSetup({
@@ -211,6 +207,6 @@
     });
 </script>
 @yield('customJS')
-<!-- Mirrored from team90degree.com/html/tf/bestshop-new-demo/bestshop-demo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 13 Apr 2025 03:08:07 GMT -->
+<script src="{{ asset('front_assets/js/ion.rangeSlider.min.js')}}"></script>
 </body>
 </html>
