@@ -56,7 +56,7 @@
                                 <div class="add-area">
                                     <a href="#">
                                         <div class="effect-add">
-                                            <img class="img-responsive" alt=" "
+                                            <img style="height:200px; width:300px;" class="img-responsive" alt=" "
                                                 src="{{ asset('uploads/category/thumb/' . $category->image) }}">
                                             <h2>{{ $category->name }}</h2>
                                         </div>
@@ -91,36 +91,36 @@
 
                                         @endphp
 
-
                                         <li class="swiper-slidess text-center">
-                                            <span class="product-list-left pull-left">
-                                                <span class="sale-p">sale</span>
-                                                <a href="#" data-target="#product-01" data-toggle="modal">
+                                            <span onclick="{{route('front.product',$product->slug)}}" class="product-list-left pull-left">
+                                                <span onclick="{{route('front.product',$product->slug)}}" class="sale-p">sale</span>
+                                                <a href="{{route('front.product',$product->title)}}" data-target="#product-01" data-toggle="modal">
                                                     @if (!empty($productImage->image))
-                                                        <img alt="product image" class="product-list-primary-img"
+                                                        <img onclick="{{route('front.product',$product->title)}}" alt="product image" class="product-list-primary-img"
                                                             src="{{ asset('uploads/product/small/' . $productImage->image) }}">
 
-                                                        <img alt="product image" class="product-list-secondary-img"
+                                                        <img onclick="{{route('front.product',$product->title)}}" alt="product image" class="product-list-secondary-img"
                                                             src="{{ asset('uploads/product/small/' . $productImage->image) }}">
                                                     @endif
                                                 </a>
                                             </span>
 
-                                            <a href="#" data-target="#product-01" data-toggle="modal">
+                                            <a href="{{route('front.product',$product->title)}}" data-target="#product-01" data-toggle="modal">
                                                 <span class="product-list-right pull-left">
-                                                    <span
+                                                    <span onclick="{{route('front.product',$product->slug)}}"
                                                         class="product-list-name h4 black-color">{{ $product->title }}
                                                     </span>
                                                     <span class="product-list-price">${{ $product->price }}</span>
                                                     <span
                                                         class="product-list-price sell-p"><del>{{ $product->compare_price }}</del></span>
-                                                </span>
-                                                <button class="btn btn-default add-item" type="button"
+                                                        <button class="btn btn-default add-item" type="button"
                                                 data-image="{{ asset('front_assets/img/p1.jpg') }}"
                                                 data-name="Winter Long Sleeve Black White " data-cost="400.00"
                                                 data-id="1">
                                                 add to cart
-                                            </button>
+                                                </button>
+                                                </span>
+                                                
                                             </a>
 
                                            
@@ -172,14 +172,15 @@
                                                             class="product-list-price">{{ $latestProduct->price }}</span>
                                                         <span
                                                             class="product-list-price sell-p"><del>{{ $latestProduct->compare_price }}</del></span>
+                                                            <button class="btn btn-default add-item" type="button"
+                                                            data-image="img/p1.jpg" data-name="women white backless mini"
+                                                            data-cost="400.00" data-id="1">
+                                                            add to cart
+                                                        </button>
                                                     </span>
                                                 </a>
 
-                                                <button class="btn btn-default add-item" type="button"
-                                                    data-image="img/p1.jpg" data-name="women white backless mini"
-                                                    data-cost="400.00" data-id="1">
-                                                    add to cart
-                                                </button>
+                                               
                                             </li>
                                         @endforeach
                                     @endif

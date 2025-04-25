@@ -83,7 +83,7 @@
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu{{ $category->id }}">
                                                 @foreach ($category->sub_category as $subcategory)
                                                     <li>
-                                                        <a class="dropdown-item" href="#">
+                                                        <a class="dropdown-item" href="{{ route('front.shop',[$category->slug,$subcategory->slug]) }}">
                                                             {{ $subcategory->name }}
                                                         </a>
                                                     </li>
@@ -187,6 +187,7 @@
     </div>
 
     <script src="{{ asset('front_assets/js/vendor/jquery-2.2.4.min.js') }}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0v8Fq4BYn9fXc7/q7fq7mLB/c5pJt5r7tnl5jdaJd8gbFsks" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset(path: 'front_assets/js/vendor/jquery-2.2.4.min.js') }}"></script>
@@ -207,6 +208,7 @@
     });
 </script>
 @yield('customJS')
-<script src="{{ asset('front_assets/js/ion.rangeSlider.min.js')}}"></script>
+<script src="{{ asset('front_assets/js/vendor/jquery-2.2.4.min.js') }}"></script>
+
 </body>
 </html>

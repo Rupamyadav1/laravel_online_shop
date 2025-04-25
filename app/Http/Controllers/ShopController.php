@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
-    public function index(Request $request, $categorySlug = null, $subCategorySlug = null)
+    public function index(Request $request,$categorySlug = null, $subCategorySlug = null, $price_min=null, $price_max=null, $sort=null)
 {
     $categories = Category::orderBy('name','asc')->with('sub_category')->where('status',1)->get();
     $brands = Brand::where('status', 1)->get();
@@ -24,12 +24,6 @@ class ShopController extends Controller
     if($request->get('brand')){
       $brandArray= explode(',',$request->get('brand'));
     }
-
-    
-
-    
-
-     
 
 
     if (!empty($categorySlug)) {
@@ -51,9 +45,40 @@ class ShopController extends Controller
     if(!empty($request->get('brand'))){ //get the brand id from the url http://localhost:8000/shop?&brand=2
       $products = $products->whereIn('brand_id', $brandArray);
       }
+      if(!empty($request->get('price_min')) && !empty($request->get('price_max'))){
+        $products = $products->whereBetween('price', [intval($request->get('price_min')), intval($request->get('price_max'))]);
+      }
 
-    // Finally apply ordering and get the products
-    $products = $products->orderBy('id', 'DESC')->get();
+      if(!empty($request->get('price_min')) && !empty($request->get('price_max'))){
+
+        if($request->get('price_max') === 1000)
+        {
+          $products = $products->whereBetween('price', [intval($request->get('price_min')), 100000]);
+
+        }
+        else{
+          $products = $products->whereBetween('price', [intval($request->get('price_min')), intval($request->get('price_max'))]);
+        }
+      }
+
+    if(!empty($request->get('sort'))){
+        $sort = $request->get('sort');
+        if($sort == 'latest'){
+            $products = $products->orderBy('id', 'DESC');
+        }
+        elseif($sort == 'price_desc'){
+            $products = $products->orderBy('price', 'DESC');
+        }
+        elseif($sort == 'price_asc'){
+            $products = $products->orderBy('price', 'ASC');
+        }
+       else{
+        $products = $products->orderBy('id', 'DESC');
+
+       }
+      }
+        
+    $products = $products->paginate(3);
 
     
 
@@ -61,8 +86,13 @@ class ShopController extends Controller
     $data['brands'] = $brands;
     $data['categories'] = $categories;
     $data['brandArray'] = $brandArray;
+    $data['priceMin']=intval(request()->get('price_min'));
+    $data['priceMax'] = intval(request()->get('price_max'))  == 0 ? 1000 : intval(request()->get('price_max'));
+
 
     return view('front.shop', $data);
 }
 
 }
+
+?>

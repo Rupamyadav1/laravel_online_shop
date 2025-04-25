@@ -100,16 +100,14 @@
                         <div class="col-12 pb-1">
                             <div class="d-flex align-items-center justify-content-end mb-4">
                                 <div class="ml-2">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-light dropdown-toggle"
-                                            data-bs-toggle="dropdown">Sorting</button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#">Latest</a>
-                                            <a class="dropdown-item" href="#">Price High</a>
-                                            <a class="dropdown-item" href="#">Price Low</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                <select name="sort" id="sort" class="form-select me-2">
+                                    <option selected>sorting</option>
+                                    <option value="latest">latest order</option>
+                                    <option value="price_desc">price high</option>
+                                    <option value="price_asc">price low</option>
+
+                                </select>
+                            </div>
                             </div>
                         </div>
                         @if ($products)
@@ -152,12 +150,19 @@
                                     </div>
                                 </div>
                             @endforeach
+
+                           
                         @endif
+                        <div class="col md-12 scroll-pt-5">
+                            {{ $products->links() }}
+                        </div>
 
 
 
                     </div>
+                    
                 </div>
+               
             </div>
         </div>
     </main>
@@ -165,21 +170,42 @@
 
 
 @section('customJS')
+<script src="{{ asset('front_assets/js/ion.rangeSlider.min.js')}}"></script>
 
 
         <script>
 
 
-$(document).ready(function () {
-    $(".js-range-slider").ionRangeSlider({
+
+     rangeSlider = $(".js-range-slider").ionRangeSlider({
         type: "double",
         min: 0,
         max: 1000,
-        from: 200,
-        to: 500,
-        grid: true
+        from: {{ $priceMin }},
+        step: 10,
+        to: {{ $priceMax }},
+       
+        skin: "round",
+        max_postfix: "+",
+        prefix: "₹ ",
+        onFinish: function(){
+            apply_filters(); //jab slider ko stop krenge tab ye function chalega
+           
+            
+        }
     });
-});
+
+    // Access the slider data after initialization
+   
+
+$("#sort").change(function() {
+    apply_filters();
+})
+
+var slider = $(".js-range-slider").data("ionRangeSlider");
+
+
+   
 
 
 
@@ -198,7 +224,19 @@ $(document).ready(function () {
             console.log(brands.toString());
             var url = "{{ url()->current() }}?";
 
-            window.location.href = url + '&brand=' + brands.toString(); // send brand id to the url 
+           
+            url+= "&price_min=" + slider.result.from + "&price_max=" + slider.result.to;
+
+            url+= "&sort=" + $("#sort").val();
+
+            if(brands.length > 0)
+            {
+               url+= '&brand=' + brands.toString()
+            }
+
+            window.location.href = url ; 
+            
+
         }
     </script>
 @endsection

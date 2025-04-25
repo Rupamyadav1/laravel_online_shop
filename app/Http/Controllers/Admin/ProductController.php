@@ -28,6 +28,8 @@ class ProductController extends Controller
         {
             $products=$products->where('title','like','%'.request()->get('keyword').'%');
         }
+
+        
      
         $data['products']=$products;
         return view('admin.product.index',$data);
@@ -250,10 +252,16 @@ class ProductController extends Controller
         }
         $product->delete();
 
+
         return response()->json([
             'status'=>true,
             'message'=>'product deleted sucessfully ',
         ]);
+    }
+
+    public function product($product){
+        echo $product;
+        exit;
     }
 
 
