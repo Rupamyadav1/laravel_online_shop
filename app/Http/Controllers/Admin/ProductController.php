@@ -259,9 +259,11 @@ class ProductController extends Controller
         ]);
     }
 
-    public function product($product){
-        echo $product;
-        exit;
+    public function product($slug){
+
+        $products=Product::where('slug',$slug)->get();
+        $data['products']=$products;
+        return view('front.product',$data);
     }
 
 

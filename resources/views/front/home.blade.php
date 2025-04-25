@@ -94,7 +94,7 @@
                                         <li class="swiper-slidess text-center">
                                             <span onclick="{{route('front.product',$product->slug)}}" class="product-list-left pull-left">
                                                 <span onclick="{{route('front.product',$product->slug)}}" class="sale-p">sale</span>
-                                                <a href="{{route('front.product',$product->title)}}" data-target="#product-01" data-toggle="modal">
+                                                <a href="{{route('front.product',$product->title)}}">
                                                     @if (!empty($productImage->image))
                                                         <img onclick="{{route('front.product',$product->title)}}" alt="product image" class="product-list-primary-img"
                                                             src="{{ asset('uploads/product/small/' . $productImage->image) }}">
@@ -105,7 +105,7 @@
                                                 </a>
                                             </span>
 
-                                            <a href="{{route('front.product',$product->title)}}" data-target="#product-01" data-toggle="modal">
+                                            <a href="{{route('front.product',$product->title)}}">
                                                 <span class="product-list-right pull-left">
                                                     <span onclick="{{route('front.product',$product->slug)}}"
                                                         class="product-list-name h4 black-color">{{ $product->title }}
@@ -150,7 +150,7 @@
                                             <li class="swiper-slide text-center">
                                                 <span class="product-list-left pull-left">
                                                     <span class="sale-p">sale</span>
-                                                    <a href="#" data-target="#product-01" data-toggle="modal">
+                                                    <a href="#" >
                                                         @if (!empty($latestImage->image))
                                                         <img alt="product image" class="product-list-primary-img"
                                                             src="{{ asset('uploads/product/small/' . $latestImage->image) }}">
@@ -164,7 +164,7 @@
                                                     </a>
                                                 </span>
 
-                                                <a href="#" data-target="#product-01" data-toggle="modal">
+                                                <a href="#">
                                                     <span class="product-list-right pull-left">
                                                         <span
                                                             class="product-list-name h4 black-color">{{ $latestProduct->title }}</span>
