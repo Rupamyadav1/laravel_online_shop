@@ -2,7 +2,6 @@
 
 @section('main-content')
 
-
 <main>
     <section class="section-5 pt-3 pb-3 mb-3">
         <div class="container">
@@ -21,20 +20,23 @@
             <div class="row ">
                 <div class="col-md-5">
                     <div id="product-carousel" class="carousel slide" data-bs-ride="carousel">
+
+                        
+                            
+                       
+                       
+                                 
                         <div class="carousel-inner bg-light">
-                            <div class="carousel-item">
-                                <img class="w-100 h-100" src="{{ asset('uploads/product/large/' . $product->image) }}" alt="Image">
+                            @if($product->product_images)
+                            @foreach ($product->product_images as $key=>$productImage)
+                            <div class="carousel-item {{ ($key == 0) ? 'active' : '' }}">
+                                <img class="w-100 h-100" src="{{ asset('uploads/product/small/' . $productImage->image) }}" alt="Image">
                             </div>
-                            <div class="carousel-item active">
-                                <img class="w-100 h-100" src="images/product-2.jpg" alt="Image">
-                            </div>
-                            <div class="carousel-item">
-                                <img class="w-100 h-100" src="images/product-3.jpg" alt="Image">
-                            </div>
-                            <div class="carousel-item">
-                                <img class="w-100 h-100" src="images/product-4.jpg" alt="Image">
-                            </div>
+                            @endforeach
+                            @endif
+                            
                         </div>
+                        
                         <a class="carousel-control-prev" href="#product-carousel" data-bs-slide="prev">
                             <i class="fa fa-2x fa-angle-left text-dark"></i>
                         </a>
@@ -42,6 +44,7 @@
                             <i class="fa fa-2x fa-angle-right text-dark"></i>
                         </a>
                     </div>
+                   
                 </div>
                 <div class="col-md-7">
                     <div class="bg-light right">
@@ -113,7 +116,8 @@
                                     <i class="fa fa-shopping-cart"></i> Add To Cart
                                 </a>                            
                             </div>
-                        </div>                        
+                        </div>               
+
                         <div class="card-body text-center mt-3">
                             <a class="h6 link" href="">Dummy Product Title</a>
                             <div class="price mt-2">
