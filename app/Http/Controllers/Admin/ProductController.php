@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
-
     public function index()
     {
         $products = Product::latest('id')->with('product_images')->paginate(); 
@@ -261,8 +260,13 @@ class ProductController extends Controller
 
     public function product($slug){
 
-        $products=Product::where('slug',$slug)->get();
-        $data['products']=$products;
+        $product=Product::where('slug',$slug)->with('product_images')->first();
+        if(!$product)
+        {
+            abort(404);
+        }
+        $data['product']=$product;
+        //dd($product);
         return view('front.product',$data);
     }
 

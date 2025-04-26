@@ -4,13 +4,13 @@
 
 
 <main>
-    <section class="section-5 pt-3 pb-3 mb-3 bg-white">
+    <section class="section-5 pt-3 pb-3 mb-3">
         <div class="container">
             <div class="light-font">
                 <ol class="breadcrumb primary-color mb-0">
                     <li class="breadcrumb-item"><a class="white-text" href="#">Home</a></li>
                     <li class="breadcrumb-item"><a class="white-text" href="#">Shop</a></li>
-                    <li class="breadcrumb-item">Your product name</li>
+                    <li class="breadcrumb-item">{{$product->slug}}</li>
                 </ol>
             </div>
         </div>
@@ -23,7 +23,7 @@
                     <div id="product-carousel" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner bg-light">
                             <div class="carousel-item">
-                                <img class="w-100 h-100" src="images/product-1.jpg" alt="Image">
+                                <img class="w-100 h-100" src="{{ asset('uploads/product/large/' . $product->image) }}" alt="Image">
                             </div>
                             <div class="carousel-item active">
                                 <img class="w-100 h-100" src="images/product-2.jpg" alt="Image">
@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-md-7">
                     <div class="bg-light right">
-                        <h1>Your Product Name Here</h1>
+                        <h1>{{$product->slug}}</h1>
                         <div class="d-flex mb-3">
                             <div class="text-primary mr-2">
                                 <small class="fas fa-star"></small>
@@ -56,10 +56,10 @@
                             </div>
                             <small class="pt-1">(99 Reviews)</small>
                         </div>
-                        <h2 class="price text-secondary"><del>$400</del></h2>
-                        <h2 class="price ">$300</h2>
+                        <h2 class="price text-secondary"><del>{{$product->compare_price}}</del></h2>
+                        <h2 class="price ">{{$product->price}}</h2>
 
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis officiis dolor aut nihil iste porro ullam repellendus inventore voluptatem nam veritatis exercitationem doloribus voluptates dolorem nobis voluptatum qui, minus facere.</p>
+                        <p>{{$product->description}}</p>
                         <a href="cart.php" class="btn btn-dark"><i class="fas fa-shopping-cart"></i> &nbsp;ADD TO CART</a>
                     </div>
                 </div>

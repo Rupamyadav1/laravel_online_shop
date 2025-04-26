@@ -21,6 +21,8 @@ Route::get('/shop/{category?}/{subCategory?}/',[ShopController::class,'index'])-
 Route::get('/products/{slug}',[ProductController::class,'product'])->name('front.product');
 
 
+
+
     Route::group(['prefix' => 'admin'], function () {
     // Prevents logged-in admins from seeing the login page
     Route::group(['middleware' => 'admin.guest'], function () {

@@ -3816,7 +3816,7 @@ section {
   width: 100%;
   float: left;
   overflow: hidden;
-  min-height: 600px;
+  /* min-height: 600px; */
   position: relative; }
   section.section-min {
     min-height: 100px; }
