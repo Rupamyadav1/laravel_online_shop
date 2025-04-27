@@ -209,22 +209,22 @@
                             <!-- Wrapper for slides -->
                             <div class="carousel slide product-slide" id="product-carousel">
                                 <div class="carousel-inner cont-slider">
-                                    <div class="item active"> <img alt="" src="img/p7.jpg" title="">
+                                    <div class="item active"> <img alt="" src="" title="">
                                     </div>
-                                    <div class="item"> <img alt="" src="img/p4.jpg" title=""> </div>
-                                    <div class="item"> <img alt="" src="img/p5.jpg" title=""> </div>
-                                    <div class="item"> <img alt="" src="img/p2.jpg" title=""> </div>
+                                    <div class="item"> <img alt="" src="" title=""> </div>
+                                    <div class="item"> <img alt="" src="" title=""> </div>
+                                    <div class="item"> <img alt="" src="" title=""> </div>
                                 </div>
                                 <!-- Indicators -->
                                 <ol class="carousel-indicators">
                                     <li class="active" data-slide-to="0" data-target="#product-carousel"> <img
-                                            alt="" src="img/p7.jpg"> </li>
+                                            alt="" > </li>
                                     <li class="" data-slide-to="1" data-target="#product-carousel"> <img
-                                            alt="" src="img/p4.jpg"> </li>
+                                            alt="" > </li>
                                     <li class="" data-slide-to="2" data-target="#product-carousel"> <img
-                                            alt="" src="img/p5.jpg"> </li>
+                                            alt=""> </li>
                                     <li class="" data-slide-to="3" data-target="#product-carousel"> <img
-                                            alt="" src="img/p2.jpg"> </li>
+                                            alt=""> </li>
                                 </ol>
                             </div>
                             <!-- Wrapper for slides -->
@@ -262,7 +262,7 @@
                                             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
                                         </p>
                                         <div class="row">
-                                            <div class="col-md-6"> <img src="img/p7.jpg" class="img-responsive"
+                                            <div class="col-md-6"> <img src="" class="img-responsive"
                                                     alt="product image"> </div>
                                             <div class="col-md-6">
                                                 <h4 class="section-heading">Ut enim ad minim veniam</h4>

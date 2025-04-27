@@ -28,8 +28,16 @@
                         <div class="row">
                             <div class="col">
                                 <div class="mt-2">
+                                    <label for="description">Short Description:</label>
+                                    <textarea class="form-control" name="short_description" id="short_description" placeholder="">{{ $product->short_description }}</textarea>
+                                </div>
+                                <div class="mt-2">
                                     <label for="description">Description:</label>
                                     <textarea class="form-control" name="description" id="description" placeholder="Description">{{ $product->description }}</textarea>
+                                </div>
+                                <div class="mt-2">
+                                    <label for="description">Shipping and returns:</label>
+                                    <textarea class="form-control" name="shipping_returns" id="shipping_returns" placeholder="">{{ $product->shipping_returns }}</textarea>
                                 </div>
                             </div>
                             <div class="col">
