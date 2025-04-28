@@ -63,7 +63,7 @@
                 <!-- Tabs Section -->
                 <div>
                     <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-top: 20px; display: flex; gap: 15px;">
                         <li class="nav-item" role="presentation">
                             <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
                         </li>
@@ -79,7 +79,7 @@
                     </ul>
 
                     <!-- Tab content -->
-                    <div class="tab-content" id="myTabContent">
+                    <div class="tab-content" id="myTabContent">  <!--Dynamic Tabs -->
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <h3>HOME</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
