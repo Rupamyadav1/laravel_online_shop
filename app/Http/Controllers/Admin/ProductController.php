@@ -270,5 +270,15 @@ class ProductController extends Controller
         return view('front.product',$data);
     }
 
+    public function getProducts(Request $request){
+
+
+        return response()->json([
+            'status'=>"fetching",
+        ]);
+
+        
+    }
+
 
 } 

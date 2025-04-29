@@ -31,22 +31,41 @@
                                         <label for="description">Short Description:</label>
                                         <textarea class="form-control" name="short_description" id="short_description" placeholder="">{{ $product->short_description }}</textarea>
                                     </div>
+                                </div>
+                                <div class="col">
                                     <div class="mt-2">
                                         <label for="description">Description:</label>
                                         <textarea class="form-control" name="description" id="description" placeholder="Description">{{ $product->description }}</textarea>
                                     </div>
+                                </div>
+                                <div class="col">
                                     <div class="mt-2">
                                         <label for="description">Shipping and returns:</label>
                                         <textarea class="form-control" name="shipping_returns" id="shipping_returns" placeholder="">{{ $product->shipping_returns }}</textarea>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
+
                                 <div class="col">
                                     <div class="mt-2">
-                                        <label class="form-label">Product Status :</label>
-                                        <input type="text" class="form-control" placeholder="Product Status"
-                                            id="product_status" name="product_status" value="{{ $product->status }}">
+                                        <label for="related_product">Related Product</label>
+                                        <select class="related-product w-100" name="related_product" id="related_product">
+                                        </select>
+                                        <p></p>
                                     </div>
                                 </div>
+
+                                    <div class="col">
+                                        <div class="mt-2">
+                                            <label class="form-label">Product Status :</label>
+                                            <input type="text" class="form-control" placeholder="Product Status"
+                                                id="product_status" name="product_status" value="{{ $product->status }}">
+                                        </div>
+                                    </div>
+
+                                
+
                             </div>
 
                             <!-- Category, Brand, Featured -->
@@ -96,13 +115,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <label for="related_product">Related Product</label>
-                                    <select class="related-product w-100" name="related_product" id="related_product">
-                                    </select>
-                                    <p></p>
 
-                                </div>
                             </div>
 
                             <!-- Dropzone for New Image Upload -->
@@ -190,7 +203,7 @@
     <script>
         $('.related-product').select2({
             ajax: {
-                url: '{{ url('/data') }}',
+                url: '{{ route('product.getProducts')}}',
                 dataType: 'json',
                 tags: true,
                 multiple: true,

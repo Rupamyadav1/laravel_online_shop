@@ -80,6 +80,7 @@ Route::get('/products/{slug}',[ProductController::class,'product'])->name('front
         Route::post('/products/images/update', [ProductImageController::class, 'store'])->name('products.images.update');
         Route::post('/products/images/delete', [ProductImageController::class, 'destroy'])->name('products.images.delete');
         Route::get('/product-subcategory', [ProductSubCategoryController::class, 'index'])->name('product-subcategory.index');
+        Route::get('/get-products', [ProductController::class, 'getProducts'])->name('product.getProducts');
 
 
         Route::get('/sub-category/index', [SubCategoryController::class, 'index'])->name('sub-category.index');
