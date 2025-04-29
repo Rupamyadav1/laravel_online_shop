@@ -70,6 +70,9 @@
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" id="menu1-tab" data-bs-toggle="tab" href="#menu1" role="tab" aria-controls="menu1" aria-selected="false">Menu 1</a>
                         </li>
+
+
+                        
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" id="menu2-tab" data-bs-toggle="tab" href="#menu2" role="tab" aria-controls="menu2" aria-selected="false">Menu 2</a>
                         </li>
@@ -107,14 +110,7 @@
 @endsection
 
 @section('customJS')
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-<script>
-    // Initialize Bootstrap 5 tabs programmatically if needed
-    var myTab = new bootstrap.Tab(document.querySelector('#home-tab'));
-    myTab.show();
-</script>
-@endsection
 
+@endsection
