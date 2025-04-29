@@ -12,8 +12,6 @@
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
 
-    {{-- <link href="{{ asset('front_assets/css/bootstrap-light.css') }}" rel="stylesheet"> --}}
-
     <link id="pagestyle" href="{{ asset('front_assets/css/theme-light.css') }}" rel="stylesheet">
     <link href="{{ asset('front_assets/style.css') }}" rel="stylesheet">
     <link href="{{ asset('front_assets/css/font-awesome.min.css') }}" rel="stylesheet">
@@ -155,7 +153,7 @@
 
     <script src="{{ asset('front_assets/js/vendor/swiper.min.js') }}"></script> 
     <script src="{{ asset('front_assets/js/vendor/jquery.inview.js') }}"></script>
-    <script src="{{ asset('front_assets/js/vendor/jquery.countdown.js') }}"></script> --}}
+    <script src="{{ asset('front_assets/js/vendor/jquery.countdown.js') }}"></script>
      <script src="{{ asset('front_assets/js/plugins.js') }}"></script>
      <script src="{{ asset('front_assets/js/main.js') }}"></script>
     
