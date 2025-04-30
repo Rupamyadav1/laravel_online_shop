@@ -105,6 +105,50 @@
             </div>
         </div>
     </section>
+
+    <section class="pt-5 section-8">
+        <div class="container">
+            <div class="section-title">
+                <h2>Related Products</h2>
+            </div> 
+            <div class="col-md-12">
+                @if ($relatedProducts->isNotEmpty())
+                    @foreach ($relatedProducts as $relProduct)
+                    @php
+                        $productImage=$relProduct->product_images->first();
+                    @endphp
+                    
+                        
+                    
+                
+                <div id="related-products" class="carousel">
+                    <div class="card product-card">
+                        <div class="product-image position-relative">
+                            <a href="{{ route('front.product',$relProduct->slug) }}" class="product-img">
+                                <img class="card-img-top" src="{{ asset('uploads/product/small/'.$productImage->image) }}" alt="" style="height:200px; width:200px"></a>
+                            <a class="whishlist" href="222"><i class="far fa-heart"></i></a>                            
+
+                            <div class="product-action">
+                                <a class="btn btn-dark" href="#">
+                                    <i class="fa fa-shopping-cart"></i> Add To Cart
+                                </a>                            
+                            </div>
+                        </div>                        
+                        <div class="card-body text-center mt-3">
+                            <a class="h6 link" href="">{{$relProduct->title}}</a>
+                            <div class="price mt-2">
+                                <span class="h5"><strong>{{$relProduct->price}}</strong></span>
+                                <span class="h6 text-underline"><del>{{$relProduct->compare_price}}</del></span>
+                            </div>
+                        </div>                        
+                    </div> 
+                  
+                </div>
+                @endforeach
+                @endif
+            </div>
+        </div>
+    </section>
 </main>
 
 @endsection

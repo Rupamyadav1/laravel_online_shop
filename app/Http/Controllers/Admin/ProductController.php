@@ -261,8 +261,18 @@ class ProductController extends Controller
         if (!$product) {
             abort(404);
         }
+
+        $productArray=[];
+
+        if($product->related_products !=""){
+           $productArray= explode(',',$product->related_products);
+           $relatedProducts=Product::whereIn('id',$productArray)->with('product_images')->get();
+        }
+       // dd($relatedProducts);
+        $data['relatedProducts']= $relatedProducts;
+        
         $data['product'] = $product;
-        //dd($product);
+        
         return view('front.product', $data);
     }
 
