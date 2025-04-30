@@ -189,6 +189,16 @@
                         <input type="text" placeholder="Barcode" class="form-control" name="barcode"
                             id="barcode"></textarea>
                     </div>
+                    <div class="col">
+                        <div class="mt-2">
+                            <label for="related_product">Related Product</label>
+                            <select multiple class="related-product w-100" name="related_products[]" id="related_products">
+                               
+                               
+                            </select>
+                            <p></p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -237,6 +247,22 @@
 
 @section('customJS')
     <script>
+         $('.related-product').select2({
+            ajax: {
+                url: '{{ route('product.getProducts')}}',
+                dataType: 'json',
+                tags: true,
+                multiple: true,
+                minimumInputLength: 3,
+                processResults: function(data) {
+                    return {
+                        results: data.tags
+                    };
+                }
+            }
+        });
+
+
         $("#productForm").submit(function(event) {
 
             event.preventDefault();

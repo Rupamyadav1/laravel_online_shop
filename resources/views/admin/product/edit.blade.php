@@ -4,6 +4,7 @@
         <style>
             .select2-container--default .select2-selection--multiple .select2-selection__rendered li{
   color:#000;
+  
 }
             </style>
         <div class="row">
@@ -56,7 +57,14 @@
                                     <div class="mt-2">
                                         <label for="related_product">Related Product</label>
                                         <select multiple class="related-product w-100" name="related_products[]" id="related_products">
-                                            
+                                           
+                                            @if(!empty($relatedProducts))
+                                                @foreach ($relatedProducts as $relatedProduct)
+                                                    <option value="{{ $relatedProduct->id }}" selected>
+                                                        {{ $relatedProduct->title }}</option>
+                                                @endforeach
+                                                
+                                            @endif
                                         </select>
                                         <p></p>
                                     </div>

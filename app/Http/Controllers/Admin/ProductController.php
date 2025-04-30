@@ -72,6 +72,8 @@ class ProductController extends Controller
             $product->compare_price = $request->compare_price;
             $product->sku = $request->sku;
             $product->barcode = $request->barcode;
+            $product->related_products = ($request->related_products) ? implode(',', $request->related_products) : '';
+
             $product->track_qty = $request->track_qty;
             $product->qty = $request->qty;
             $product->save();
@@ -147,6 +149,15 @@ class ProductController extends Controller
         $subcategories = SubCategory::where('category_id', $product->category_id)->get();
         $productImages = ProductImage::where('product_id', $product->id)->get();
 
+        $relatedProducts=[];
+
+        if(!empty($product->related_products)){
+            $productArray= explode(',',$product->related_products); //explode converts array to string
+           // dd([$product->related_products,$productArray]);
+            $relatedProducts= Product::whereIn('id',$productArray)->get();
+        }
+
+
         $categories = Category::orderBy('name', 'ASC')->get();
         $data['categories'] = $categories;
         $brands = Brand::orderBy('name', 'ASC')->get();
@@ -157,6 +168,8 @@ class ProductController extends Controller
                 'message' => 'product id not found',
             ]);
         }
+
+        $data['relatedProducts'] = $relatedProducts;
         $data['subcategories'] = $subcategories;
         $data['productImages'] = $productImages;
         $data['product'] = $product;
@@ -176,6 +189,9 @@ class ProductController extends Controller
             'is_featured' => 'required|in:Yes,No'
         ];
 
+        
+    
+
 
         $validator = Validator::make($request->all(), $rules);
         if ($validator->passes()) {
@@ -185,6 +201,7 @@ class ProductController extends Controller
             $product->description = $request->description;
             $product->price = $request->price;
             $product->status = $request->product_status;
+            $product->related_products = ($request->related_products) ? implode(',', $request->related_products) : '';
             $product->category_id = $request->category_id;
             $product->brand_id = $request->brand_id;
             $product->is_featured = $request->is_featured;
@@ -258,9 +275,7 @@ class ProductController extends Controller
 
             if(!empty($products)){
                 foreach($products as $product){
-                    $tempProduct[]=array('id'=>$product->id,'title'=>$product->title);
-
-
+                    $tempProduct[]=array('id'=>$product->id,'text'=>$product->title);
                 }
 
             }
@@ -276,3 +291,6 @@ class ProductController extends Controller
         
     }
 }
+
+
+?>
