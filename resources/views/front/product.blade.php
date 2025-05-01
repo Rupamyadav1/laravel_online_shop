@@ -65,40 +65,34 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" id="myTab" role="tablist" style="margin-top: 20px; display: flex; gap: 15px;">
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+                            <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="home" aria-selected="true">Description</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="menu1-tab" data-bs-toggle="tab" href="#menu1" role="tab" aria-controls="menu1" aria-selected="false">Menu 1</a>
+                            <a class="nav-link" id="menu1-tab" data-bs-toggle="tab" href="#shipping" role="tab" aria-controls="menu1" aria-selected="false">Shipping & Returns</a>
                         </li>
 
 
                         
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="menu2-tab" data-bs-toggle="tab" href="#menu2" role="tab" aria-controls="menu2" aria-selected="false">Menu 2</a>
+                            <a class="nav-link" id="menu2-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="menu2" aria-selected="false">Reviews</a>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="menu3-tab" data-bs-toggle="tab" href="#menu3" role="tab" aria-controls="menu3" aria-selected="false">Menu 3</a>
-                        </li>
+                        
                     </ul>
 
                     <!-- Tab content -->
                     <div class="tab-content" id="myTabContent">  <!--Dynamic Tabs -->
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <h3>HOME</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="home-tab">
+                            {!! $product->description !!}
                         </div>
-                        <div class="tab-pane fade" id="menu1" role="tabpanel" aria-labelledby="menu1-tab">
-                            <h3>Menu 1</h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="menu1-tab">
+                            {!! $product->shipping_returns  !!}
+                        
                         </div>
-                        <div class="tab-pane fade" id="menu2" role="tabpanel" aria-labelledby="menu2-tab">
+                        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="menu2-tab">
                             <h3>Menu 2</h3>
                             <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
                         </div>
-                        <div class="tab-pane fade" id="menu3" role="tabpanel" aria-labelledby="menu3-tab">
-                            <h3>Menu 3</h3>
-                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                        </div>
+                       
                     </div>
                 </div>
 
