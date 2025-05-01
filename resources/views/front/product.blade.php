@@ -112,15 +112,11 @@
                 <h2>Related Products</h2>
             </div> 
             <div class="col-md-12">
-                @if ($relatedProducts->isNotEmpty())
+                @if ($relatedProducts)
                     @foreach ($relatedProducts as $relProduct)
                     @php
                         $productImage=$relProduct->product_images->first();
                     @endphp
-                    
-                        
-                    
-                
                 <div id="related-products" class="carousel">
                     <div class="card product-card">
                         <div class="product-image position-relative">
@@ -144,6 +140,8 @@
                     </div> 
                   
                 </div>
+
+
                 @endforeach
                 @endif
             </div>
