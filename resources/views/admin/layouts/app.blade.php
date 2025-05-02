@@ -540,13 +540,13 @@
 
 
 <script>
-    $(document).ready(function() {
+   
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-    });
+    
 </script>
 <script src="{{asset('admin_assets/js/jquery-3.6.0.min.js')}}"></script> 
 

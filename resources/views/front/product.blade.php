@@ -55,7 +55,7 @@
                         <h2 class="price text-secondary"><del>{{ $product->compare_price }}</del></h2>
                         <h2 class="price ">{{ $product->price }}</h2>
                         <p>{!! $product->short_description !!}</p>
-                        <a href="cart.php" class="btn btn-dark"><i class="fas fa-shopping-cart"></i> &nbsp;ADD TO
+                        <a onclick="addToCart({{ $product->id }})" class="btn btn-dark"><i class="fas fa-shopping-cart"></i> &nbsp;ADD TO
                             CART</a>
                     </div>
                 </div>
@@ -70,15 +70,13 @@
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" id="menu1-tab" data-bs-toggle="tab" href="#shipping" role="tab" aria-controls="menu1" aria-selected="false">Shipping & Returns</a>
                         </li>
-
-
-                        
                         <li class="nav-item" role="presentation">
                             <a class="nav-link" id="menu2-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="menu2" aria-selected="false">Reviews</a>
                         </li>
                         
                     </ul>
 
+                    
                     <!-- Tab content -->
                     <div class="tab-content" id="myTabContent">  <!--Dynamic Tabs -->
                         <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="home-tab">
@@ -119,7 +117,7 @@
                             <a class="whishlist" href="222"><i class="far fa-heart"></i></a>                            
 
                             <div class="product-action">
-                                <a class="btn btn-dark" href="#">
+                                <a class="btn btn-dark" href="addToCart({{ $relProduct->id }})">
                                     <i class="fa fa-shopping-cart"></i> Add To Cart
                                 </a>                            
                             </div>
@@ -148,5 +146,19 @@
 @section('customJS')
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+function addToCart(id) {
+    $.ajax({
+        url: "",
+        type: "POST",
+        data:{id:id},
+        sucess:function(response){
+
+        }
+
+    })
+
+}
+    </script>
 
 @endsection
