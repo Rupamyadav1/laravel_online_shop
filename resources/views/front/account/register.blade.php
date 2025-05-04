@@ -76,12 +76,14 @@
 <script type="text/javascript">
     $('#registrationForm').submit(function(event){
         event.preventDefault();
+       // $("button[type='submit']").prop('disable',true);
         $.ajax({
             url:"{{ route('account.processRegister') }}",
             type:'post',
             data: $(this).serializeArray(),
             dataType:'json',
             success:function(response){
+               // $("button[type='submit']").prop('disable',false);
                 var errors=response.errors;
 
                 if(response.status == false){

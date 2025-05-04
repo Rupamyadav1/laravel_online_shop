@@ -25,11 +25,21 @@ Route::post('/add-to-cart',[CartController::class,'addToCart'])->name('front.add
 Route::get('/cart',[CartController::class,'cart'])->name('front.cart');
 Route::post('/update-to-cart',[CartController::class,'updateCart'])->name('front.updateCart');
 Route::get('/remove-to-cart',[CartController::class,'delete'])->name('front.deleteCart');
-Route::get('/login',[AuthController::class,'login'])->name('account.login');
+
+Route::group(['prefix'=>'account'],function(){
+    Route::group(['middleware'=>'guest'],function(){
+        Route::get('/login',[AuthController::class,'login'])->name('account.login');
 
 Route::get('/register',[AuthController::class,'register'])->name('account.register');
 Route::post('/register',[AuthController::class,'processRegister'])->name('account.processRegister');
 
+
+    });
+
+    Route::group(['middleware'=>'auth'],function(){
+
+    });
+});
 
     Route::group(['prefix' => 'admin'], function () {
     Route::group(['middleware' => 'admin.guest'], function () {
