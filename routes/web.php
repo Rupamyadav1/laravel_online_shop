@@ -12,19 +12,26 @@ use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Admin\ProductSubCategoryController;
 use App\Http\Controllers\Admin\CategoryImageController;
-use App\Http\Controllers\ShopController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Front\CartController;
+use App\Http\Controllers\Front\ShopController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-Route::get('/', [FrontController::class, 'index'])->name('home');
+Route::get('/', [FrontController::class, 'index'])->name('front.home');
 Route::get('/shop/{category?}/{subCategory?}/',[ShopController::class,'index'])->name('front.shop');
 Route::get('/products/{slug}',[ProductController::class,'product'])->name('front.product');
+Route::post('/add-to-cart',[CartController::class,'addToCart'])->name('front.addToCart');
+Route::get('/cart',[CartController::class,'cart'])->name('front.cart');
+Route::post('/update-to-cart',[CartController::class,'updateCart'])->name('front.updateCart');
+Route::get('/remove-to-cart',[CartController::class,'delete'])->name('front.deleteCart');
+Route::get('/login',[AuthController::class,'login'])->name('account.login');
 
-
+Route::get('/register',[AuthController::class,'register'])->name('account.register');
+Route::post('/register',[AuthController::class,'processRegister'])->name('account.processRegister');
 
 
     Route::group(['prefix' => 'admin'], function () {
-    // Prevents logged-in admins from seeing the login page
     Route::group(['middleware' => 'admin.guest'], function () {
         Route::get('/login', [HomeController::class, 'index'])->name('admin.login');
         Route::post('/authenticate', [HomeController::class, 'authenticate'])->name('admin.authenticate');

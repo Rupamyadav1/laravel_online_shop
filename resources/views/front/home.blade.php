@@ -105,7 +105,7 @@
                                                 </a>
                                             </span>
 
-                                            <a href="{{route('front.product',$product->title)}}">
+                                            
                                                 <span class="product-list-right pull-left">
                                                     <span onclick="{{route('front.product',$product->slug)}}"
                                                         class="product-list-name h4 black-color">{{ $product->title }}
@@ -113,15 +113,17 @@
                                                     <span class="product-list-price">${{ $product->price }}</span>
                                                     <span
                                                         class="product-list-price sell-p"><del>{{ $product->compare_price }}</del></span>
+                                                    
                                                         <button class="btn btn-default add-item" type="button"
                                                 data-image="{{ asset('front_assets/img/p1.jpg') }}"
                                                 data-name="Winter Long Sleeve Black White " data-cost="400.00"
-                                                data-id="1">
+                                                data-id="1" onclick="addToCart({{ $product->id }})">
                                                 add to cart
                                                 </button>
                                                 </span>
+                                            
                                                 
-                                            </a>
+                                           
 
                                            
                                         </li>
@@ -164,7 +166,7 @@
                                                     </a>
                                                 </span>
 
-                                                <a href="#">
+                                                
                                                     <span class="product-list-right pull-left">
                                                         <span
                                                             class="product-list-name h4 black-color">{{ $latestProduct->title }}</span>
@@ -174,20 +176,16 @@
                                                             class="product-list-price sell-p"><del>{{ $latestProduct->compare_price }}</del></span>
                                                             <button class="btn btn-default add-item" type="button"
                                                             data-image="img/p1.jpg" data-name="women white backless mini"
-                                                            data-cost="400.00" data-id="1">
+                                                            data-cost="400.00" data-id="1" onclick="addToCart({{ $product->id }})">
                                                             add to cart
                                                         </button>
                                                     </span>
-                                                </a>
-
-                                               
                                             </li>
                                         @endforeach
                                     @endif
 
 
                                 </ul>
-                                <!-- Add Pagination -->
                                 <div class="product-list-pagination text-center"> </div>
                                 <div class="product-list-slider-next right-arrow-negative"> <span
                                         class="ti-arrow-right"></span> </div>
@@ -199,7 +197,6 @@
                 </div>
             </div>
 
-            <!-- PRODUCT MODAL -->
             <div class="modal fade product-modal" id="product-01" role="dialog" tabindex="-1">
                 <div class="modal-dialog">
                     <!-- Modal content-->
@@ -241,7 +238,7 @@
                                                     <span>$299.00</span>
                                                     <button class="btn btn-default add-item" type="button"
                                                         data-image="img/p2.jpg" data-name="Elegant Formal Party Dress"
-                                                        data-cost="299.00" data-id="8">
+                                                        data-cost="299.00" data-id="8" onclick="addToCart({{ $product->id }})">
                                                         add to cart </button>
                                                 </span>
                                             </div>

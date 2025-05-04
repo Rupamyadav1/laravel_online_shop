@@ -8,6 +8,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="width=device-width" name="viewport">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{ asset('front_assets/img/favicon.png') }}" rel="icon" type="image/png">
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
@@ -150,6 +151,7 @@
         </footer>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{asset('front_assets/js/bootstrap.bundle.5.1.3.min.js')}}"></script>
 
     <script src="{{ asset('front_assets/js/vendor/swiper.min.js') }}"></script> 
     <script src="{{ asset('front_assets/js/vendor/jquery.inview.js') }}"></script>
@@ -159,14 +161,41 @@
     
     
     <script>
-        $(document).ready(function() {
+        
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-        });
+
+            
+            function addToCart(id) {
+    $.ajax({
+        url: "{{ route('front.addToCart') }}",
+        type: "POST",
+        data:{
+            id:id,
+            
+        },
+        success:function(response){
+            if(response.status == true){
+                window.location.href="{{ route('front.cart') }}"
+            }
+            else{
+                alert(response.message);
+            }
+
+        }
+
+    })
+
+}
+   
+   
+   
+        
     </script>
+    
     @yield('customJS')
    
 </body>

@@ -11,10 +11,7 @@ use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
-    public function ind()
-    {
-        return "hello i am checking";
-    }
+    
     public function index()
     {
         return view('admin.login');
@@ -37,7 +34,6 @@ class HomeController extends Controller
         // Attempt login
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
             $admin = Auth::guard('admin')->user();
-
             if ($admin->role == 2) {
                 return redirect()->route('admin.dashboard');
             } 

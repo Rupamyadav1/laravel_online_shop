@@ -256,7 +256,7 @@ class ProductController extends Controller
 
     public function product($slug)
     {
-
+        $slug=urldecode($slug);
         $product = Product::where('slug', $slug)->with('product_images')->first();
         if (!$product) {
             abort(404);
@@ -301,6 +301,9 @@ class ProductController extends Controller
         
         
     }
+    
+    
+
 }
 
 

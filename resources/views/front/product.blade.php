@@ -117,7 +117,7 @@
                             <a class="whishlist" href="222"><i class="far fa-heart"></i></a>                            
 
                             <div class="product-action">
-                                <a class="btn btn-dark" href="addToCart({{ $relProduct->id }})">
+                                <a class="btn btn-dark" href="addToCart({{ $relProduct->id }})" onclick="addToCart({{ $relProduct->id }})">
                                     <i class="fa fa-shopping-cart"></i> Add To Cart
                                 </a>                            
                             </div>
@@ -147,18 +147,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-function addToCart(id) {
-    $.ajax({
-        url: "",
-        type: "POST",
-        data:{id:id},
-        sucess:function(response){
 
-        }
-
-    })
-
-}
-    </script>
+   
+   </script>
 
 @endsection
