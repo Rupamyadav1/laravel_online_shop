@@ -15,6 +15,8 @@
 
     <link id="pagestyle" href="{{ asset('front_assets/css/theme-light.css') }}" rel="stylesheet">
     <link href="{{ asset('front_assets/style.css') }}" rel="stylesheet">
+    {{-- <link href="{{asset('admin_assets/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style" /> --}}
+
     <link href="{{ asset('front_assets/css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('front_assets/css/responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('front_assets/css/ion.rangeSlider.min.css') }}" rel="stylesheet">

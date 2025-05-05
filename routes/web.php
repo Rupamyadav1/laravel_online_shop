@@ -26,17 +26,23 @@ Route::get('/cart',[CartController::class,'cart'])->name('front.cart');
 Route::post('/update-to-cart',[CartController::class,'updateCart'])->name('front.updateCart');
 Route::get('/remove-to-cart',[CartController::class,'delete'])->name('front.deleteCart');
 
+
+
+
 Route::group(['prefix'=>'account'],function(){
     Route::group(['middleware'=>'guest'],function(){
         Route::get('/login',[AuthController::class,'login'])->name('account.login');
+        Route::post('/login-authenticate',[AuthController::class,'authenticate'])->name('account.authenticate');
 
-Route::get('/register',[AuthController::class,'register'])->name('account.register');
-Route::post('/register',[AuthController::class,'processRegister'])->name('account.processRegister');
-
-
+        Route::get('/register',[AuthController::class,'register'])->name('account.register');
+        Route::post('/register',[AuthController::class,'processRegister'])->name('account.processRegister');
     });
 
     Route::group(['middleware'=>'auth'],function(){
+        Route::get('/profile',[AuthController::class,'profile'])->name('account.profile');
+        Route::get('/logout',[AuthController::class,'logout'])->name('account.logout');
+
+
 
     });
 });
@@ -48,7 +54,7 @@ Route::post('/register',[AuthController::class,'processRegister'])->name('accoun
     });
 
     // Protected routes (Only logged-in admins can access)
-    Route::group(['middleware' => 'admin.auth'], function () {
+        Route::group(['middleware' => 'admin.auth'], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
         Route::post('/logout', [HomeController::class, 'logout'])->name('admin.logout');
         Route::get('/checking', [HomeController::class, 'ind'])->name('check');

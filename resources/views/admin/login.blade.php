@@ -24,15 +24,7 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
         rel="stylesheet">
 
-    <!-- Font awesome icon css -->
-    <link rel="stylesheet" href="{{asset('assets/css/vendors/%40fortawesome/fontawesome-free/css/all.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/vendors/%40fortawesome/fontawesome-free/css/fontawesome.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/vendors/%40fortawesome/fontawesome-free/css/brands.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/vendors/%40fortawesome/fontawesome-free/css/solid.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/vendors/%40fortawesome/fontawesome-free/css/regular.css')}}">
-    <!-- Ico Icon css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/%40icon/icofont/icofont.css')}}">
-    <!-- Flag Icon css -->
+   
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/flag-icon.css')}}">
     <!-- Themify Icon css -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/themify-icons/themify-icons/css/themify.css')}}">
@@ -48,13 +40,7 @@
 </head>
 
 <body>
-    <!-- tap on top starts-->
-    <div class="tap-top">
-        <svg class="feather">
-            <use href="{{asset('assets/svg/feather-icons/dist/feather-sprite.svg#arrow-up')}}"></use>
-        </svg>
-    </div>
-    <!-- tap on tapS ends-->
+   
 
     <!-- page-wrapper Start-->
     <div class="page-wrapper compact-wrapper" id="pageWrapper">

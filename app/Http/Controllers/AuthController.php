@@ -51,5 +51,43 @@ class AuthController extends Controller
 
 
     }
+
+    public function authenticate(Request $request){
+        $validator=Validator::make($request->all(),[
+            'email'=>'required|email',
+            'password'=>'required'
+        ]);
+
+        if($validator->passes()){
+            if(auth()->attempt(['email'=>$request->email,'password'=>$request->password],
+            $request->get('remember'))){
+
+                return view('front.account.profile');
+                
+            }else{
+
+
+                return redirect()->route('account.login')
+                ->withInput($request->only('email'))
+                ->with('error','Invalid email or password');
+              
+            }
+        }else{
+            return redirect()->route('account.login')
+    ->withErrors($validator)
+    ->withInput($request->only('email'));
+        }
+    }
+
+    public function logout(){
+        Auth()->logout();
+        session()->flash('success','you logged out successfully');
+        return redirect()->route('account.login');
+    }
+
+    public function profile(){
+        return view('front.account.profile');
+
+    }
 }
 ?>

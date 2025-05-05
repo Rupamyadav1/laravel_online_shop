@@ -22,7 +22,7 @@
                         <div class="carousel-inner bg-light">
                             @if ($product->product_images)
                                 @foreach ($product->product_images as $key => $productImage)
-                                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                    <div class="carousel-item {{ $kwey == 0 ? 'active' : '' }}">
                                         <img class="w-100 h-100"
                                             src="{{ asset('uploads/product/small/' . $productImage->image) }}"
                                             alt="Image">

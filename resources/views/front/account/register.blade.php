@@ -9,7 +9,10 @@
     <div class="page-wrapper compact-wrapper" id="pageWrapper">
             <div class="container-fluid p-3 pt-3">
         <div class="row " >
+            
             <div class="col-lg-5 " style="margin-left: auto; margin-right: auto;">
+                <div class="card">
+                    <div class="card-body">
                 <div class="login-card login-dark">
                     <div>
                        
@@ -64,6 +67,15 @@
                     </div>
                 </div>
             </div>
+            <div class="pt-2 justify-content-center" style="margin-left: auto; margin-right: auto;">
+                <p class="mb-0">Already have an account? <a href="{{ route('account.login') }}">Login</a></p>
+                
+
+           
+              
+            </div>
+        </div>
+        </div>
         </div>
     </div>
     </div>

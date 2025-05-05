@@ -43,7 +43,10 @@
                             </div>
                         </div>
                     @endif
-@if (Cart::count() > 0)
+
+
+
+                    @if (Cart::count() > 0)
     
 
                     <div class="table-responsive">
