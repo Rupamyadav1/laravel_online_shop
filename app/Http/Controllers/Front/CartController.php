@@ -134,6 +134,11 @@ class CartController extends Controller
 
        }
     }
+
+    public function checkout(){
+        return view('front.checkout');
+
+    }
 }
 
 ?>
