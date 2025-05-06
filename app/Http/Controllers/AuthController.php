@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Container\Attributes\Auth as AttributesAuth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 class AuthController extends Controller
 {
@@ -59,11 +62,9 @@ class AuthController extends Controller
         ]);
 
         if($validator->passes()){
-            if(auth()->attempt(['email'=>$request->email,'password'=>$request->password],
+            if(Auth::attempt(['email'=>$request->email,'password'=>$request->password],
             $request->get('remember'))){
-
-                return view('front.account.profile');
-                
+                return view('front.account.profile');              
             }else{
 
 
@@ -80,7 +81,7 @@ class AuthController extends Controller
     }
 
     public function logout(){
-        Auth()->logout();
+        Auth::logout();
         session()->flash('success','you logged out successfully');
         return redirect()->route('account.login');
     }

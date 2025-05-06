@@ -136,6 +136,9 @@ class CartController extends Controller
     }
 
     public function checkout(){
+        if(Cart::count() == 0){
+            return view('front.cart');
+        }
         return view('front.checkout');
 
     }
