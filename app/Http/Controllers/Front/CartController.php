@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -136,9 +137,26 @@ class CartController extends Controller
     }
 
     public function checkout(){
+
         if(Cart::count() == 0){
             return view('front.cart');
         }
+
+        if(Auth::check() == false){
+
+
+                if(!session()->has('url.intended')){
+
+                    session(['url.intended'=>url()->current()]); //set the url.intended to current_url
+                }
+            
+            return redirect()->route('account.login');
+        }
+
+        session()->forget('url.intended');
+
+        
+
         return view('front.checkout');
 
     }

@@ -25,10 +25,6 @@ Route::post('/add-to-cart',[CartController::class,'addToCart'])->name('front.add
 Route::get('/cart',[CartController::class,'cart'])->name('front.cart');
 Route::post('/update-to-cart',[CartController::class,'updateCart'])->name('front.updateCart');
 Route::get('/remove-to-cart',[CartController::class,'delete'])->name('front.deleteCart');
-Route::get('/checkout',[CartController::class,'checkout'])->name('front.checkout');
-
-
-
 
 Route::group(['prefix'=>'account'],function(){
     Route::group(['middleware'=>'guest'],function(){
@@ -42,9 +38,7 @@ Route::group(['prefix'=>'account'],function(){
     Route::group(['middleware'=>'auth'],function(){
         Route::get('/profile',[AuthController::class,'profile'])->name('account.profile');
         Route::get('/logout',[AuthController::class,'logout'])->name('account.logout');
-
-
-
+        Route::get('/checkout',[CartController::class,'checkout'])->name('front.checkout');
     });
 });
 
