@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
+use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -157,9 +158,14 @@ class CartController extends Controller
 
         session()->forget('url.intended');
 
+        $countries=Country::orderBy('id','desc')->get();
+        $data['countries']=$countries;
+    
+
+
         
 
-        return view('front.checkout');
+        return view('front.checkout',$data);
 
     }
 }

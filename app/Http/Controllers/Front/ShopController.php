@@ -47,20 +47,11 @@ class ShopController extends Controller
       $products = $products->whereIn('brand_id', $brandArray);
       }
       if(!empty($request->get('price_min')) && !empty($request->get('price_max'))){
-        $products = $products->whereBetween('price', [intval($request->get('price_min')), intval($request->get('price_max'))]);
-      }
-
-      if(!empty($request->get('price_min')) && !empty($request->get('price_max'))){
-
-        if($request->get('price_max') === 1000)
-        {
-          $products = $products->whereBetween('price', [intval($request->get('price_min')), 100000]);
-
-        }
-        else{
-          $products = $products->whereBetween('price', [intval($request->get('price_min')), intval($request->get('price_max'))]);
-        }
-      }
+        $priceMin = intval($request->get('price_min'));
+        $priceMax = intval($request->get('price_max')) === 1000 ? 100000 : intval($request->get('price_max'));
+        $products = $products->whereBetween('price', [$priceMin, $priceMax]);
+    }
+    
 
     if(!empty($request->get('sort'))){
         $sort = $request->get('sort');
