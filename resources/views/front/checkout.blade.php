@@ -81,6 +81,7 @@
                                 </div>            
                             </div>
 
+                            
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <input type="text" name="mobile" id="mobile" class="form-control" placeholder="Mobile No.">
@@ -101,16 +102,20 @@
             <div class="col-md-4">
                 <div class="sub-title">
                     <h2>Order Summery</h3>
-                </div>                    
+                </div>                  
+                
                 <div class="card cart-summery">
+                   
                     <div class="card-body">
-                        @foreach (Cart::content() as $item)
+                        @foreach (Cart::content() as $item)  
+                        
                             
-                        @endforeach
+                       
                         <div class="d-flex justify-content-between pb-2">
                             <div class="h6">{{ $item->name }} X {{$item->qty}}</div>
                             <div class="h6">${{$item->price}}</div>
                         </div>
+                        @endforeach
                        
                        
                         <div class="d-flex justify-content-between summery-end">

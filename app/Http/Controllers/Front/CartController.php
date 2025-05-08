@@ -153,6 +153,8 @@ class CartController extends Controller
             return redirect()->route('account.login');
         }
 
+        
+
         session()->forget('url.intended');
 
         
