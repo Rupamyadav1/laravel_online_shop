@@ -186,8 +186,8 @@ class CartController extends Controller
         ]);
         if($validator->fails()){
             return response()->json([
+                'message'=>'fix the all errors',
                 'status'=>false,
-                'message'=>$validator->errors()->all(),
                 'errors'=>$validator->errors(),
             ]);
         }

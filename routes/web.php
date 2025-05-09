@@ -38,7 +38,7 @@ Route::group(['prefix'=>'account'],function(){
     Route::group(['middleware'=>'auth'],function(){
         Route::get('/profile',[AuthController::class,'profile'])->name('account.profile');
         Route::get('/logout',[AuthController::class,'logout'])->name('account.logout');
-        Route::get('/checkout',[CartController::class,'checkout'])->name('front.checkout');
+        Route::match(['get', 'post'], '/checkout', [CartController::class, 'checkout'])->name('front.checkout');
         Route::post('/process-checkout',[CartController::class,'processCheckout'])->name('front.processcheckout');
     });
 });
