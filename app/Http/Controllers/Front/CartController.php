@@ -8,6 +8,8 @@ use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
 
 class CartController extends Controller
 {
@@ -167,6 +169,28 @@ class CartController extends Controller
 
         return view('front.checkout',$data);
 
+    } public function processCheckout(Request $request){
+
+      $validator=  Validator::make($request->all(),[
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'email'=>'required|email',
+            'country'=>'required',
+            'phone'=>'required',
+            'address'=>'required',
+            'city'=>'required',
+            'state'=>'required',
+            'zip'=>'required',
+            'mobile'=>'required',
+            
+        ]);
+        if($validator->fails()){
+            return response()->json([
+                'status'=>false,
+                'message'=>$validator->errors()->all(),
+                'errors'=>$validator->errors(),
+            ]);
+        }
     }
 }
 

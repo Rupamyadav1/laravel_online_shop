@@ -15,6 +15,8 @@
 
 <section class="section-9 pt-4">
     <div class="container">
+        <form id="orderForm" action="" method="POST">
+            @csrf
         <div class="row">
             <div class="col-md-8">
                 <div class="sub-title">
@@ -27,18 +29,21 @@
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name">
-                                </div>            
+                                </div>          
+                                <p></p>  
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name">
-                                </div>            
+                                </div>       
+                                <p></p>       
                             </div>
                             
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <input type="text" name="email" id="email" class="form-control" placeholder="Email">
-                                </div>            
+                                </div>       
+                                <p></p>       
                             </div>
 
                             <div class="col-md-12">
@@ -51,50 +56,58 @@
                                         @endforeach
                                     </select>
                                 </div>            
+                                <p></p>  
                             </div>
 
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <textarea name="address" id="address" cols="30" rows="3" placeholder="Address" class="form-control"></textarea>
-                                </div>            
+                                </div>    
+                                <p></p>          
                             </div>
 
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <input type="text" name="appartment" id="appartment" class="form-control" placeholder="Apartment, suite, unit, etc. (optional)">
-                                </div>            
+                                </div>    
+                                <p></p>          
                             </div>
 
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <input type="text" name="city" id="city" class="form-control" placeholder="City">
-                                </div>            
+                                </div>    
+                                <p></p>          
                             </div>
 
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <input type="text" name="state" id="state" class="form-control" placeholder="State">
-                                </div>            
+                                </div>    
+                                <p></p>          
                             </div>
                             
                             <div class="col-md-4">
                                 <div class="mb-3">
                                     <input type="text" name="zip" id="zip" class="form-control" placeholder="Zip">
-                                </div>            
+                                </div>    
+                                <p></p>          
                             </div>
 
                             
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <input type="text" name="mobile" id="mobile" class="form-control" placeholder="Mobile No.">
-                                </div>            
+                                </div>  
+                                <p></p>            
                             </div>
                             
 
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <textarea name="order_notes" id="order_notes" cols="30" rows="2" placeholder="Order Notes (optional)" class="form-control"></textarea>
-                                </div>            
+                                </div>   
+                                <p></p>           
                             </div>
 
                         </div>
@@ -167,7 +180,8 @@
                         
                     </div>  
                     <div class="pt-4">
-                        <a href="#" class="btn-dark btn btn-block w-100">Pay Now</a>
+                        {{-- <a href="#" class="btn-dark btn btn-block w-100">Pay Now</a> --}}
+                        <button type="submit" class="btn-dark btn btn-block w-100">Pay Now</button>
                     </div>                      
                 </div>
 
@@ -176,12 +190,40 @@
                 
             </div>
         </div>
+    </form>
     </div>
 </section>
 @endsection
 
 @section('customJS')
 <script>
+    $("#orderForm").submit(function(event){
+        event.preventDefault();
+       
+        $.ajax({
+            url:"{{ route('front.processcheckout') }}",
+            type:"post",
+            data:$(this).serializeArray(),
+            dataType:'json',
+            success:function(response){
+                var errors= response.errors;
+                if(errors.first_name){
+                    $("#first_name").addClass('is-invalid').siblings('p').addClass('invalid-feedback').html(errors.first_name);
+                   // $("#first_name").addClass('is-invalid')
+                }else{
+                    $("#first_name").removeClass('is-invalid')siblings('p').removeClass('invalid-feedback').html('');
+                  //  $("#first_name").removeClass('is-invalid');
+                }
+                
+               
+            },
+            error:function(){
+               
+            }
+        })
+
+    })
+   
     $("#payment_method_one").click(function(){
         if($(this).is(":checked") == true){
             $("#card-payment-form").addClass("d-none");
