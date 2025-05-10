@@ -62,8 +62,10 @@ class AuthController extends Controller
         ]);
 
         if($validator->passes()){
+          
             if(Auth::attempt(['email'=>$request->email,'password'=>$request->password],
             $request->get('remember'))){
+                //   dd( Auth::user());
 
                 if(session()->has('url.intended')){ 
                     return redirect(session()->get('url.intended')); //get the url.intended from session 

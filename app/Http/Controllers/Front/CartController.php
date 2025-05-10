@@ -9,6 +9,9 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Models\CustomerAddress;
+use App\Models\User;
+use App\Models\Order;
 
 
 class CartController extends Controller
@@ -162,26 +165,24 @@ class CartController extends Controller
 
         $countries=Country::orderBy('id','desc')->get();
         $data['countries']=$countries;
-    
-
-
-        
-
         return view('front.checkout',$data);
 
     } public function processCheckout(Request $request){
+
+        //dd($request->all());
 
       $validator=  Validator::make($request->all(),[
             'first_name'=>'required',
             'last_name'=>'required',
             'email'=>'required|email',
             'country'=>'required',
-            'phone'=>'required',
+            'mobile'=>'required',
             'address'=>'required',
             'city'=>'required',
             'state'=>'required',
             'zip'=>'required',
             'mobile'=>'required',
+            
             
         ]);
         if($validator->fails()){
@@ -191,6 +192,51 @@ class CartController extends Controller
                 'errors'=>$validator->errors(),
             ]);
         }
+        $user=Auth::user();
+
+        CustomerAddress::updateOrCreate(
+            ['user_id'=>$user->id],
+            [
+                'first_name'=>$request->first_name,
+                'last_name'=>$request->last_name,
+                'email'=>$request->email,
+                'mobile'=>$request->mobile,
+                'country_id'=>$request->country,
+                'address'=>$request->address,
+                'apartment'=>$request->apartment,
+                'city'=>$request->city,
+                'state'=>$request->state,
+                'zip'=>$request->zip,
+                 'payment_method' => 'required|in:cod,stripe',
+            ]
+        );
+
+
+         if($request->payment_method == 'cod'){
+            $shipping=0;
+            $discount=0;
+            $subTotal=Cart::subtotal('2', '.', '');
+            $grandTotal=$subTotal + $shipping;
+
+            $order=new Order;
+            $order->user_id=$user->id;
+            $order->sub_total=$subTotal;
+            $order->shipping=$shipping;
+            $order->grand_total=$grandTotal;
+
+             $order->first_name=$request->first_name;
+                $order->last_name=$request->last_name;
+                $order->email=$request->email;
+                $order->mobile=$request->mobile;
+                $order->country_id=$request->country;
+                $order->address=$request->address;
+                $order->apartment=$request->apartment;
+                $order->city=$request->city;
+                $order->state=$request->state;
+                $order->zip=$request->zip;
+                $order->notes=$request->order_notes;
+                $order->save();
+         }
     }
 }
 
