@@ -217,7 +217,8 @@
             dataType:'json',
             success:function(response){
                 var errors=response.errors;
-                if(errors.first_name){
+                if(response.status == false){
+                    if(errors.first_name){
                     $("#first_name").addClass('is-invalid')
                     .siblings('p').addClass('invalid-feedback')
                     .html(errors.first_name)
@@ -319,6 +320,10 @@
                 }
                 
                 
+                }
+                else{
+                    window.location.href="{{ url('/thanks/') }}"+response.orderId;
+                }
 
                
             }

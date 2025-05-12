@@ -40,6 +40,7 @@ Route::group(['prefix'=>'account'],function(){
         Route::get('/logout',[AuthController::class,'logout'])->name('account.logout');
         Route::match(['get', 'post'], '/checkout', [CartController::class, 'checkout'])->name('front.checkout');
         Route::post('/process-checkout',[CartController::class,'processCheckout'])->name('front.processcheckout');
+        Route::get('/thanks/{orderId}',[CartController::class,'thankYou'])->name('front.thankyou');
     });
 });
 

@@ -20,8 +20,7 @@ class CustomerAddress extends Model
         'city',
         'state',
         'zip',
-        'created_at',
-        'updated_at',
+       
     ];
 
 
