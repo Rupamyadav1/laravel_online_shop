@@ -322,7 +322,7 @@
                 
                 }
                 else{
-                    window.location.href="{{ url('/thanks/') }}"+response.orderId;
+                    window.location.href="{{ url('/thanks/') }}/"+response.orderId;
                 }
 
                

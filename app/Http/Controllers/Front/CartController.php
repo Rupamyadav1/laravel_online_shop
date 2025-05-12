@@ -240,7 +240,7 @@ class CartController extends Controller
                 $orderItem->name=$item->name;
                 $orderItem->qty=$item->qty;
                 $orderItem->price=$item->price;
-                 $orderItem->price=$item->price * $item->qty;
+                 $orderItem->total=$item->price * $item->qty;
                  $orderItem->save();
 
             }
@@ -257,5 +257,10 @@ class CartController extends Controller
         else{
 
         }
+    }
+
+    public function thankYou($id){
+        $data['orderId']=$id;
+        return view('front.thank',$data);
     }
 }

@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Admin\ProductSubCategoryController;
 use App\Http\Controllers\Admin\CategoryImageController;
+use App\Http\Controllers\Admin\ShippingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\ShopController;
@@ -25,6 +26,8 @@ Route::post('/add-to-cart',[CartController::class,'addToCart'])->name('front.add
 Route::get('/cart',[CartController::class,'cart'])->name('front.cart');
 Route::post('/update-to-cart',[CartController::class,'updateCart'])->name('front.updateCart');
 Route::get('/remove-to-cart',[CartController::class,'delete'])->name('front.deleteCart');
+        Route::get('/thanks/{orderId}',[CartController::class,'thankYou'])->name('front.thankyou');
+
 
 Route::group(['prefix'=>'account'],function(){
     Route::group(['middleware'=>'guest'],function(){
@@ -40,11 +43,11 @@ Route::group(['prefix'=>'account'],function(){
         Route::get('/logout',[AuthController::class,'logout'])->name('account.logout');
         Route::match(['get', 'post'], '/checkout', [CartController::class, 'checkout'])->name('front.checkout');
         Route::post('/process-checkout',[CartController::class,'processCheckout'])->name('front.processcheckout');
-        Route::get('/thanks/{orderId}',[CartController::class,'thankYou'])->name('front.thankyou');
     });
 });
 
     Route::group(['prefix' => 'admin'], function () {
+
     Route::group(['middleware' => 'admin.guest'], function () {
         Route::get('/login', [HomeController::class, 'index'])->name('admin.login');
         Route::post('/authenticate', [HomeController::class, 'authenticate'])->name('admin.authenticate');
@@ -99,6 +102,12 @@ Route::group(['prefix'=>'account'],function(){
         Route::put('/products/{productId}/update', [ProductController::class, 'update'])->name('products.update');
         Route::post('/products/images/update', [ProductImageController::class, 'store'])->name('products.images.update');
         Route::post('/products/images/delete', [ProductImageController::class, 'destroy'])->name('products.images.delete');
+
+        Route::get('/shipping/create', [ShippingController::class, 'create'])->name('shipping.create');
+        Route::post('/shipping/store', [ShippingController::class, 'store'])->name('shipping.store');
+
+
+
         Route::get('/product-subcategory', [ProductSubCategoryController::class, 'index'])->name('product-subcategory.index');
         Route::get('/get-products', [ProductController::class, 'getProducts'])->name('product.getProducts');
 
@@ -110,13 +119,6 @@ Route::group(['prefix'=>'account'],function(){
         Route::get('/sub-category/{subcategoryId}/edit', [SubCategoryController::class, 'edit'])->name('sub-category.edit');
         Route::put('/sub-category/{subcategoryId}/update', [SubCategoryController::class, 'update'])->name('sub-category.update');
         Route::get('/sub-category/{subcategoryId}/delete', [SubCategoryController::class, 'destroy'])->name('sub-category.delete');
-
-
-
-
-
-
-
 
 
 
