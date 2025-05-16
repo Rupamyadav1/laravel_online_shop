@@ -13,7 +13,7 @@
                             <div class="col">
                                 <div class="mb-2 mt-2">
                                    <select class="form-select" name="country" id="country">
-                                    <option>Select country name</option>
+                                    <option value="">Select country name</option>
                                     @foreach($countries as $country)
                                     <option value="{{ $country->id }}">{{ $country->name }}</option>
                                     @endforeach
@@ -81,7 +81,7 @@
                         var error = response["errors"];
                         if (error["country"]) {
                             $("#country").addClass("is-invalid")
-                                .siblings('p').addClass("invalid-feedback").html(error['name'])
+                                .siblings('p').addClass("invalid-feedback").html(error['country'])
                         } else {
                             $("#country").removeClass("is-invalid")
                                 .siblings('p').removeClass("invalid-feedback").html("")
@@ -89,7 +89,7 @@
 
                         if (error["amount"]) {
                             $("#amount").addClass("is-invalid")
-                                .siblings('p').addClass("invalid-feedback").html(error['slug'])
+                                .siblings('p').addClass("invalid-feedback").html(error['amount'])
                         } else {
                             $("#amount").removeClass("is-invalid")
                                 .siblings('p').removeClass("invalid-feedback").html("")
