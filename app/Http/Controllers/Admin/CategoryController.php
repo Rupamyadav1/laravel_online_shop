@@ -11,9 +11,6 @@ use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\Image;
 use Illuminate\Support\Facades\File;
 
-
-
-
 class CategoryController extends Controller
 {
     public function index(Request $request)
@@ -26,8 +23,6 @@ class CategoryController extends Controller
 
         }
         
-        
-
         $categories=$categories->paginate(10);
         
         $data['categories']=$categories;

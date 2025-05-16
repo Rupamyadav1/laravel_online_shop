@@ -103,7 +103,7 @@ Route::group(['prefix'=>'account'],function(){
         Route::post('/products/images/update', [ProductImageController::class, 'store'])->name('products.images.update');
         Route::post('/products/images/delete', [ProductImageController::class, 'destroy'])->name('products.images.delete');
 
-        Route::get('/shipping/create', [ShippingController::class, 'create'])->name('shipping.create');
+        Route::get('/shipping/index', [ShippingController::class, 'create'])->name('shipping.create');
         Route::post('/shipping/store', [ShippingController::class, 'store'])->name('shipping.store');
 
 

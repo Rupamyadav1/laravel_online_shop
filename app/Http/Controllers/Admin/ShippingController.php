@@ -14,7 +14,13 @@ class ShippingController extends Controller
     public function create(){
        $countries= Country::get();
        $data['countries'] = $countries;
-       return view('admin.shipping.create', $data);
+     $shippingChargers=  ShippingCharge::select('shipping_charges.*','countries.name')
+     ->leftjoin('countries', 'countries.id','shipping_charges.country_id')->get();
+     $data['shippingChargers'] = $shippingChargers;
+     
+        
+        return view('admin.shipping.index', $data);
+      
     }
 
     public function store(Request $request){
