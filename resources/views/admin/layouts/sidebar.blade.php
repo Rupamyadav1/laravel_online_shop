@@ -209,74 +209,7 @@
 
            
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarMultiLevel" aria-expanded="false"
-                    aria-controls="sidebarMultiLevel" class="side-nav-link">
-                    <span class="menu-icon"><i class="ri-share-line"></i></span>
-                    <span class="menu-text">Shipping </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <div class="collapse" id="sidebarMultiLevel">
-                    <ul class="sub-menu">
-                        <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel" aria-expanded="false"
-                                aria-controls="sidebarSecondLevel" class="side-nav-link">
-                                <span class="menu-text"> Add Shipping </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <div class="collapse" id="sidebarSecondLevel">
-                                <ul class="sub-menu">
-                                    <li class="side-nav-item">
-                                        <a href="javascript: void(0);" class="side-nav-link">
-                                            <span class="menu-text">Shipping</span>
-                                        </a>
-                                    </li>
-                                    <li class="side-nav-item">
-                                        <a href="javascript: void(0);" class="side-nav-link">
-                                            <span class="menu-text">Item 2</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarThirdLevel" aria-expanded="false"
-                                aria-controls="sidebarThirdLevel" class="side-nav-link">
-                                <span class="menu-text"> Shiiping </span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <div class="collapse" id="sidebarThirdLevel">
-                                <ul class="sub-menu">
-                                    <li class="side-nav-item">
-                                        <a href="javascript: void(0);" class="side-nav-link">Item 1</a>
-                                    </li>
-                                    <li class="side-nav-item">
-                                        <a data-bs-toggle="collapse" href="#sidebarFourthLevel" aria-expanded="false"
-                                            aria-controls="sidebarFourthLevel" class="side-nav-link">
-                                            <span class="menu-text"> Item 2 </span>
-                                            <span class="menu-arrow"></span>
-                                        </a>
-                                        <div class="collapse" id="sidebarFourthLevel">
-                                            <ul class="sub-menu">
-                                                <li class="side-nav-item">
-                                                    <a href="javascript: void(0);" class="side-nav-link">
-                                                        <span class="menu-text">Item 2.1</span>
-                                                    </a>
-                                                </li>
-                                                <li class="side-nav-item">
-                                                    <a href="javascript: void(0);" class="side-nav-link">
-                                                        <span class="menu-text">Item 2.2</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+            
 
           
 
@@ -284,19 +217,19 @@
                 <a data-bs-toggle="collapse" href="#sidebarIcons" aria-expanded="false" aria-controls="sidebarIcons"
                     class="side-nav-link">
                     <span class="menu-icon"><i class="ri-shapes-line"></i></span>
-                    <span class="menu-text"> Orders </span>
+                    <span class="menu-text"> Shipping</span>
                     <span class="menu-arrow"></span>
                 </a>
                 <div class="collapse" id="sidebarIcons">
                     <ul class="sub-menu">
                         <li class="side-nav-item">
                             <a href="icons-remix.html" class="side-nav-link">
-                                <span class="menu-text">Add Orders</span>
+                                <span class="menu-text">Shipping</span>
                             </a>
                         </li>
                         <li class="side-nav-item">
-                            <a href="icons-solar.html" class="side-nav-link">
-                                <span class="menu-text">Orders</span>
+                            <a href="{{ route('shipping.create') }}" class="side-nav-link">
+                                <span class="menu-text">Add Shipping</span>
                             </a>
                         </li>
                     </ul>
