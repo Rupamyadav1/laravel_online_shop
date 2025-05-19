@@ -13,9 +13,8 @@
                             <div class="col">
                                 <div class="mb-2 mt-2">
                                    <select class="form-select" name="country" id="country">
-                                    <option value="">Select country name</option>
                                     @foreach($countries as $country)
-                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                    <option value="{{ $country->id}}" {{ $shipping->country_id == $country->id ? 'selected' :''}} >{{ $country->name }}</option>
                                     @endforeach
                                     <option value="rest_of_world">Rest of the world</option>
                                    </select>
@@ -26,7 +25,7 @@
                                 <div class="mb-2 mt-2">
                                     
                                     <input type="text" class="form-control" name="amount" id="amount"
-                                        placeholder="amount" >
+                                        placeholder="amount" value="{{ $shipping->amount }}">
                                         <p></p>
 
                                 </div>
@@ -51,55 +50,24 @@
 
 @section('customJS')
     <script>
-       
-
         $("#shippingForm").submit(function(event) {
             event.preventDefault();
             var element = $(this);
-            $("button[type=submit]").prop("disable", true);
             $.ajax({
-
-                url: '{{ route('shipping.store') }}',
-                type: 'post',
+                url: '{{ route('shipping.update', $shipping->id) }}',
+                
+                type: 'put',
                 data: element.serializeArray(),
                 dataType: 'json',
-                headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    },
+                 headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
                 success: function(response) {
-                     window.location.href = "{{ route('shipping.index') }}"
-                    $("button[type=submit]").prop("disable", false);
+                    if (response["status"] == true) {
+                        window.location.href = "{{ route('shipping.index') }}"
 
-                    if (response['status'] == true) {
-                        $("#country").removeClass("is-invalid")
-                            .next('p').removeClass("invalid-feedback").html("");
-
-                        $("#amount").removeClass("is-invalid")
-                            .siblings('p').removeClass("invalid-feedback").html("")
-
-                    } else {
-                        var error = response["errors"];
-                        if (error["country"]) {
-                            $("#country").addClass("is-invalid")
-                                .siblings('p').addClass("invalid-feedback").html(error['country'])
-                        } else {
-                            $("#country").removeClass("is-invalid")
-                                .siblings('p').removeClass("invalid-feedback").html("")
-                        }
-
-                        if (error["amount"]) {
-                            $("#amount").addClass("is-invalid")
-                                .siblings('p').addClass("invalid-feedback").html(error['amount'])
-                        } else {
-                            $("#amount").removeClass("is-invalid")
-                                .siblings('p').removeClass("invalid-feedback").html("")
-                        }
 
                     }
-
-
-
-
                 },
                 error: function(jqXHR, exception) {
                     console.log("something went wrong");

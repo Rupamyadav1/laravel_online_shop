@@ -3,13 +3,13 @@
 @extends('admin.layouts.app')
 
 @section('main-content')
-@dd($shippingChargers)
+
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header border-bottom card-tabs d-flex flex-wrap align-items-center gap-2">
                     <div class="flex-grow-1">
-                        <h4 class="header-title">Category</h4>
+                        <h4 class="header-title">Shipping Management</h4>
                     </div>
                     @if(session('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -32,8 +32,8 @@
                                 <button class="btn btn-primary" onclick="window.location.href='{{ route('categories.index') }}' ">Reset</button>
                             </div>
                         </div>
-                        <a href="{{ route('categories.create') }}" class="btn btn-primary"><i
-                                class="ri-add-line me-1"></i>Add Category</a>
+                        <a href="{{ route('shipping.create') }}" class="btn btn-primary"><i
+                                class="ri-add-line me-1"></i>Add Shipping</a>
                     </div><!-- end d-flex -->
                 </div>
 
@@ -43,8 +43,8 @@
                             <tr>
 
                                 <th class="fs-12 text-uppercase text-muted">ID</th>
-                                <th class="fs-12 text-uppercase text-muted">Name </th>
-                                <th class="fs-12 text-uppercase text-muted">Slug</th>
+                                <th class="fs-12 text-uppercase text-muted">Country </th>
+                                <th class="fs-12 text-uppercase text-muted">Amount</th>
 
                                 <th class="fs-12 text-uppercase text-muted">Status</th>
                                 <th class="text-center fs-12 text-uppercase text-muted" style="width: 120px;">Action</th>
@@ -57,18 +57,13 @@
 
 
                         <tbody>
-                            @if (!empty($shippingChargers))
-                                    @foreach ($shippingChargers as $shippingCharger)
-                                           
-
-
-
-
+                            @if ($shippingChargers->isNotEmpty())
+                                    @foreach ($shippingChargers as $shippingCharge)
                                                     <tr>
 
                                                         <td><span class="text-muted fw-semibold">{{$i++}}</span></td>
-                                                        <td>{{ ($shippingCharger->country_id== 'rest_of_world' ? 'Rest of world':$shippingCharger_name) }}</td>
-                                                        <td><span class="fs-15 text-muted">{{$shippingCharger->amount}}</span></td>
+                                                        <td>{{ $shippingCharge->country_id == 'rest_of_world' ? 'Rest of World' :$shippingCharge->name}}</td>
+                                                        <td><span class="fs-15 text-muted">{{$shippingCharge->amount}}</span></td>
 
                                                         <td>
                                                             <span class="badge bg-success-subtle text-success fs-12 p-1">Confirmed</span>
@@ -78,10 +73,10 @@
                                                                 <a href="javascript:void(0);"
                                                                     class="btn btn-soft-primary btn-icon btn-sm rounded-circle"> <i
                                                                         class="ri-eye-line"></i></a>
-                                                                <a href="{{ route('categories.edit',$shippingCharger->id) }}"
+                                                                <a href="{{ route('shipping.edit',$shippingCharge->id) }}"
                                                                     class="btn btn-soft-success btn-icon btn-sm rounded-circle"> <i
                                                                         class="ri-edit-box-line fs-16"></i></a>
-                                                                <a onclick="deleteCategory({{ $shippingCharger->id }})" 
+                                                                <a onclick="deleteShipping({{ $shippingCharge->id }})" 
                                                                     class="btn btn-soft-danger btn-icon btn-sm rounded-circle"> <i
                                                                         class="ri-delete-bin-line"></i></a>
                                                             </div>
@@ -91,7 +86,30 @@
                                            
                                     @endforeach
                             @endif
-                    </table><!-- end table -->
+                            <tr>
+
+                                                        <td><span class="text-muted fw-semibold">{{$i++}}</span></td>
+                                                        <td>Rest of World</td>
+                                                        <td><span class="fs-15 text-muted">200</span></td>
+
+                                                        <td>
+                                                            <span class="badge bg-success-subtle text-success fs-12 p-1">Confirmed</span>
+                                                        </td>
+                                                        <td class="pe-3">
+                                                            <div class="hstack gap-1 justify-content-end">
+                                                                <a href="javascript:void(0);"
+                                                                    class="btn btn-soft-primary btn-icon btn-sm rounded-circle"> <i
+                                                                        class="ri-eye-line"></i></a>
+                                                                <a href="{{ route('shipping.edit',$shippingCharge->id) }}"
+                                                                    class="btn btn-soft-success btn-icon btn-sm rounded-circle"> <i
+                                                                        class="ri-edit-box-line fs-16"></i></a>
+                                                                <a onclick="deleteShipping({{ $shippingCharge->id }})" 
+                                                                    class="btn btn-soft-danger btn-icon btn-sm rounded-circle"> <i
+                                                                        class="ri-delete-bin-line"></i></a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                    </table>
                     
                 </div>
 
@@ -104,9 +122,9 @@
 
 @section('customJS')
 <script>
-    function deleteCategory(id) {
+    function deleteShipping(id) {
         
-        var url = "{{ route('categories.delete', 'ID') }}"; // 'ID' is just a placeholder
+        var url = "{{ route('shipping.delete', 'ID') }}"; // 'ID' is just a placeholder
         var newUrl = url.replace("ID", id); // Replace placeholder with actual ID
             Swal.fire({
                 title: "Are you sure?",
@@ -129,7 +147,7 @@
                             if (response.status === true) {
                                 
                                 Swal.fire("Deleted!", response.message, "success");
-                                window.location.href="{{ route('categories.index') }}"
+                                window.location.href="{{ route('shipping.index') }}"
                             } else {
                                 Swal.fire("Error!", response.message, "error");
                             }

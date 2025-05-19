@@ -223,7 +223,7 @@
                 <div class="collapse" id="sidebarIcons">
                     <ul class="sub-menu">
                         <li class="side-nav-item">
-                            <a href="icons-remix.html" class="side-nav-link">
+                            <a href="{{ route('shipping.index') }}" class="side-nav-link">
                                 <span class="menu-text">Shipping</span>
                             </a>
                         </li>

@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Models\CustomerAddress;
 use App\Models\User;
+use App\Models\ShippingCharge;
 use App\Models\Order;
+use App\Models\Shipping;
 use App\Models\OrderItem;
 
 
@@ -121,6 +123,7 @@ class CartController extends Controller
                 'message' => 'item removed successfully',
             ]);
         } else {
+            
             session()->flash('error', 'item not found');
 
             return response()->json([
@@ -143,17 +146,44 @@ class CartController extends Controller
             if (!session()->has('url.intended')) {
 
                 session(['url.intended' => url()->current()]); //set the url.intended to current_url
+
+                
+                
             }
 
             return redirect()->route('account.login');
+
         }
 
 
+        $customerAddress = CustomerAddress::where('user_id', Auth::user()->id)->first();
 
+                
         session()->forget('url.intended');
 
-        $countries = Country::orderBy('id', 'desc')->get();
+        $countries = Country::orderBy('name', 'ASC')->get();
+       
+
+        $userCountry=$customerAddress->country_id;
+       // echo $userCountry;
+
+        $shippingInfo= ShippingCharge::where('country_id',$userCountry)->first();
+
+        //echo $shippingInfo->amount;
+
+        $totalQty=0;
+        $totalShippingCharge=0;
+
+        foreach (Cart::content() as $item) {
+            $totalQty += $item->qty;
+        }
+
+        $totalShippingCharge=$totalQty * $shippingInfo->amount;
+
         $data['countries'] = $countries;
+        $data['customerAddress'] = $customerAddress;
+        
+        $data['totalShippingCharge'] = $totalShippingCharge;
         return view('front.checkout', $data);
     }
     public function processCheckout(Request $request)

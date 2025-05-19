@@ -102,11 +102,14 @@ Route::group(['prefix'=>'account'],function(){
         Route::put('/products/{productId}/update', [ProductController::class, 'update'])->name('products.update');
         Route::post('/products/images/update', [ProductImageController::class, 'store'])->name('products.images.update');
         Route::post('/products/images/delete', [ProductImageController::class, 'destroy'])->name('products.images.delete');
+        
+        Route::get('/shipping/index', [ShippingController::class, 'index'])->name('shipping.index');
 
-        Route::get('/shipping/index', [ShippingController::class, 'create'])->name('shipping.create');
+        Route::get('/shipping/create', [ShippingController::class, 'create'])->name('shipping.create');
         Route::post('/shipping/store', [ShippingController::class, 'store'])->name('shipping.store');
-
-
+        Route::get('/shipping/{shipping}/edit', [ShippingController::class, 'edit'])->name('shipping.edit');
+        Route::put('/shipping/{shipping}/update', [ShippingController::class, 'update'])->name('shipping.update');
+        Route::get('/shipping/{shipping}/delete', [ShippingController::class, 'destroy'])->name('shipping.delete');
 
         Route::get('/product-subcategory', [ProductSubCategoryController::class, 'index'])->name('product-subcategory.index');
         Route::get('/get-products', [ProductController::class, 'getProducts'])->name('product.getProducts');
