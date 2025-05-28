@@ -49,7 +49,7 @@
 	</div>
 </footer>
 <script src="js/jquery-3.6.0.min.js"></script>
-<script src="js/bootstrap.bundle.5.1.3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/instantpages.5.1.0.min.js"></script>
 <script src="js/lazyload.17.6.0.min.js"></script>
 <script src="js/slick.min.js"></script>

@@ -86,29 +86,7 @@
                                            
                                     @endforeach
                             @endif
-                            <tr>
-
-                                                        <td><span class="text-muted fw-semibold">{{$i++}}</span></td>
-                                                        <td>Rest of World</td>
-                                                        <td><span class="fs-15 text-muted">200</span></td>
-
-                                                        <td>
-                                                            <span class="badge bg-success-subtle text-success fs-12 p-1">Confirmed</span>
-                                                        </td>
-                                                        <td class="pe-3">
-                                                            <div class="hstack gap-1 justify-content-end">
-                                                                <a href="javascript:void(0);"
-                                                                    class="btn btn-soft-primary btn-icon btn-sm rounded-circle"> <i
-                                                                        class="ri-eye-line"></i></a>
-                                                                <a href="{{ route('shipping.edit',$shippingCharge->id) }}"
-                                                                    class="btn btn-soft-success btn-icon btn-sm rounded-circle"> <i
-                                                                        class="ri-edit-box-line fs-16"></i></a>
-                                                                <a onclick="deleteShipping({{ $shippingCharge->id }})" 
-                                                                    class="btn btn-soft-danger btn-icon btn-sm rounded-circle"> <i
-                                                                        class="ri-delete-bin-line"></i></a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
+                           
                     </table>
                     
                 </div>
@@ -122,7 +100,8 @@
 
 @section('customJS')
 <script>
-    function deleteShipping(id) {
+    function deleteShipping(id) 
+    {
         
         var url = "{{ route('shipping.delete', 'ID') }}"; // 'ID' is just a placeholder
         var newUrl = url.replace("ID", id); // Replace placeholder with actual ID

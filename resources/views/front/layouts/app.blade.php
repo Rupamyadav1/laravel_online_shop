@@ -38,7 +38,12 @@
             </div>
             <div class="" id="myNavbar" style="margin-top:-75px;">
                 <ul class="nav navbar-nav">
-                    <li><a href="#contact">My Account</a></li>
+                    @if (Auth::user()) 
+                                            <li><a href="{{ route('account.profile') }}">My Account</a></li>
+@else
+                                            <li><a href="{{ route('account.login') }}">Login/Register</a></li>
+
+                    @endif
                     <li>
                         <form method="post" id="search-form" action="">
                             <input type="text" name="text_search" id="text_search" placeholder="Search for products" class="search-input">

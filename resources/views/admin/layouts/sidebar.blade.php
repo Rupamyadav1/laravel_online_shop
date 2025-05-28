@@ -246,128 +246,42 @@
                 <div class="collapse" id="sidebarCharts">
                     <ul class="sub-menu">
                         <li class="side-nav-item">
-                            <a href="charts-apex-area.html" class="side-nav-link">
+                            <a href="{{ route('discount.create') }}" class="side-nav-link">
                                 <span class="menu-text">Add Discount</span>
                             </a>
                         </li>
                         <li class="side-nav-item">
-                            <a href="charts-apex-bar.html" class="side-nav-link">
+                            <a href="{{ route('discount.index') }}" class="side-nav-link">
                                 <span class="menu-text">Discount</span>
                             </a>
                         </li>
-                        <li class="side-nav-item">
-                            <a href="charts-apex-bubble.html" class="side-nav-link">
-                                <span class="menu-text">Bubble</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="charts-apex-candlestick.html" class="side-nav-link">
-                                <span class="menu-text">Candlestick</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="charts-apex-column.html" class="side-nav-link">
-                                <span class="menu-text">Column</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="charts-apex-heatmap.html" class="side-nav-link">
-                                <span class="menu-text">Heatmap</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="charts-apex-line.html" class="side-nav-link">
-                                <span class="menu-text">Line</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="charts-apex-mixed.html" class="side-nav-link">
-                                <span class="menu-text">Mixed</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="charts-apex-timeline.html" class="side-nav-link">
-                                <span class="menu-text">Timeline</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="charts-apex-boxplot.html" class="side-nav-link">
-                                <span class="menu-text">Boxplot</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="charts-apex-treemap.html" class="side-nav-link">
-                                <span class="menu-text">Treemap</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="charts-apex-pie.html" class="side-nav-link">
-                                <span class="menu-text">Pie</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="charts-apex-radar.html" class="side-nav-link">
-                                <span class="menu-text">Radar</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="charts-apex-radialbar.html" class="side-nav-link">
-                                <span class="menu-text">RadialBar</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="charts-apex-scatter.html" class="side-nav-link">
-                                <span class="menu-text">Scatter</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="charts-apex-polar-area.html" class="side-nav-link">
-                                <span class="menu-text">Polar Area</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="charts-apex-sparklines.html" class="side-nav-link">
-                                <span class="menu-text">Sparklines</span>
-                            </a>
-                        </li>
+                       
                     </ul>
                 </div>
             </li>
 
-            <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarForms" aria-expanded="false" aria-controls="sidebarForms"
-                    class="side-nav-link">
-                    <span class="menu-icon"><i class="ri-contrast-line"></i></span>
-                    <span class="menu-text"> Forms </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                
-            </li>
+            
 
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarTables" aria-expanded="false" aria-controls="sidebarTables"
                     class="side-nav-link">
                     <span class="menu-icon"><i class="ri-table-view"></i></span>
-                    <span class="menu-text"> Tables </span>
+                    <span class="menu-text"> Orders </span>
                     <span class="menu-arrow"></span>
                 </a>
                 <div class="collapse" id="sidebarTables">
                     <ul class="sub-menu">
                         <li class="side-nav-item">
-                            <a href="tables-basic.html" class="side-nav-link">
-                                <span class="menu-text">Basic Tables</span>
+                            <a href="{{ route('orders.index') }}" class="side-nav-link">
+                                <span class="menu-text">Orders</span>
                             </a>
                         </li>
                         <li class="side-nav-item">
                             <a href="tables-gridjs.html" class="side-nav-link">
-                                <span class="menu-text">Gridjs Tables</span>
+                                <span class="menu-text">Add Orders</span>
                             </a>
                         </li>
-                        <li class="side-nav-item">
-                            <a href="tables-datatable.html" class="side-nav-link">
-                                <span class="menu-text">Datatable Tables</span>
-                            </a>
-                        </li>
+                        
                     </ul>
                 </div>
             </li>
@@ -406,4 +320,7 @@
 
         <div class="clearfix"></div>
     </div>
+
+
+
 </div>

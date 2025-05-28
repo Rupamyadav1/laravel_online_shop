@@ -136,7 +136,7 @@
                 </div>
             </div>
         </div>
-        @endif
+       @else
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body d-flex justify-content-center align-items-center">
@@ -144,6 +144,7 @@
                 </div>
             </div>
         </div>
+         @endif
     </section>
 @endsection
 

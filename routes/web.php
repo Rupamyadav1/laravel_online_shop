@@ -12,41 +12,52 @@ use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Admin\ProductSubCategoryController;
 use App\Http\Controllers\Admin\CategoryImageController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ShippingController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DiscountCodeController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\ShopController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 Route::get('/', [FrontController::class, 'index'])->name('front.home');
-Route::get('/shop/{category?}/{subCategory?}/',[ShopController::class,'index'])->name('front.shop');
-Route::get('/products/{slug}',[ProductController::class,'product'])->name('front.product');
-Route::post('/add-to-cart',[CartController::class,'addToCart'])->name('front.addToCart');
-Route::get('/cart',[CartController::class,'cart'])->name('front.cart');
-Route::post('/update-to-cart',[CartController::class,'updateCart'])->name('front.updateCart');
-Route::get('/remove-to-cart',[CartController::class,'delete'])->name('front.deleteCart');
-        Route::get('/thanks/{orderId}',[CartController::class,'thankYou'])->name('front.thankyou');
+Route::get('/shop/{category?}/{subCategory?}/', [ShopController::class, 'index'])->name('front.shop');
+Route::get('/products/{slug}', [ProductController::class, 'product'])->name('front.product');
+Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('front.addToCart');
+Route::get('/cart', [CartController::class, 'cart'])->name('front.cart');
+Route::post('/update-to-cart', [CartController::class, 'updateCart'])->name('front.updateCart');
+Route::get('/remove-to-cart', [CartController::class, 'delete'])->name('front.deleteCart');
+Route::get('/thanks/{orderId}', [CartController::class, 'thankYou'])->name('front.thankyou');
+Route::get('/getOrderSummary', [CartController::class, 'getOrderSummary'])->name('front.getOrderSummary');
+Route::post('/discount-apply', [CartController::class, 'applyDiscount'])->name('front.applyDiscount');
+Route::post('/remove-coupon', [CartController::class, 'removeCoupon'])->name('front.removeCoupon');
+Route::get('/orders',[OrderController::class,'index'])->name('orders.index');
+Route::get('/order-detail/{orderId}',[OrderController::class,'detail'])->name('order.detail');
+Route::post('/order_status_change/{orderId}',[OrderController::class,'orderStatusChange'])->name('order.status.change');
 
 
-Route::group(['prefix'=>'account'],function(){
-    Route::group(['middleware'=>'guest'],function(){
-        Route::get('/login',[AuthController::class,'login'])->name('account.login');
-        Route::post('/login-authenticate',[AuthController::class,'authenticate'])->name('account.authenticate');
+Route::group(['prefix' => 'account'], function () {
+    Route::group(['middleware' => 'guest'], function () {
+        Route::get('/login', [AuthController::class, 'login'])->name('account.login');
+        Route::post('/login-authenticate', [AuthController::class, 'authenticate'])->name('account.authenticate');
 
-        Route::get('/register',[AuthController::class,'register'])->name('account.register');
-        Route::post('/register',[AuthController::class,'processRegister'])->name('account.processRegister');
+        Route::get('/register', [AuthController::class, 'register'])->name('account.register');
+        Route::post('/register', [AuthController::class, 'processRegister'])->name('account.processRegister');
     });
 
-    Route::group(['middleware'=>'auth'],function(){
-        Route::get('/profile',[AuthController::class,'profile'])->name('account.profile');
-        Route::get('/logout',[AuthController::class,'logout'])->name('account.logout');
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/profile', [AuthController::class, 'profile'])->name('account.profile');
+        Route::get('/orders', [AuthController::class, 'orders'])->name('account.orders');
+        Route::get('/order-details/{orderId}', [AuthController::class, 'orderDetails'])->name('account.orderDeatils');
+
+        Route::get('/logout', [AuthController::class, 'logout'])->name('account.logout');
         Route::match(['get', 'post'], '/checkout', [CartController::class, 'checkout'])->name('front.checkout');
-        Route::post('/process-checkout',[CartController::class,'processCheckout'])->name('front.processcheckout');
+        Route::post('/process-checkout', [CartController::class, 'processCheckout'])->name('front.processcheckout');
     });
 });
 
-    Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['middleware' => 'admin.guest'], function () {
         Route::get('/login', [HomeController::class, 'index'])->name('admin.login');
@@ -54,7 +65,7 @@ Route::group(['prefix'=>'account'],function(){
     });
 
     // Protected routes (Only logged-in admins can access)
-        Route::group(['middleware' => 'admin.auth'], function () {
+    Route::group(['middleware' => 'admin.auth'], function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
         Route::post('/logout', [HomeController::class, 'logout'])->name('admin.logout');
         Route::get('/checking', [HomeController::class, 'ind'])->name('check');
@@ -68,6 +79,14 @@ Route::group(['prefix'=>'account'],function(){
         Route::get('/categories/{category}/delete', [CategoryController::class, 'destroy'])->name('categories.delete');
         Route::post('/products/images/update', [CategoryImageController::class, 'store'])->name('categories.images.update');
 
+        Route::get('/discount/index', [DiscountCodeController::class, 'index'])->name('discount.index');
+
+        Route::get('/discount/create', [DiscountCodeController::class, 'create'])->name('discount.create');
+        Route::post('/discount/store', [DiscountCodeController::class, 'store'])->name('discount.store');
+        Route::get('/discount/{discount}/edit', [DiscountCodeController::class, 'edit'])->name('discount.edit');
+        Route::post('/discount/{discount}/update', [DiscountCodeController::class, 'update'])->name('discount.update');
+        Route::get('/discount/{discount}/delete', [DiscountCodeController::class, 'destroy'])->name('discount.delete');
+
 
 
         Route::get('/getSlug', function (Request $request) {
@@ -76,8 +95,8 @@ Route::group(['prefix'=>'account'],function(){
                 $slug = Str::slug($request->title);
             }
             return response()->json([
-                'slug'=>$slug,
-                'status'=>true
+                'slug' => $slug,
+                'status' => true
             ]);
         })->name('getSlug');
 
@@ -95,14 +114,14 @@ Route::group(['prefix'=>'account'],function(){
         Route::get('/products/index', [ProductController::class, 'index'])->name('products.index');
         Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
         Route::post('/products/store', action: [ProductController::class, 'store'])->name('products.store');
-       
+
         Route::post('/upload-temp-image', action: [TempImageController::class, 'create'])->name('temp-images.create');
         Route::get('/products/{productId}/edit', [ProductController::class, 'edit'])->name('products.edit');
         Route::get('/products/{productId}/delete', [ProductController::class, 'destroy'])->name('products.delete');
         Route::put('/products/{productId}/update', [ProductController::class, 'update'])->name('products.update');
         Route::post('/products/images/update', [ProductImageController::class, 'store'])->name('products.images.update');
         Route::post('/products/images/delete', [ProductImageController::class, 'destroy'])->name('products.images.delete');
-        
+
         Route::get('/shipping/index', [ShippingController::class, 'index'])->name('shipping.index');
 
         Route::get('/shipping/create', [ShippingController::class, 'create'])->name('shipping.create');
@@ -122,8 +141,5 @@ Route::group(['prefix'=>'account'],function(){
         Route::get('/sub-category/{subcategoryId}/edit', [SubCategoryController::class, 'edit'])->name('sub-category.edit');
         Route::put('/sub-category/{subcategoryId}/update', [SubCategoryController::class, 'update'])->name('sub-category.update');
         Route::get('/sub-category/{subcategoryId}/delete', [SubCategoryController::class, 'destroy'])->name('sub-category.delete');
-
-
-
     });
 });

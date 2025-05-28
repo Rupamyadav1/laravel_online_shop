@@ -12,11 +12,13 @@
     <link href="{{asset('admin_assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('admin_assets/dropzone/dropzone.min.css') }}"  />
 
-   
+   {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> --}}
+
    
     
     <link href="{{ asset('admin_assets/css/select2.min.css') }}" rel="stylesheet" />
-    
+        <link href="{{ asset('admin_assets/css/datetimepicker.css') }}" rel="stylesheet" />
+
 </head>
 
 
@@ -527,6 +529,7 @@
     <script src="{{asset('admin_assets/js/vendor.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- App js -->
     <script src="{{asset('admin_assets/js/app.js')}}"></script>
@@ -557,6 +560,7 @@
 
 <script src="{{asset('admin_assets/js/bootstrap.bundle.5.1.3.min.js')}}"></script>
 <script src="{{asset('admin_assets/js/select2.min.js')}}"></script>
+<script src="{{asset('admin_assets/js/datetimepicker.js')}}"></script>
 
 
     @yield('customJS')

@@ -8,7 +8,7 @@
             <i class="fas fa-user-alt"></i> My Profile</a>
     </li>
     <li class="nav-item pb-2">
-        <a href="my-orders.php"  class="nav-link font-weight-bold" role="tab" aria-controls="tab-register" aria-expanded="false">
+        <a href="{{ route('account.orders') }}"  class="nav-link font-weight-bold" role="tab" aria-controls="tab-register" aria-expanded="false">
             <i class="fas fa-shopping-bag" style="padding-right: 7px;"></i>My Orders</a>
     </li>
     <li class="nav-item pb-2">
