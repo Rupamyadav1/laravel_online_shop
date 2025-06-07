@@ -133,9 +133,20 @@
                                             <a class="whishlist" href="222"><i class="far fa-heart"></i></a>
 
                                             <div class="product-action">
-                                                <a class="btn btn-dark" href="{{ route('front.addToCart') }}">
+                                                @if ($product->track_qty =='Yes')
+                                                @if ($product->qty > 0)
+                                                    <a class="btn btn-dark" href="{{ route('front.addToCart') }}">
                                                     <i class="fa fa-shopping-cart"></i> Add To Cart
                                                 </a>
+                                                @else
+                                                 <a class="btn btn-dark" href="{{ route('front.addToCart') }}">
+                                                    <i class="fa fa-shopping-cart"></i> Out of Stock
+                                                @endif
+                                                     @else
+                                                      <a class="btn btn-dark" href="{{ route('front.addToCart') }}">
+                                                    <i class="fa fa-shopping-cart"></i> Add To Cart
+                                                @endif
+                                               
                                             </div>
                                         </div>
                                         <div class="card-body text-center mt-3">
@@ -223,6 +234,10 @@ var slider = $(".js-range-slider").data("ionRangeSlider");
             })
             console.log(brands.toString());
             var url = "{{ url()->current() }}?";
+            var keyword=$("#search").val();
+            if(keyword.length > 0){
+                url+= "&search=" +keyword;
+            }
 
            
             url+= "&price_min=" + slider.result.from + "&price_max=" + slider.result.to;

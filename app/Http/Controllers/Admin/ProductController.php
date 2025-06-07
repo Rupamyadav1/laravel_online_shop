@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\ProductRating;
 use App\Models\TempImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -149,12 +150,12 @@ class ProductController extends Controller
         $subcategories = SubCategory::where('category_id', $product->category_id)->get();
         $productImages = ProductImage::where('product_id', $product->id)->get();
 
-        $relatedProducts=[];
+        $relatedProducts = [];
 
-        if(!empty($product->related_products)){
-            $productArray= explode(',',$product->related_products); //explode converts array to string
-           // dd([$product->related_products,$productArray]);
-            $relatedProducts= Product::whereIn('id',$productArray)->get();
+        if (!empty($product->related_products)) {
+            $productArray = explode(',', $product->related_products); //explode converts array to string
+            // dd([$product->related_products,$productArray]);
+            $relatedProducts = Product::whereIn('id', $productArray)->get();
         }
 
 
@@ -189,8 +190,8 @@ class ProductController extends Controller
             'is_featured' => 'required|in:Yes,No'
         ];
 
-        
-    
+
+
 
 
         $validator = Validator::make($request->all(), $rules);
@@ -254,57 +255,51 @@ class ProductController extends Controller
         ]);
     }
 
-    public function product($slug)
-    {
-        $slug=urldecode($slug);
-        $product = Product::where('slug', $slug)->with('product_images')->first();
-        if (!$product) {
-            abort(404);
-        }
-        $relatedProducts=[];
 
-        $productArray=[];
-
-        if($product->related_products !=""){
-           $productArray= explode(',',$product->related_products);
-           $relatedProducts=Product::whereIn('id',$productArray)->with('product_images')->get();
-        }
-       // dd($relatedProducts);
-        $data['relatedProducts']= $relatedProducts;
-        
-        $data['product'] = $product;
-        
-        return view('front.product', $data);
-    }
 
     public function getProducts(Request $request)
     {
-        $tempProduct=[];
+        $tempProduct = [];
 
         if ($request->term != "") {
-           $products= Product::where('title','like','%'.$request->term.'%')->get();
+            $products = Product::where('title', 'like', '%' . $request->term . '%')->get();
 
-            if(!empty($products)){
-                foreach($products as $product){
-                    $tempProduct[]=array('id'=>$product->id,'text'=>$product->title);
+            if (!empty($products)) {
+                foreach ($products as $product) {
+                    $tempProduct[] = array('id' => $product->id, 'text' => $product->title);
                 }
-
             }
-            
         }
         return response()->json([
-            'tags'=>$tempProduct,
-            'status'=>true,
+            'tags' => $tempProduct,
+            'status' => true,
 
         ]);
-
-        
-        
     }
-    
-    
 
+    public function productRating()
+    {
+        $ratings = ProductRating::select('product_ratings.*', 'products.title as productTitle')
+            ->orderBy('created_at', 'DESC');
+        $ratings = $ratings->leftJoin('products', 'products.id', 'product_ratings.product_id');
+        if (!empty(request()->get('keyword'))) {
+            $ratings = $ratings->orWhere('products.title', 'like', '%' . request()->get('keyword') . '%');
+            $ratings = $ratings->orWhere('product_ratings.username', 'like', '%' . request()->get('keyword') . '%');
+        }
+        $ratings = $ratings->paginate(10);
+        $data['ratings'] = $ratings;
+        return view('admin.product.ratings', $data);
+    }
+
+    public function changeRatingStatus(Request $request)
+    {
+        $productRating = ProductRating::find($request->rating_id);
+        $productRating->status = $request->status;
+        $productRating->save();
+
+        session()->flash('success', 'Status changed successfully');
+        return response()->json([
+            'status' => true,
+        ]);
+    }
 }
-
-
-?>

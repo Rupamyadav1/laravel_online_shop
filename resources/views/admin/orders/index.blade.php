@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header border-bottom card-tabs d-flex flex-wrap align-items-center gap-2">
                     <div class="flex-grow-1">
-                        <h4 class="header-title">Product</h4>
+                        <h4 class="header-title">Orders</h4>
                     </div>
                     @if (session('success'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">

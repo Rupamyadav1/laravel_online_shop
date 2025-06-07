@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\admin\SubCategoryController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ProductController;
@@ -13,7 +14,9 @@ use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Admin\ProductSubCategoryController;
 use App\Http\Controllers\Admin\CategoryImageController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\ShippingController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DiscountCodeController;
 use App\Http\Controllers\Front\CartController;
@@ -21,9 +24,12 @@ use App\Http\Controllers\Front\ShopController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
+Route::get('/test', function () {
+    orderEmail(20);
+});
 Route::get('/', [FrontController::class, 'index'])->name('front.home');
 Route::get('/shop/{category?}/{subCategory?}/', [ShopController::class, 'index'])->name('front.shop');
-Route::get('/products/{slug}', [ProductController::class, 'product'])->name('front.product');
+Route::get('/products/{slug}', [ShopController::class, 'product'])->name('front.product');
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('front.addToCart');
 Route::get('/cart', [CartController::class, 'cart'])->name('front.cart');
 Route::post('/update-to-cart', [CartController::class, 'updateCart'])->name('front.updateCart');
@@ -32,28 +38,41 @@ Route::get('/thanks/{orderId}', [CartController::class, 'thankYou'])->name('fron
 Route::get('/getOrderSummary', [CartController::class, 'getOrderSummary'])->name('front.getOrderSummary');
 Route::post('/discount-apply', [CartController::class, 'applyDiscount'])->name('front.applyDiscount');
 Route::post('/remove-coupon', [CartController::class, 'removeCoupon'])->name('front.removeCoupon');
-Route::get('/orders',[OrderController::class,'index'])->name('orders.index');
-Route::get('/order-detail/{orderId}',[OrderController::class,'detail'])->name('order.detail');
-Route::post('/order_status_change/{orderId}',[OrderController::class,'orderStatusChange'])->name('order.status.change');
+Route::get('/order-detail/{orderId}', [OrderController::class, 'detail'])->name('order.detail');
+Route::post('/order_status_change/{orderId}', [OrderController::class, 'orderStatusChange'])->name('order.status.change');
+Route::post('/add-to-wishlist', [FrontController::class, 'addToWishlist'])->name('account.addToWishlist');
+Route::post('/remove-product-from-wishlist', [FrontController::class, 'removeProductfromWishlist'])->name('account.removeProductfromWishlist');
+Route::get('/save-rating/{productId}', [ShopController::class, 'saveRating'])->name('front.saveRating');
 
+
+
+Route::get('/page/{slug}', [FrontController::class, 'page'])->name('front.pages');
 
 Route::group(['prefix' => 'account'], function () {
     Route::group(['middleware' => 'guest'], function () {
         Route::get('/login', [AuthController::class, 'login'])->name('account.login');
         Route::post('/login-authenticate', [AuthController::class, 'authenticate'])->name('account.authenticate');
-
+        Route::get('/forget-password', [AuthController::class, 'forgetPassword'])->name('front.forgetPassword');
+        Route::post('/process-forget-password', [AuthController::class, 'processForgetPassword'])->name('front.processForgetPassword');
         Route::get('/register', [AuthController::class, 'register'])->name('account.register');
         Route::post('/register', [AuthController::class, 'processRegister'])->name('account.processRegister');
     });
 
     Route::group(['middleware' => 'auth'], function () {
         Route::get('/profile', [AuthController::class, 'profile'])->name('account.profile');
+        Route::post('/update-profile', [AuthController::class, 'updateProfile'])->name('account.updateProfile');
+        Route::post('/update-address', [AuthController::class, 'updateAddress'])->name('account.updateAddress');
+
         Route::get('/orders', [AuthController::class, 'orders'])->name('account.orders');
-        Route::get('/order-details/{orderId}', [AuthController::class, 'orderDetails'])->name('account.orderDeatils');
+        Route::get('/order-details/{orderId}', [AuthController::class, 'orderDetails'])->name('account.orderDetails');
+        Route::get('/wishlist', [AuthController::class, 'wishlist'])->name('account.wishlist');
 
         Route::get('/logout', [AuthController::class, 'logout'])->name('account.logout');
         Route::match(['get', 'post'], '/checkout', [CartController::class, 'checkout'])->name('front.checkout');
         Route::post('/process-checkout', [CartController::class, 'processCheckout'])->name('front.processcheckout');
+        Route::get('/change-password', [AuthController::class, 'showchangePasswordForm'])->name('front.changePassword');
+        Route::post('/process-change-password', [AuthController::class, 'changePassword'])->name('front.processChangePassword');
+
     });
 });
 
@@ -61,6 +80,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['middleware' => 'admin.guest'], function () {
         Route::get('/login', [HomeController::class, 'index'])->name('admin.login');
+
         Route::post('/authenticate', [HomeController::class, 'authenticate'])->name('admin.authenticate');
     });
 
@@ -81,11 +101,35 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/discount/index', [DiscountCodeController::class, 'index'])->name('discount.index');
 
+        Route::get('/ratings', [ProductController::class, 'productRating'])->name('product.ratings');
+        Route::get('/change-rating-status', [ProductController::class, 'changeRatingStatus'])->name('product.changeRatingStatus');
+
+
         Route::get('/discount/create', [DiscountCodeController::class, 'create'])->name('discount.create');
         Route::post('/discount/store', [DiscountCodeController::class, 'store'])->name('discount.store');
         Route::get('/discount/{discount}/edit', [DiscountCodeController::class, 'edit'])->name('discount.edit');
         Route::post('/discount/{discount}/update', [DiscountCodeController::class, 'update'])->name('discount.update');
         Route::get('/discount/{discount}/delete', [DiscountCodeController::class, 'destroy'])->name('discount.delete');
+        Route::get('/change-password', [SettingController::class, 'showChangepasswordForm'])->name('admin.changePassword');
+        Route::post('/process-change-password', [SettingController::class, 'changePassword'])->name('admin.processChangePassword');
+
+        Route::get('/users', [UserController::class, 'index'])->name('users.index');
+Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
+Route::get('/users/{userId}/edit', [UserController::class, 'edit'])->name('users.edit');
+
+Route::post('/users/{userId}/update', [UserController::class, 'update'])->name('users.update');
+
+Route::get('/users/{userId}/delete', [UserController::class, 'destroy'])->name('users.delete');
+
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+
+Route::get('/pages/create', [PageController::class, 'create'])->name('pages.create');
+Route::post('/pages/store', [PageController::class, 'store'])->name('pages.store');
+Route::get('/pages', [PageController::class, 'index'])->name('pages.index');
+Route::get('/pages/{pageId}/edit', [PageController::class, 'edit'])->name('pages.edit');
+Route::post('/pages/{pageId}/update', [PageController::class, 'update'])->name('pages.update');
+Route::get('/page/{userId}/delete', [PageController::class, 'destroy'])->name('pages.delete');
 
 
 

@@ -27,6 +27,7 @@
             display: block;
             margin-top: 0;
         }
+        
     </style>
 </head>
 
@@ -45,8 +46,8 @@
 
                     @endif
                     <li>
-                        <form method="post" id="search-form" action="">
-                            <input type="text" name="text_search" id="text_search" placeholder="Search for products" class="search-input">
+                        <form method="get" id="search-form" action="{{ route('front.shop') }}">
+                            <input type="text" name="search" id="search" placeholder="Search for products" value="{{ Request::get('search') }}" class="search-input">
                             <button class="btn-search" type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </li>
@@ -102,19 +103,21 @@
                     </div>
 
                     <div class="col-md-4 col-sm-12 info_menu">
-                        <h4>INFORMATIONS</h4>
+                        <h4>Important Links</h4>
                         <ul>
-                            <li><a href="#"> Delivery information </a></li>
-                            <li><a href="#"> Privacy Policy </a></li>
-                            <li><a href="#"> Terms & Conditions </a></li>
-                            <li><a href="#"> Return & Exchange </a></li>
+                        @if (pages()->isNotEmpty())
+                             @foreach (pages() as $page)
+                             
+                           
+                            <li><a href="{{ route('front.pages',$page->slug) }}" title="{{ $page->name }}"> {{ $page->name }} </a></li>
+                        
+                          
+                        @endforeach
+                         @endif 
                         </ul>
-                        <ul>
-                            <li><a href="#"> Free Shipping </a></li>
-                            <li><a href="#"> Order Status </a></li>
-                            <li><a href="#"> Gift Cards</a></li>
-                            <li><a href="#"> International</a></li>
-                        </ul>
+                       
+                        
+                        
                     </div>
 
                     <div class="col-md-4  col-sm-12">
@@ -156,8 +159,28 @@
                 </div>
             </div>
         </footer>
+
+        <div class="modal fade" id="WishlistModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Success</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Modal Body
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.0/js/bootstrap.min.js"></script>
     <script src="{{asset('front_assets/js/bootstrap.bundle.5.1.3.min.js')}}"></script>
 
     <script src="{{ asset('front_assets/js/vendor/swiper.min.js') }}"></script> 
@@ -198,6 +221,30 @@
 
 }
    
+   
+    function addToWishList(id) {
+    $.ajax({
+        url: "{{ route('account.addToWishlist') }}",
+        type: "post",
+        data:{
+            id:id,
+            
+        },
+        success:function(response){
+            if(response.status == true){
+                $("#WishlistModal .modal-body").html(response.message);
+                $("#WishlistModal").modal('show');
+               
+            }
+            else{
+                window.location.href="{{ route('account.login') }}"
+            }
+
+        }
+
+    })
+
+}
    
    
         

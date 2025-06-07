@@ -65,7 +65,7 @@
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item">
                         <i class="ri-question-line me-1 fs-16 align-middle"></i>
-                        <span class="align-middle">Support</span>
+                        <span class="align-middle">Change Password</span>
                     </a>
 
                     <div class="dropdown-divider"></div>
@@ -100,10 +100,10 @@
         <ul class="side-nav">
           
             <li class="side-nav-item">
-                <a href="index.html" class="side-nav-link">
+                <a href="{{ route('admin.dashboard') }}" class="side-nav-link">
                     <span class="menu-icon"><i class="ri-dashboard-3-line"></i></span>
                     <span class="menu-text"> Dashboard </span>
-                    <span class="badge bg-danger rounded-pill">5</span>
+                    
                 </a>
             </li>
 
@@ -134,13 +134,13 @@
             </li>
 
             <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarPages" aria-expanded="false" aria-controls="sidebarPages"
+                <a data-bs-toggle="collapse" href="#sidebarCategory" aria-expanded="false" aria-controls="sidebarCategory"
                     class="side-nav-link">
                     <span class="menu-icon"><i class="fa-solid fa-layer-group"></i></span>
                     <span class="menu-text"> Sub Category </span>
                     <span class="menu-arrow"></span>
                 </a>
-                <div class="collapse" id="sidebarPages">
+                <div class="collapse" id="sidebarCategory">
                     <ul class="sub-menu">
                         <li class="side-nav-item">
                             <a href="{{ route('sub-category.index') }}" class="side-nav-link">
@@ -158,13 +158,13 @@
             </li>
 
             <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarPagesAuth" aria-expanded="false"
-                    aria-controls="sidebarPagesAuth" class="side-nav-link">
+                <a data-bs-toggle="collapse" href="#sidebarBrand" aria-expanded="false"
+                    aria-controls="sidebarBrand" class="side-nav-link">
                     <span class="menu-icon"> <i class="ri-store-line me-1 fs-16 align-middle"></i></span>
                     <span class="menu-text"> Brand </span>
                     <span class="menu-arrow"></span>
                 </a>
-                <div class="collapse" id="sidebarPagesAuth">
+                <div class="collapse" id="sidebarBrand">
                     <ul class="sub-menu">
                        
                         <li class="side-nav-item">
@@ -287,32 +287,73 @@
             </li>
 
             <li class="side-nav-item">
-                <a data-bs-toggle="collapse" href="#sidebarMaps" aria-expanded="false" aria-controls="sidebarMaps"
+                <a data-bs-toggle="collapse" href="#sidebarUsers" aria-expanded="false" aria-controls="sidebarUsers"
                     class="side-nav-link">
                     <span class="menu-icon"><i class="ri-road-map-line"></i></span>
-                    <span class="menu-text"> Maps </span>
+                    <span class="menu-text"> Users </span>
                     <span class="menu-arrow"></span>
                 </a>
-                <div class="collapse" id="sidebarMaps">
+                <div class="collapse" id="sidebarUsers">
                     <ul class="sub-menu">
                         <li class="side-nav-item">
-                            <a href="maps-google.html" class="side-nav-link">
-                                <span class="menu-text">Google Maps</span>
+                            <a href="{{ route('users.index') }}" class="side-nav-link">
+                                <span class="menu-text">User</span>
                             </a>
                         </li>
                         <li class="side-nav-item">
-                            <a href="maps-vector.html" class="side-nav-link">
-                                <span class="menu-text">Vector Maps</span>
+                            <a href="{{ route('users.create') }}" class="side-nav-link">
+                                <span class="menu-text">Add User</span>
                             </a>
                         </li>
-                        <li class="side-nav-item">
-                            <a href="maps-leaflet.html" class="side-nav-link">
-                                <span class="menu-text">Leaflet Maps</span>
-                            </a>
-                        </li>
+                     
                     </ul>
                 </div>
             </li>
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarPages" aria-expanded="false" aria-controls="sidebarPages"
+                    class="side-nav-link">
+                    <span class="menu-icon"><i class="ri-road-map-line"></i></span>
+                    <span class="menu-text"> Pages </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarPages">
+                    <ul class="sub-menu">
+                        <li class="side-nav-item">
+                            <a href="{{ route('pages.create') }}" class="side-nav-link">
+                                <span class="menu-text">Add Pages</span>
+                            </a>
+                        </li>
+                        <li class="side-nav-item">
+                            <a href="{{ route('pages.index') }}" class="side-nav-link">
+                                <span class="menu-text">Pages</span>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </li>
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarRatings" aria-expanded="false" aria-controls="sidebarRatings"
+                    class="side-nav-link">
+                    <span class="menu-icon"><i class="ri-road-map-line"></i></span>
+                    <span class="menu-text"> Ratings </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarRatings">
+                    <ul class="sub-menu">
+                        <li class="side-nav-item">
+                            <a href="{{ route('product.ratings') }}" class="side-nav-link">
+                                <span class="menu-text">Ratings</span>
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </li>
+
+           
         </ul>
 
        

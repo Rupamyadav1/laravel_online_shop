@@ -6,8 +6,7 @@
         <section class="home section image-slider" id="home">
             <div class="home-slider text-center">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"
-                        style="background: url('{{ asset('front_assets/img/slider/slide2.jpg') }}');">
+                    <div class="swiper-slide" style="background: url('{{ asset('front_assets/img/slider/slide2.jpg') }}');">
                         <h3><span class="hglight">Modern & Trendy</span></h3>
                         <h2 class="home-slider-title-main">with working cart & pay pal</h2>
                         <div class="home-buttons"> <a href="#products" class="btn btn-lg  btn-primary">Shop
@@ -16,8 +15,7 @@
                                 class="ti-angle-double-down"></span> </a>
                     </div>
 
-                    <div class="swiper-slide"
-                        style="background: url('{{ asset('front_assets/img/slider/slide1.jpg') }}');">
+                    <div class="swiper-slide" style="background: url('{{ asset('front_assets/img/slider/slide1.jpg') }}');">
                         <h1>Sell <span class="hglight">shop</span></h1>
                         <h2 class="home-slider-title-main">52% Discount for this season </h2>
                         <div class="home-buttons text-center"> <a href="#products" class="btn btn-lg  btn-primary">Shop
@@ -84,7 +82,6 @@
                         <div class="product-list-sliderd">
                             <ul class="swiper-wrappers product-list product-list-vertical">
                                 @if ($products)
-
                                     @foreach ($products as $product)
                                         @php
                                             $productImage = $product->product_images->first();
@@ -92,227 +89,283 @@
                                         @endphp
 
                                         <li class="swiper-slidess text-center">
-                                            <span onclick="{{route('front.product',$product->slug)}}" class="product-list-left pull-left">
-                                                <span onclick="{{route('front.product',$product->slug)}}" class="sale-p">sale</span>
-                                                <a href="{{route('front.product',$product->title)}}">
-                                                    @if (!empty($productImage->image))
-                                                        <img onclick="{{route('front.product',$product->title)}}" alt="product image" class="product-list-primary-img"
-                                                            src="{{ asset('uploads/product/small/' . $productImage->image) }}">
+                                            <span onclick="{{ route('front.product', $product->slug) }}"
+                                                class="product-list-left pull-left">
+                                                <span onclick="{{ route('front.product', $product->slug) }}"
+                                                    class="sale-p">sale</span>
+                                                <!-- Heart Icon -->
 
-                                                        <img onclick="{{route('front.product',$product->title)}}" alt="product image" class="product-list-secondary-img"
-                                                            src="{{ asset('uploads/product/small/' . $productImage->image) }}">
-                                                    @endif
-                                                </a>
+
+
+                                                <div>
+                                                    <div class="card product-card">
+                                                        <div class="product-image position-relative">
+                                                            @if (!empty($productImage->image))
+                                                                <a onclick="addToWishList({{ $product->id }})"
+                                                                    class="whishlist" href="javascript:void(0);"><i
+                                                                        class="far fa-heart"></i></a>
+
+                                                                <a href="{{ route('front.product', $product->slug) }}"
+                                                                    class="product-img">
+                                                                    <img alt="product image" class="card-img-top"
+                                                                        src="{{ asset('uploads/product/small/' . $productImage->image) }}">
+                                                                </a>
+
+                                                        </div>
                                             </span>
-
-                                            
-                                                <span class="product-list-right pull-left">
-                                                    <span onclick="{{route('front.product',$product->slug)}}"
-                                                        class="product-list-name h4 black-color">{{ $product->title }}
-                                                    </span>
-                                                    <span class="product-list-price">${{ $product->price }}</span>
-                                                    <span
-                                                        class="product-list-price sell-p"><del>{{ $product->compare_price }}</del></span>
-                                                    
-                                                        <button class="btn btn-default add-item" type="button"
-                                                data-image="{{ asset('front_assets/img/p1.jpg') }}"
-                                                data-name="Winter Long Sleeve Black White " data-cost="400.00"
-                                                data-id="1" onclick="addToCart({{ $product->id }})">
-                                                add to cart
-                                                </button>
-                                                </span>
-                                            
-                                                
-                                           
-
-                                           
-                                        </li>
-                                    @endforeach
-
-                                @endif
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="new-products-area">
-                        <div class="col-md-12">
-                            <h3 class="section-heading">New Products</h3>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="product-list-slider">
-                                <ul class="swiper-wrapper product-list product-list-vertical">
-
-                                    @if ($latestProducts)
-                                        @foreach ($latestProducts as $latestProduct)
-                                            @php
-                                                $latestImage = $latestProduct->product_images->first();
-                                            @endphp
-
-
-                                            <li class="swiper-slide text-center">
-                                                <span class="product-list-left pull-left">
-                                                    <span class="sale-p">sale</span>
-                                                    <a href="#" >
-                                                        @if (!empty($latestImage->image))
-                                                        <img alt="product image" class="product-list-primary-img"
-                                                            src="{{ asset('uploads/product/small/' . $latestImage->image) }}">
-
-                                                        <img alt="product image" class="product-list-secondary-img"
-                                                            src="{{ asset('uploads/product/small/' . $latestImage->image) }}">
-                                                    @endif
-                                                       
-
-                                                            
-                                                    </a>
-                                                </span>
-
-                                                
-                                                    <span class="product-list-right pull-left">
-                                                        <span
-                                                            class="product-list-name h4 black-color">{{ $latestProduct->title }}</span>
-                                                        <span
-                                                            class="product-list-price">{{ $latestProduct->price }}</span>
-                                                        <span
-                                                            class="product-list-price sell-p"><del>{{ $latestProduct->compare_price }}</del></span>
-                                                            <button class="btn btn-default add-item" type="button"
-                                                            data-image="img/p1.jpg" data-name="women white backless mini"
-                                                            data-cost="400.00" data-id="1" onclick="addToCart({{ $product->id }})">
-                                                            add to cart
-                                                        </button>
-                                                    </span>
-                                            </li>
-                                        @endforeach
                                     @endif
 
-
-                                </ul>
-                                <div class="product-list-pagination text-center"> </div>
-                                <div class="product-list-slider-next right-arrow-negative"> <span
-                                        class="ti-arrow-right"></span> </div>
-                                <div class="product-list-slider-prev left-arrow-negative"> <span
-                                        class="ti-arrow-left"></span> </div>
-                            </div>
                         </div>
+
+
+
+
+
+                        <span class="product-list-right pull-left">
+                            <span onclick="{{ route('front.product', $product->slug) }}"
+                                class="product-list-name h4 black-color">{{ $product->title }}
+                            </span>
+                            <span class="product-list-price">${{ $product->price }}</span>
+                            <span class="product-list-price sell-p"><del>{{ $product->compare_price }}</del></span>
+                            @if ($product->track_qty == 'Yes')
+                                @if ($product->qty > 0)
+                                    <button class="btn btn-default add-item" type="button"
+                                        data-image="{{ asset('front_assets/img/p1.jpg') }}"
+                                        data-name="Winter Long Sleeve Black White " data-cost="400.00" data-id="1"
+                                        onclick="addToCart({{ $product->id }})">
+                                        add to cart
+                                    </button>
+                                @else
+                                    <button class="btn btn-default add-item" type="button"
+                                        data-image="{{ asset('front_assets/img/p1.jpg') }}"
+                                        data-name="Winter Long Sleeve Black White " data-cost="400.00" data-id="1">
+                                        Out Of Stock
+                                    </button>
+                                @endif
+                            @else
+                                <button class="btn btn-default add-item" type="button"
+                                    data-image="{{ asset('front_assets/img/p1.jpg') }}"
+                                    data-name="Winter Long Sleeve Black White " data-cost="400.00" data-id="1"
+                                    onclick="addToCart({{ $product->id }})">
+                                    add to cart
+                                </button>
+                            @endif
+                        </span>
+
+
+
+
+
+                        </li>
+                        @endforeach
+                        @endif
+                        </ul>
                     </div>
                 </div>
-            </div>
 
-            <div class="modal fade product-modal" id="product-01" role="dialog" tabindex="-1">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content shadow">
-                        <a class="close" data-dismiss="modal"> <span class="ti-close"></span></a>
-                        <div class="modal-body">
-                            <!-- Wrapper for slides -->
-                            <div class="carousel slide product-slide" id="product-carousel">
-                                <div class="carousel-inner cont-slider">
-                                    <div class="item active"> <img alt="" src="" title="">
-                                    </div>
-                                    <div class="item"> <img alt="" src="" title=""> </div>
-                                    <div class="item"> <img alt="" src="" title=""> </div>
-                                    <div class="item"> <img alt="" src="" title=""> </div>
-                                </div>
-                                <!-- Indicators -->
-                                <ol class="carousel-indicators">
-                                    <li class="active" data-slide-to="0" data-target="#product-carousel"> <img
-                                            alt="" > </li>
-                                    <li class="" data-slide-to="1" data-target="#product-carousel"> <img
-                                            alt="" > </li>
-                                    <li class="" data-slide-to="2" data-target="#product-carousel"> <img
-                                            alt=""> </li>
-                                    <li class="" data-slide-to="3" data-target="#product-carousel"> <img
-                                            alt=""> </li>
-                                </ol>
-                            </div>
-                            <!-- Wrapper for slides -->
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-8 col-md-push-2">
-                                        <div class="row">
-                                            <div class="col-md-7">
-                                                <h3 class="pull-left nk section-heading">Elegant Formal Party Dress
-                                                </h3>
-                                            </div>
-                                            <div class="col-md-5">
-                                                <span class="product-right-section">
-                                                    <span>$299.00</span>
+                <div class="new-products-area">
+                    <div class="col-md-12">
+                        <h3 class="section-heading">New Products</h3>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="product-list-slider">
+                            <ul class="swiper-wrapper product-list product-list-vertical">
+
+                                @if ($latestProducts)
+                                    @foreach ($latestProducts as $latestProduct)
+                                        @php
+                                            $latestImage = $latestProduct->product_images->first();
+                                        @endphp
+
+
+                                        <li class="swiper-slide text-center">
+                                            <span class="product-list-left pull-left">
+                                                <span class="sale-p">sale</span>
+                                               
+                                                    @if (!empty($latestImage->image))
+                                                        <a onclick="addToWishList({{ $latestProduct->id }})"
+                                                            class="whishlist" href="javascript:void(0);"><i
+                                                                class="far fa-heart"></i></a>
+                                                        <a href="{{ route('front.product', $latestProduct->slug) }}"
+                                                            class="product-img">
+
+
+
+                                                            <img alt="product image" class="card-img-top"
+                                                                src="{{ asset('uploads/product/small/' . $latestImage->image) }}">
+                                                        </a>
+                                                    @endif
+
+
+
+                                                
+                                            </span>
+
+
+                                            <span class="product-list-right pull-left">
+                                                <span
+                                                    class="product-list-name h4 black-color">{{ $latestProduct->title }}</span>
+                                                <span class="product-list-price">{{ $latestProduct->price }}</span>
+                                                <span
+                                                    class="product-list-price sell-p"><del>{{ $latestProduct->compare_price }}</del></span>
+                                                @if ($latestProduct->track_qty == 'Yes')
+                                                    @if ($latestProduct->qty > 0)
+                                                        <button class="btn btn-default add-item" type="button"
+                                                            data-image="{{ asset('front_assets/img/p1.jpg') }}"
+                                                            data-name="Winter Long Sleeve Black White " data-cost="400.00"
+                                                            data-id="1" onclick="addToCart({{ $latestProduct->id }})">
+                                                            add to cart
+                                                        </button>
+                                                    @else
+                                                        <button class="btn btn-default add-item" type="button"
+                                                            data-image="{{ asset('front_assets/img/p1.jpg') }}"
+                                                            data-name="Winter Long Sleeve Black White " data-cost="400.00"
+                                                            data-id="1">
+                                                            Out Of Stock
+                                                        </button>
+                                                    @endif
+                                                @else
                                                     <button class="btn btn-default add-item" type="button"
-                                                        data-image="img/p2.jpg" data-name="Elegant Formal Party Dress"
-                                                        data-cost="299.00" data-id="8" onclick="addToCart({{ $product->id }})">
-                                                        add to cart </button>
-                                                </span>
-                                            </div>
-                                        </div>
+                                                        data-image="{{ asset('front_assets/img/p1.jpg') }}"
+                                                        data-name="Winter Long Sleeve Black White " data-cost="400.00"
+                                                        data-id="1" onclick="addToCart({{ $latestProduct->id }})">
+                                                        add to cart
+                                                    </button>
+                                                @endif
+                                                </button>
+                                            </span>
+                                        </li>
+                                    @endforeach
+                                @endif
+
+
+                            </ul>
+                            <div class="product-list-pagination text-center"> </div>
+                            <div class="product-list-slider-next right-arrow-negative"> <span
+                                    class="ti-arrow-right"></span> </div>
+                            <div class="product-list-slider-prev left-arrow-negative"> <span class="ti-arrow-left"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div class="modal fade product-modal" id="product-01" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content shadow">
+                <a class="close" data-dismiss="modal"> <span class="ti-close"></span></a>
+                <div class="modal-body">
+                    <!-- Wrapper for slides -->
+                    <div class="carousel slide product-slide" id="product-carousel">
+                        <div class="carousel-inner cont-slider">
+                            <div class="item active"> <img alt="" src="" title="">
+                            </div>
+                            <div class="item"> <img alt="" src="" title=""> </div>
+                            <div class="item"> <img alt="" src="" title=""> </div>
+                            <div class="item"> <img alt="" src="" title=""> </div>
+                        </div>
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li class="active" data-slide-to="0" data-target="#product-carousel"> <img alt="">
+                            </li>
+                            <li class="" data-slide-to="1" data-target="#product-carousel"> <img alt="">
+                            </li>
+                            <li class="" data-slide-to="2" data-target="#product-carousel"> <img alt="">
+                            </li>
+                            <li class="" data-slide-to="3" data-target="#product-carousel"> <img alt="">
+                            </li>
+                        </ol>
+                    </div>
+                    <!-- Wrapper for slides -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-push-2">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <h3 class="pull-left nk section-heading">Elegant Formal Party Dress
+                                        </h3>
                                     </div>
-                                    <div class="col-md-8 col-md-push-2 product-description">
+                                    <div class="col-md-5">
+                                        <span class="product-right-section">
+                                            <span>$299.00</span>
+                                            <button class="btn btn-default add-item" type="button"
+                                                data-image="img/p2.jpg" data-name="Elegant Formal Party Dress"
+                                                data-cost="299.00" data-id="8"
+                                                onclick="addToCart({{ $latestProduct->id }})">
+                                                add to cart </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-md-push-2 product-description">
+                                <h4 class="section-heading">Ut enim ad minim veniam</h4>
+                                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                </p>
+                                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                </p>
+                                <div class="row">
+                                    <div class="col-md-6"> <img src="" class="img-responsive"
+                                            alt="product image"> </div>
+                                    <div class="col-md-6">
                                         <h4 class="section-heading">Ut enim ad minim veniam</h4>
-                                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        </p>
-                                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                                            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        </p>
-                                        <div class="row">
-                                            <div class="col-md-6"> <img src="" class="img-responsive"
-                                                    alt="product image"> </div>
-                                            <div class="col-md-6">
-                                                <h4 class="section-heading">Ut enim ad minim veniam</h4>
-                                                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                                                    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                                    aliquip ex ea commodo consequat. Duis aute irure dolor in
-                                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                                    pariatur.</p>
-                                            </div>
+                                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                            aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                            pariatur.</p>
+                                    </div>
+                                </div>
+                                <div class="product-tabs">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a data-toggle="tab" href="#tab1">Details</a>
+                                        </li>
+                                        <li><a data-toggle="tab" href="#tab2">Info tab</a></li>
+                                        <li><a data-toggle="tab" href="#tab3">Other info </a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div id="tab1" class="tab-pane fade in active">
+                                            <h4 class="section-heading">details</h4>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                                                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                                                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                            </p>
                                         </div>
-                                        <div class="product-tabs">
-                                            <ul class="nav nav-tabs">
-                                                <li class="active"><a data-toggle="tab" href="#tab1">Details</a>
-                                                </li>
-                                                <li><a data-toggle="tab" href="#tab2">Info tab</a></li>
-                                                <li><a data-toggle="tab" href="#tab3">Other info </a></li>
-                                            </ul>
-                                            <div class="tab-content">
-                                                <div id="tab1" class="tab-pane fade in active">
-                                                    <h4 class="section-heading">details</h4>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                                        in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                                        nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                                        sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                                    </p>
-                                                </div>
-                                                <div id="tab2" class="tab-pane fade">
-                                                    <h4 class="section-heading">Info tab</h4>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                                        in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                                        nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                                        sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                                    </p>
-                                                </div>
-                                                <div id="tab3" class="tab-pane fade">
-                                                    <h4 class="section-heading">other info</h4>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                                        in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                                        nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                                        sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                                    </p>
-                                                </div>
-                                            </div>
+                                        <div id="tab2" class="tab-pane fade">
+                                            <h4 class="section-heading">Info tab</h4>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                                                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                                                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                            </p>
+                                        </div>
+                                        <div id="tab3" class="tab-pane fade">
+                                            <h4 class="section-heading">other info</h4>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                                                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                                                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                                                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                                                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -321,8 +374,10 @@
                     </div>
                 </div>
             </div>
-            <!-- / PRODUCT MODAL -->
-        </section>
+        </div>
     </div>
-  
-    @endsection
+    <!-- / PRODUCT MODAL -->
+    </section>
+    </div>
+
+@endsection

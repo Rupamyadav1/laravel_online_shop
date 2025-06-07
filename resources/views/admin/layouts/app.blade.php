@@ -18,6 +18,10 @@
     
     <link href="{{ asset('admin_assets/css/select2.min.css') }}" rel="stylesheet" />
         <link href="{{ asset('admin_assets/css/datetimepicker.css') }}" rel="stylesheet" />
+                <link href="{{ asset('admin_assets/css/summernote.min.css') }}" rel="stylesheet" />
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote.min.css" rel="stylesheet">
+
+
 
 </head>
 
@@ -434,9 +438,9 @@
                                 </a>
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item">
+                                <a href="{{ route('admin.changePassword') }}" class="dropdown-item">
                                     <i class="ri-question-line me-1 fs-16 align-middle"></i>
-                                    <span class="align-middle">Support</span>
+                                    <span class="align-middle">Change Password</span>
                                 </a>
 
                                 <div class="dropdown-divider"></div>
@@ -505,7 +509,7 @@
                         <div class="col-md-6">
                             <div class="text-md-end footer-links d-none d-md-block">
                                 <a href="javascript: void(0);">About</a>
-                                <a href="javascript: void(0);">Support</a>
+                                <a href="{{ route('admin.changePassword') }}">Change Password</a>
                                 <a href="javascript: void(0);">Contact Us</a>
                             </div>
                         </div>
@@ -539,7 +543,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"> <!-- Ensure this is present -->
 
 
-
+<script src="{{asset('admin_assets/js/jquery-3.6.0.min.js')}}"></script> 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote.min.js"></script>
 
 
 <script>
@@ -549,9 +554,16 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+         
+ $(document).ready(function(){
+    $('.summernote').summernote({
+            height:250
+        });
+   });
+  
+   
     
 </script>
-<script src="{{asset('admin_assets/js/jquery-3.6.0.min.js')}}"></script> 
 
 <script src="{{ asset('admin_assets/dropzone/dropzone.min.js') }}" ></script>
 
@@ -561,6 +573,9 @@
 <script src="{{asset('admin_assets/js/bootstrap.bundle.5.1.3.min.js')}}"></script>
 <script src="{{asset('admin_assets/js/select2.min.js')}}"></script>
 <script src="{{asset('admin_assets/js/datetimepicker.js')}}"></script>
+
+{{-- --}}
+
 
 
     @yield('customJS')

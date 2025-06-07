@@ -69,7 +69,7 @@
                                 
                             
                                 <div class="form-group mb-0 checkbox-checked">
-                                    <a class="form-check checkbox-solid-info" href="password/reset.html">Forgot password?</a>
+                                    <a class="form-check checkbox-solid-info" href="{{ route('front.forgetPassword') }}">Forgot password?</a>
                                     <div class="text-end mt-3">
                                         <button class="btn btn-primary btn-block w-100 text-white" type="submit">Login</button>
                                     </div>
