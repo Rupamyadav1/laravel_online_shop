@@ -1,6 +1,8 @@
 <?php
 
+use App\Mail\OrderConfirmationMail;
 use App\Mail\OrderEmail;
+use App\Mail\ResetPasswordMail;
 use App\Models\Category;
 use App\Models\ProductImage;
 use App\Models\Order;
@@ -43,5 +45,14 @@ function pages(){
     $pages=Page::orderBy('name','ASC')->get();
     return $pages;
 
+}
+ function sendConfirmationEmail($order): void
+{
+    Mail::to($order->email)->send(new OrderConfirmationMail($order));
+}
+
+function sendForgetPasswordEmail($user,$token,$email): void
+{
+    Mail::to($email)->send(new ResetPasswordMail($user,$token,$email));
 }
 

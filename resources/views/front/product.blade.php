@@ -318,14 +318,14 @@
                             @endphp
                             <div id="related-products" class="carousel">
                                 <div class="card product-card">
-                                    <div class="product-image position-relative">
+                                    <div class="product-image">
                                         <a href="{{ route('front.product', $relProduct->slug) }}" class="product-img">
                                             <img class="card-img-top"
                                                 src="{{ asset('uploads/product/small/' . $productImage->image) }}"
                                                 alt="" style="height:200px; width:200px"></a>
-                                        <a class="whishlist" href="222"><i class="far fa-heart"></i></a>
+                                        <a class="whishlist" style="cursor:pointer" onclick="addToWishList({{ $product->id }})"><i class="far fa-heart"></i></a>
 
-                                        <div class="product-action">
+                                        <div class="">
                                             @if ($relProduct->track_qty == 'Yes')
                                                 @if ($relProduct->qty > 0)
                                                     <a class="btn btn-dark" href="addToCart({{ $relProduct->id }})"
@@ -339,7 +339,7 @@
                                                     </a>
                                                 @endif
                                             @else
-                                                <a class="btn btn-dark" href="addToCart({{ $relProduct->id }})"
+                                                <a class="btn btn-dark"
                                                     onclick="addToCart({{ $relProduct->id }})">
                                                     <i class="fa fa-shopping-cart"></i> Add To Cart
                                                 </a>

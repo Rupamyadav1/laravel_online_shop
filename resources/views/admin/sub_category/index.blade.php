@@ -68,10 +68,13 @@
                                             <td>{{ $subcategory->categoryName }}</td>
                                             <td><span class="fs-15 text-muted">{{ $subcategory->slug }}</span></td>
 
-                                            <td>
-                                                <span
-                                                    class="badge bg-success-subtle text-success fs-12 p-1">Confirmed</span>
-                                            </td>
+                                            @if ($subcategory->status == 1)
+                                                            
+                                                        
+                                                        <td><button class="btn btn-success">Active</button></td>
+                                                        @else
+                                                         <td><button class="btn btn-danger">Block</button></td>
+                                                        @endif
                                             <td class="pe-3">
                                                 <div class="hstack gap-1 justify-content-end">
                                                     <a href="javascript:void(0);"

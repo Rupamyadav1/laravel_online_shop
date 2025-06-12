@@ -65,8 +65,10 @@
                     <div class="col">
                         <div class="mt-2">
                             <label class="form-label">Product Status :</label>
-                            <input type="text" class="form-control" placeholder="Product Status" id="product_status"
-                                name="product_status">
+                            <select name="product_status" id="product_status" class="form-control">
+                                <option value="1">Active</option>
+                                <option value="0">Block</option>
+                            </select>
                         </div>
                     </div>
                 </div>

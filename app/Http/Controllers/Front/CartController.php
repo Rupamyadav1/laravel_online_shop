@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Controller\FrontController;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -50,7 +51,7 @@ class CartController extends Controller
             if ($productAlreadyExist == false) {
                 Cart::add($product->id, $product->title, 1, $product->price, ['productImage' => (!empty($product->product_images)) ? $product->product_images->first() : '']);
                 $status = true;
-                $message = '<strong>' . $product->title . "</strong> added to cart";
+                $message =  $product->title . ' added to cart';
                 session()->flash('success', $message);
             } else {
                 $status = false;
@@ -61,7 +62,7 @@ class CartController extends Controller
             Cart::add($product->id, $product->title, 1, $product->price, ['productImage' => (!empty($product->product_images)) ? $product->product_images->first() : '']);
             $status = "true";
             $message = $product->title . " added in cart";
-            $message = '<strong>' . $product->title . "</strong> added to cart";
+            $message =  $product->title . ' added to cart';
         }
         return response()->json([
             'status' => $status,
@@ -349,9 +350,13 @@ class CartController extends Controller
         }
     }
 
-    public function thankYou($id)
+    public function thankYou($orderId)
     {
-        $data['orderId'] = $id;
+        $data['orderId'] = $orderId;
+       
+        $order=Order::find($orderId);
+        
+        sendConfirmationEmail($order);
         return view('front.thank', $data);
     }
 
@@ -387,8 +392,6 @@ class CartController extends Controller
                 $totalQty += $item->qty;
             }
             if ($shippingInfo != null) {
-
-
                 $shippingCharge = $totalQty * $shippingInfo->amount;
                 $grandTotal = ($subTotal - $discount) + $shippingCharge;
 
@@ -417,7 +420,7 @@ class CartController extends Controller
         } else {
             return response()->json([
                 'status' => true,
-              'discount'=> number_format($discount,2),
+                'discount'=> number_format($discount,2),
                 'discountString' => $discountString,
                 'shippingCharge' => number_format(0, 2),
                 'grandTotal' => number_format($grandTotal, 2)

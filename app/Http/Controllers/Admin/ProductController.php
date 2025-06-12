@@ -213,6 +213,7 @@ class ProductController extends Controller
             $product->track_qty = $request->track_qty;
             $product->qty = $request->qty;
             $product->save();
+            session()->flash('success','Product Updated Successfully');
 
             return response()->json([
 

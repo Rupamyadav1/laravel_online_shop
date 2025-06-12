@@ -35,7 +35,7 @@
                             <div class="p-2">
                                 <button type="submit" class="btn btn-primary">
                                     <i class="ri-add-circle-line me-1"></i>
-                                    Add Shipping
+                                    Update Shipping
                                 </button>
                             </div>
                         </div>

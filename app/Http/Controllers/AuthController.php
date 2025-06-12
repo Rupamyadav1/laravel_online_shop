@@ -15,6 +15,7 @@ use App\Models\Country;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -71,14 +72,19 @@ class AuthController extends Controller
                 ['email' => $request->email, 'password' => $request->password],
                 $request->get('remember')
             )) {
-                //   dd( Auth::user());
+                // dd( Auth::user());
 
                 if (session()->has('url.intended')) {
                     return redirect(session()->get('url.intended')); //get the url.intended from session 
                 }
+                $countries = Country::orderBy('name', 'ASC')->get();
+                $customerAddress = CustomerAddress::where('id', Auth::user()->id)->first();
+                $user = User::where('id', Auth::user()->id)->first();
+                $data['user'] = $user;
+                $data['countries'] = $countries;
+                $data['customerAddress'] = $customerAddress;
 
-
-                return view('front.account.profile');
+                return view('front.account.profile', $data);
             } else {
 
 
@@ -237,9 +243,9 @@ class AuthController extends Controller
             'confirm_password' => 'required|same:new_password'
         ]);
         if ($validator->passes()) {
-            $user = User::select('id','password')->where('id', Auth::user()->id)->first();
+            $user = User::select('id', 'password')->where('id', Auth::user()->id)->first();
             if (!Hash::check($request->old_password, $user->password)) {
-                session()->flash('error','Your old password is incorrect please try again.');
+                session()->flash('error', 'Your old password is incorrect please try again.');
                 return response()->json([
                     'status' => true,
                 ]);
@@ -248,17 +254,13 @@ class AuthController extends Controller
 
             User::where('id', $user->id)->update([
                 'password' => Hash::make($request->new_password),
-                
+
             ]);
-            session()->flash('success','Password updated successfully');
+            session()->flash('success', 'Password updated successfully');
             return response()->json([
-                'status'=>true,
-                'message'=>'Password updated successfully'
+                'status' => true,
+                'message' => 'Password updated successfully'
             ]);
-            
-
-
-
         } else {
             return response()->json([
                 'status' => false,
@@ -271,23 +273,59 @@ class AuthController extends Controller
     {
         return view('front.account.forget-password');
     }
-    public function processForgetPassword(Request $request){
-       $validator = Validator::make($request->all(),[
-            'email'=>'required|email|exists:users,email',
+    public function processForgetPassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|exists:users,email',
 
         ]);
-        if($validator->fails()){
-            return redirect()->route('front.forgetPassword')->
-            withInput()->withErrors($validator);
+        if ($validator->fails()) {
+            return redirect()->route('front.forgetPassword')->withInput()->withErrors($validator);
         }
-        $token=Str::random(60);
-        // \Db::table('password_reset_tokens')->insert([
-        //     'email'=>$request->email,
-        //     'token'=>$token,
-        //     'created_at'=>now()
-        // ]);
 
+        DB::table('password_reset_tokens')->where('email', $request->email)->delete();
 
+        $token = Str::random(60);
+        DB::table('password_reset_tokens')->insert([
+            'email' => $request->email,
+            'token' => $token,
+            'created_at' => now()
+        ]);
 
+        $user = User::where('email', $request->email)->first();
+        $email = $request->email;
+        sendForgetPasswordEmail($user, $token, $email);
+        return redirect()->route('front.forgetPassword')->with('success', 'Please check your inbox to reset password');
+    }
+    public function resetPassword($token)
+    {
+        $tokenExists = DB::table('password_reset_tokens')->where('token', $token)->first();
+        if ($tokenExists == null) {
+            return redirect()->route('front.forgetPassword')->with('error', 'invalid request');
+        }
+        $data['token'] = $token;
+        return view('front.account.reset-password', $data);
+    }
+    public function processResetPassword(Request $request)
+    {
+        $token = $request->token;
+        $tokenObj = DB::table('password_reset_tokens')->where('token', $token)->first();
+        if ($tokenObj == null) {
+            return redirect()->route('front.forgetPassword')->with('error', 'Invalid Request');
+        }
+        $validator = Validator::make($request->all(), [
+            'new_password' => 'required',
+            'confirm_password' => 'required|same:new_password',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('front.restPassword', $token)->withErrors($validator);
+        }
+        $user = User::where('email', $tokenObj->email)->first();
+        User::where('id', $user->id)->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+        DB::table('password_reset_tokens')->where('email', $user->email)->delete();
+
+        return redirect()->route('account.login')->with('success', 'You Have Successfully changed the password');
     }
 }

@@ -70,7 +70,7 @@ class PageController extends Controller
             $page->content=$request->content;
             $page->Save();
             $message='Page edited successfully';
-            session('success',$message);
+            session()->flash('success',$message);
             return response()->json([
                 'status'=>true,
                 'message'=>$message

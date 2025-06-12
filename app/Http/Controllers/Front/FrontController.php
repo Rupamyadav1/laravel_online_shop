@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Http\Controllers\Controller; 
+use App\Http\Controllers\Controller;
+use App\Mail\OrderConfirmationMail;
 use App\Models\Wishlist;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class FrontController extends Controller
 {
@@ -90,4 +92,9 @@ class FrontController extends Controller
         $data['page']=$page;
         return view('front.page',$data);
     }
+  
+
+   
 }
+
+

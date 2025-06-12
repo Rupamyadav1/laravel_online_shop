@@ -4,7 +4,7 @@
 
 <ul id="account-panel" class="nav nav-pills flex-column" >
     <li class="nav-item pb-2">
-        <a href="account.php"  class="nav-link font-weight-bold" role="tab" aria-controls="tab-login" aria-expanded="false">
+        <a href="{{ route('account.profile') }}"  class="nav-link font-weight-bold" role="tab" aria-controls="tab-login" aria-expanded="false">
             <i class="fas fa-user-alt"></i> My Profile</a>
     </li>
     <li class="nav-item pb-2">

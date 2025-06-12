@@ -56,25 +56,27 @@
                         <tbody>
                             @if (!empty($categories))
                                     @foreach ($categories as $cat)
-                                            @if ($cat->status == 1)
+                                           
 
 
 
 
                                                     <tr>
 
-                                                        <td><span class="text-muted fw-semibold">{{$i++}}</span></td>
+                                                        <td><span class="text-muted fw-semibold">{{$cat->id}}</span></td>
                                                         <td>{{ $cat->name }}</td>
                                                         <td><span class="fs-15 text-muted">{{$cat->slug}}</span></td>
 
-                                                        <td>
-                                                            <span class="badge bg-success-subtle text-success fs-12 p-1">Confirmed</span>
-                                                        </td>
+                                                        @if ($cat->status == 1)
+                                                            
+                                                        
+                                                        <td><button class="btn btn-success">Active</button></td>
+                                                        @else
+                                                         <td><button class="btn btn-danger">Block</button></td>
+                                                        @endif
                                                         <td class="pe-3">
                                                             <div class="hstack gap-1 justify-content-end">
-                                                                <a href="javascript:void(0);"
-                                                                    class="btn btn-soft-primary btn-icon btn-sm rounded-circle"> <i
-                                                                        class="ri-eye-line"></i></a>
+                                                                
                                                                 <a href="{{ route('categories.edit',$cat->id) }}"
                                                                     class="btn btn-soft-success btn-icon btn-sm rounded-circle"> <i
                                                                         class="ri-edit-box-line fs-16"></i></a>
@@ -85,7 +87,7 @@
                                                         </td>
                                                     </tr><!-- end table-row -->
                                                 </tbody><!-- end table-body -->
-                                            @endif
+                                           
                                     @endforeach
                             @endif
                     </table><!-- end table -->

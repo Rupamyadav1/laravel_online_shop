@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\TempImage;
 use App\Models\User;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\File;
 
 class DashboardController extends Controller
 {
@@ -25,7 +27,29 @@ class DashboardController extends Controller
         $lastMonthName = Carbon::now()->subMonth()->startOfMonth()->format('M');
 
         // exit;
-        $currentDate = Carbon::now()->format('Y-m-d');
+        $dayBeforToday = Carbon::now()->subDays(1)->format('Y-m-d');
+        // echo $dayBeforToday;
+        $tempImages = TempImage::where('created_at', '<=', $dayBeforToday)->get();
+        foreach ($tempImages as $tempImage) {
+
+
+            $path = public_path('/temp/' . $tempImage->name);
+
+            $thumbPath = public_path('/temp/thumb/' . $tempImage->name);
+            
+            // if(File::exists($path)){
+            //     File::delete($path);
+            // }
+
+            //  if(File::exists($thumbPath)){
+            //     File::delete($thumbPath);
+            // }
+            TempImage::where('id',$tempImage->id)->delete();
+        }
+
+
+
+        $currentDate = Carbon::now()->format('Y-m-d H:i:s');
         $revenueThisMonth = Order::where('status', '!=', 'cancelled')
             ->whereDate('created_at', '>=', $startOfMonth)
             ->whereDate('created_at', '<=', $currentDate)

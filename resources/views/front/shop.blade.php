@@ -1,7 +1,46 @@
 @extends('front.layouts.app')
 @section('main-content')
 
+ <head>
+    <style>
+         .product-card .whishlist {
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                color: #02c0ce;
+                /* Heart color */
+                font-size: 30px;
+                z-index: 10;
+            }
 
+            /* Show wishlist icon on hover */
+            .product-card:hover .whishlist {
+                opacity: 1;
+            }
+
+            .product-card .product-action {
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                z-index: 9;
+            }
+
+            /* Show button on hover of image */
+            .product-card .product-image:hover .product-action {
+                opacity: 1;
+            }
+
+            /* Make sure product image container is relatively positioned */
+            .product-card .product-image {
+                position: relative;
+            }
+        </style>
+</head>
     <main>
 
         <div class="container">
@@ -112,44 +151,40 @@
                         </div>
                         @if ($products)
                             @foreach ($products as $product)
-                                @php
-                                    $productImage = $product->product_images->first();
-
-                                @endphp
+                              
                                 <div class="col-md-4">
                                     <div class="card product-card">
                                         <div class="product-image position-relative">
+                                              @php
+                                    $productImage = $product->product_images->first();
 
-                                            @if (!empty($productImage))
-                                                <a href="" class="product-img"><img class="card-img-top"
+                                @endphp
+
+                                            @if (!empty($productImage->image))
+                                             <a onclick="addToWishList({{ $product->id }})"
+                                                                    class="whishlist" href="javascript:void(0);"><i
+                                                                        class="far fa-heart"></i></a>
+                                              
+                                                <a href="{{ route('front.product',$product->slug) }}" class="product-img">
+                                                    <img class="card-img-top"
                                                         src="{{ asset('uploads/product/small/' . $productImage->image) }}"
-                                                        alt=""></a>
-                                            @else
-                                                <a href="" class="product-img"><img class="card-img-top"
-                                                        src="" alt=""></a>
+                                                        alt="product image"></a>
                                             @endif
 
 
-                                            <a class="whishlist" href="222"><i class="far fa-heart"></i></a>
 
                                             <div class="product-action">
-                                                @if ($product->track_qty =='Yes')
-                                                @if ($product->qty > 0)
-                                                    <a class="btn btn-dark" href="{{ route('front.addToCart') }}">
-                                                    <i class="fa fa-shopping-cart"></i> Add To Cart
-                                                </a>
-                                                @else
-                                                 <a class="btn btn-dark" href="{{ route('front.addToCart') }}">
-                                                    <i class="fa fa-shopping-cart"></i> Out of Stock
-                                                @endif
-                                                     @else
-                                                      <a class="btn btn-dark" href="{{ route('front.addToCart') }}">
-                                                    <i class="fa fa-shopping-cart"></i> Add To Cart
-                                                @endif
-                                               
-                                            </div>
+                                        @if ($product->track_qty == 'Yes' && $product->qty <= 0)
+                                            <button class="btn btn-secondary" disabled>Out of Stock</button>
+                                        @else
+                                            <button class="btn btn-primary add-item" type="button"
+                                                onclick="addToCart({{ $product->id }})">
+                                                Add to Cart
+                                            </button>
+                                        @endif
+                                    </div>
                                         </div>
-                                        <div class="card-body text-center mt-3">
+                                        <div class="card-body">
                                             <a class="h6 link" href="product.php">{{ $product->title }}</a>
                                             <div class="price mt-2">
                                                 <span class="h5"><strong>{{ $product->price }}</strong></span>

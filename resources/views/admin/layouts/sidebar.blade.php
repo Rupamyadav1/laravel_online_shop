@@ -1,3 +1,6 @@
+<head>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
 <div class="sidenav-menu">
 
     <!-- Brand Logo -->
@@ -111,7 +114,7 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarInvoice" aria-expanded="false" aria-controls="sidebarInvoice"
                     class="side-nav-link">
-                    <span class="menu-icon"><i class="fa-solid fa-layer-group"></i></span>
+                    <span class="menu-icon"><i class="fas fa-tags"  style="color:#02bace; font-size: 1rem;"></i></span>
                     <span class="menu-text">Category</span>
                     <span class="menu-arrow"></span>
                 </a>
@@ -136,7 +139,7 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarCategory" aria-expanded="false" aria-controls="sidebarCategory"
                     class="side-nav-link">
-                    <span class="menu-icon"><i class="fa-solid fa-layer-group"></i></span>
+                    <span class="menu-icon"><i class="fas fa-tags"  style="color:#02bace; font-size: 1rem;"></i></span>
                     <span class="menu-text"> Sub Category </span>
                     <span class="menu-arrow"></span>
                 </a>
@@ -160,7 +163,7 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarBrand" aria-expanded="false"
                     aria-controls="sidebarBrand" class="side-nav-link">
-                    <span class="menu-icon"> <i class="ri-store-line me-1 fs-16 align-middle"></i></span>
+                    <span class="menu-icon"><i class="fas fa-building" style="color:#02bace; font-size: 1rem;"></i> </span>
                     <span class="menu-text"> Brand </span>
                     <span class="menu-arrow"></span>
                 </a>
@@ -185,7 +188,7 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarPagesError" aria-expanded="false"
                     aria-controls="sidebarPagesError" class="side-nav-link">
-                    <span class="menu-icon"><i class="ri-error-warning-line"></i></span>
+                    <span class="menu-icon"><i class="fas fa-box"  style="color:#02bace; font-size: 1rem;"></i></span>
                     <span class="menu-text"> Products </span>
                     <span class="menu-arrow"></span>
                 </a>
@@ -216,7 +219,7 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarIcons" aria-expanded="false" aria-controls="sidebarIcons"
                     class="side-nav-link">
-                    <span class="menu-icon"><i class="ri-shapes-line"></i></span>
+                    <span class="menu-icon"><i class="fas fa-shipping-fast"  style="color:#02bace; font-size: 1rem;"></i></span>
                     <span class="menu-text"> Shipping</span>
                     <span class="menu-arrow"></span>
                 </a>
@@ -239,7 +242,7 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarCharts" aria-expanded="false" aria-controls="sidebarCharts"
                     class="side-nav-link">
-                    <span class="menu-icon"><i class="ri-bar-chart-line"></i></span>
+                    <span class="menu-icon"><i class="fas fa-tags"  style="color:#02bace; font-size: 1rem;"></i>    </span>
                     <span class="menu-text"> Discount</span>
                     <span class="menu-arrow"></span>
                 </a>
@@ -265,7 +268,7 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarTables" aria-expanded="false" aria-controls="sidebarTables"
                     class="side-nav-link">
-                    <span class="menu-icon"><i class="ri-table-view"></i></span>
+                    <span class="menu-icon"><i class="fas fa-shopping-cart"  style="color:#02bace; font-size: 1rem;"></i> </span>
                     <span class="menu-text"> Orders </span>
                     <span class="menu-arrow"></span>
                 </a>
@@ -289,7 +292,7 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarUsers" aria-expanded="false" aria-controls="sidebarUsers"
                     class="side-nav-link">
-                    <span class="menu-icon"><i class="ri-road-map-line"></i></span>
+                    <span class="menu-icon"><i class="fas fa-users"  style="color:#02bace; font-size: 1rem;"></i>   </span>
                     <span class="menu-text"> Users </span>
                     <span class="menu-arrow"></span>
                 </a>
@@ -313,7 +316,7 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarPages" aria-expanded="false" aria-controls="sidebarPages"
                     class="side-nav-link">
-                    <span class="menu-icon"><i class="ri-road-map-line"></i></span>
+                    <span class="menu-icon"><i class="fas fa-file"  style="color:#02bace; font-size: 1rem;"></i>  </span>
                     <span class="menu-text"> Pages </span>
                     <span class="menu-arrow"></span>
                 </a>
@@ -337,7 +340,7 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarRatings" aria-expanded="false" aria-controls="sidebarRatings"
                     class="side-nav-link">
-                    <span class="menu-icon"><i class="ri-road-map-line"></i></span>
+                    <span class="menu-icon"><i class="fas fa-star"  style="color:#02bace; font-size: 1rem;"></i> </span>
                     <span class="menu-text"> Ratings </span>
                     <span class="menu-arrow"></span>
                 </a>
